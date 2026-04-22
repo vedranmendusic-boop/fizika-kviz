@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "question": "Koja je SI mjerna jedinica za silu?",
+    "answers": ["Newton (N)", "Joule (J)", "Watt (W)", "Pascal (Pa)"],
+    "correct": 0
+  },
+  {
+    "id": 2,
+    "question": "Što mjeri ampermetar?",
+    "answers": ["Napon", "Jakost električne struje", "Otpor", "Snagu"],
+    "correct": 1
+  },
+  {
+    "id": 3,
+    "question": "Koliko iznosi ubrzanje slobodnog pada na Zemlji (približno)?",
+    "answers": ["5 m/s²", "8 m/s²", "10 m/s²", "15 m/s²"],
+    "correct": 2
+  },
+  {
+    "id": 4,
+    "question": "Koji zakon kaže: 'Svakoj sili postoji jednaka i suprotno usmjerena sila'?",
+    "answers": ["Newtonov 1. zakon", "Newtonov 2. zakon", "Newtonov 3. zakon", "Zakon gravitacije"],
+    "correct": 2
+  },
+  {
+    "id": 5,
+    "question": "Kako se naziva energija tijela u mirovanju na nekoj visini?",
+    "answers": ["Kinetička energija", "Potencijalna energija", "Toplinska energija", "Elastična energija"],
+    "correct": 1
+  },
+  {
+    "id": 6,
+    "question": "Brzina zvuka u zraku pri 20°C iznosi približno:",
+    "answers": ["100 m/s", "343 m/s", "500 m/s", "1000 m/s"],
+    "correct": 1
+  },
+  {
+    "id": 7,
+    "question": "Koja je formula za gustoću?",
+    "answers": ["ρ = m · V", "ρ = V / m", "ρ = m / V", "ρ = m + V"],
+    "correct": 2
+  },
+  {
+    "id": 8,
+    "question": "Koja vrsta leće skuplja svjetlost u jednu točku?",
+    "answers": ["Konkavna leća", "Konveksna (sabirna) leća", "Ravna leća", "Cilindrična leća"],
+    "correct": 1
+  },
+  {
+    "id": 9,
+    "question": "Ohmov zakon glasi:",
+    "answers": ["U = I · R", "U = I / R", "U = I + R", "U = R / I"],
+    "correct": 0
+  },
+  {
+    "id": 10,
+    "question": "Koji planet je najbliži Suncu?",
+    "answers": ["Venera", "Mars", "Merkur", "Zemlja"],
+    "correct": 2
+  },
+  {
+    "id": 11,
+    "question": "Kako se naziva promjena agregatnog stanja iz čvrstog u tekuće?",
+    "answers": ["Isparavanje", "Sublimacija", "Taljenje", "Kondenzacija"],
+    "correct": 2
+  },
+  {
+    "id": 12,
+    "question": "Koja je SI mjerna jedinica za rad (energiju)?",
+    "answers": ["Watt (W)", "Newton (N)", "Joule (J)", "Volt (V)"],
+    "correct": 2
+  },
+  {
+    "id": 13,
+    "question": "Što je frekvencija?",
+    "answers": [
+      "Vrijeme jednog titraja",
+      "Broj titraja u sekundi",
+      "Udaljenost između dva vala",
+      "Brzina širenja vala"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 14,
+    "question": "Kako se naziva sila koja djeluje na tijelo uronjeno u tekućinu?",
+    "answers": ["Gravitacijska sila", "Sila trenja", "Uzgon", "Centripetalna sila"],
+    "correct": 2
+  },
+  {
+    "id": 15,
+    "question": "Tko je formulirao zakon o uzgonu?",
+    "answers": ["Newton", "Arhimed", "Galileo", "Pascal"],
+    "correct": 1
+  },
+  {
+    "id": 16,
+    "question": "Koja je mjerna jedinica za električni napon?",
+    "answers": ["Amper (A)", "Ohm (Ω)", "Volt (V)", "Coulomb (C)"],
+    "correct": 2
+  },
+  {
+    "id": 17,
+    "question": "Koliko iznosi brzina svjetlosti u vakuumu (približno)?",
+    "answers": ["300 km/s", "30 000 km/s", "300 000 km/s", "3 000 000 km/s"],
+    "correct": 2
+  },
+  {
+    "id": 18,
+    "question": "Što se događa s tijelom ako je rezultantna sila koja djeluje na njega jednaka nuli?",
+    "answers": [
+      "Ubrzava",
+      "Usporava",
+      "Miruje ili se giba jednoliko pravocrtno",
+      "Rotira"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 19,
+    "question": "Kako se naziva prijenos topline kroz tekućinu ili plin strujanjem?",
+    "answers": ["Kondukcija", "Konvekcija", "Zračenje", "Sublimacija"],
+    "correct": 1
+  },
+  {
+    "id": 20,
+    "question": "Koja je formula za kinetičku energiju?",
+    "answers": ["Ek = m·g·h", "Ek = ½·m·v²", "Ek = F·s", "Ek = m·v"],
+    "correct": 1
+  },
+  {
+    "id": 21,
+    "question": "Kako se naziva najniža temperatura koja teorijski postoji?",
+    "answers": ["0°C", "Apsolutna nula (-273,15°C)", "-100°C", "Nula Fahrenheita"],
+    "correct": 1
+  },
+  {
+    "id": 22,
+    "question": "Što mjeri voltmetar?",
+    "answers": ["Jakost struje", "Električni otpor", "Električni napon", "Snagu"],
+    "correct": 2
+  },
+  {
+    "id": 23,
+    "question": "Koja sila drži planete u orbiti oko Sunca?",
+    "answers": ["Elektromagnetska sila", "Gravitacijska sila", "Nuklearna sila", "Sila trenja"],
+    "correct": 1
+  },
+  {
+    "id": 24,
+    "question": "Koliko sekundi ima jedan sat?",
+    "answers": ["600", "1800", "3600", "6000"],
+    "correct": 2
+  },
+  {
+    "id": 25,
+    "question": "Koja je SI mjerna jedinica za tlak?",
+    "answers": ["Newton (N)", "Pascal (Pa)", "Bar (bar)", "Atmosfera (atm)"],
+    "correct": 1
+  },
+  {
+    "id": 26,
+    "question": "Kako se naziva pojava loma svjetlosti pri prolasku kroz prizmu?",
+    "answers": ["Refleksija", "Difrakcija", "Disperzija", "Interferencija"],
+    "correct": 2
+  },
+  {
+    "id": 27,
+    "question": "Formula za tlak glasi:",
+    "answers": ["p = F · A", "p = A / F", "p = F / A", "p = F + A"],
+    "correct": 2
+  },
+  {
+    "id": 28,
+    "question": "Što je val?",
+    "answers": [
+      "Prijenos tvari kroz prostor",
+      "Prijenos energije kroz prostor bez prijenosa tvari",
+      "Kretanje čestica u krug",
+      "Vrsta elektromagnetskog zračenja"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 29,
+    "question": "Kako se zove uređaj koji pretvara mehaničku energiju u električnu?",
+    "answers": ["Elektromotor", "Generator", "Transformator", "Kondenzator"],
+    "correct": 1
+  },
+  {
+    "id": 30,
+    "question": "Koji se zakon odnosi na očuvanje energije?",
+    "answers": [
+      "Zakon inercije",
+      "Zakon akcije i reakcije",
+      "Zakon očuvanja energije",
+      "Coulombov zakon"
+    ],
+    "correct": 2
+  }
+]

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Fizika Challenge</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- ========== EKRAN 1: Dobrodošlica ========== -->
+    <div id="screen-welcome" class="screen active">
+      <div class="welcome-icon">⚛️</div>
+      <h1 class="welcome-title">Fizika Challenge</h1>
+      <p class="welcome-subtitle">
+        Testiraj svoje znanje iz fizike!<br />10 pitanja — koliko brzo možeš odgovoriti?
+      </p>
+      <button id="btn-start" class="btn btn-primary" disabled>
+        Učitavanje…
+      </button>
+      <a href="leaderboard.html" class="nav-link">📊 Rang-lista</a>
+    </div>
+
+    <!-- ========== EKRAN 2: Kviz ========== -->
+    <div id="screen-quiz" class="screen">
+      <div class="progress-bar">
+        <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
+      </div>
+
+      <div class="quiz-info">
+        <span id="question-counter" class="question-counter">1 / 10</span>
+        <span id="timer" class="timer">00:00</span>
+      </div>
+
+      <div id="question-card" class="question-card">
+        <p id="question-text" class="question-text"></p>
+      </div>
+
+      <div id="answers-grid" class="answers-grid">
+        <!-- Gumbi se generiraju dinamički -->
+      </div>
+    </div>
+
+    <!-- ========== EKRAN 3: Rezultat ========== -->
+    <div id="screen-result" class="screen">
+      <div class="result-card">
+        <div id="result-emoji" class="result-emoji"></div>
+        <div id="result-score" class="result-score"></div>
+        <div id="result-detail" class="result-detail"></div>
+
+        <div class="name-input-group">
+          <input
+            id="name-input"
+            class="name-input"
+            type="text"
+            placeholder="Tvoje ime ili inicijali"
+            maxlength="20"
+            autocomplete="off"
+          />
+          <button id="btn-save" class="btn btn-primary btn-sm">Spremi</button>
+        </div>
+        <div id="save-status" class="save-status"></div>
+
+        <div class="result-actions">
+          <button id="btn-retry" class="btn btn-secondary btn-sm">🔄 Igraj ponovo</button>
+          <a href="leaderboard.html" class="btn btn-secondary btn-sm">📊 Rang-lista</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Firebase SDK (modularni, putem CDN-a) -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>

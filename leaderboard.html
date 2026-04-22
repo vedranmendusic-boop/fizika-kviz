@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Rang-lista — Fizika Challenge</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="leaderboard-header">
+      <h1>🏆 Rang-lista</h1>
+      <p>Top 10 rezultata — Fizika Challenge</p>
+      <div class="live-badge">
+        <span class="live-dot"></span> Ažurira se u stvarnom vremenu
+      </div>
+    </div>
+
+    <div id="leaderboard-content" class="leaderboard-table">
+      <div class="loader">
+        <div class="spinner"></div>
+        Učitavanje…
+      </div>
+    </div>
+
+    <a href="index.html" class="nav-link">⚛️ Igraj kviz</a>
+
+  </div>
+
+  <script type="module" src="leaderboard.js"></script>
+</body>
+</html>

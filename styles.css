@@ -1,0 +1,554 @@
+/* ============================================
+   FIZIKA CHALLENGE — Styles
+   Školski kviz za Dan otvorenih vrata
+   ============================================ */
+
+/* --- CSS Varijable --- */
+:root {
+  --bg-primary: #0a0e1a;
+  --bg-card: #12182b;
+  --bg-card-hover: #1a2240;
+  --accent: #00d4ff;
+  --accent-glow: rgba(0, 212, 255, 0.25);
+  --accent-dark: #009ec2;
+  --success: #2ee87b;
+  --danger: #ff4d6a;
+  --warning: #ffb830;
+  --text-primary: #e8edf5;
+  --text-secondary: #8892a8;
+  --text-muted: #5a6480;
+  --border: #1e2642;
+  --radius: 14px;
+  --font-display: 'Orbitron', sans-serif;
+  --font-body: 'Nunito', sans-serif;
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+/* Animirani pozadinski gradient */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 600px 400px at 20% 20%, rgba(0, 212, 255, 0.06), transparent),
+    radial-gradient(ellipse 500px 500px at 80% 80%, rgba(46, 232, 123, 0.04), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- Layout --- */
+.container {
+  width: 100%;
+  max-width: 520px;
+  padding: 20px 16px;
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Tipografija --- */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ============================================
+   POČETNI EKRAN (Welcome)
+   ============================================ */
+.screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* Logo / Ikona */
+.welcome-icon {
+  font-size: 4.5rem;
+  margin-top: 12vh;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 0 20px var(--accent-glow));
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.welcome-title {
+  font-size: 2rem;
+  color: var(--accent);
+  text-shadow: 0 0 30px var(--accent-glow);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.welcome-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 40px;
+  max-width: 320px;
+}
+
+/* --- Gumbi --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: var(--radius);
+  padding: 16px 40px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  color: var(--bg-primary);
+  box-shadow: 0 4px 24px var(--accent-glow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 32px rgba(0, 212, 255, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--accent);
+}
+
+.btn-sm {
+  font-size: 0.8rem;
+  padding: 10px 20px;
+}
+
+/* ============================================
+   KVIZ EKRAN
+   ============================================ */
+
+/* Progress bar */
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--success));
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+/* Info traka */
+.quiz-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.quiz-info .question-counter {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+}
+
+.quiz-info .timer {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  color: var(--accent);
+}
+
+/* Kartica pitanja */
+.question-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 22px;
+  margin-bottom: 20px;
+}
+
+.question-text {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+/* Odgovori */
+.answers-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.answer-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.answer-btn:hover:not(:disabled) {
+  background: var(--bg-card-hover);
+  border-color: var(--accent);
+}
+
+.answer-btn:disabled {
+  cursor: default;
+}
+
+.answer-letter {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+
+.answer-btn.correct {
+  border-color: var(--success);
+  background: rgba(46, 232, 123, 0.08);
+}
+
+.answer-btn.correct .answer-letter {
+  background: var(--success);
+  color: var(--bg-primary);
+  border-color: var(--success);
+}
+
+.answer-btn.wrong {
+  border-color: var(--danger);
+  background: rgba(255, 77, 106, 0.08);
+}
+
+.answer-btn.wrong .answer-letter {
+  background: var(--danger);
+  color: white;
+  border-color: var(--danger);
+}
+
+/* ============================================
+   REZULTAT EKRAN
+   ============================================ */
+.result-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  text-align: center;
+  margin-top: 8vh;
+}
+
+.result-emoji {
+  font-size: 3.5rem;
+  margin-bottom: 12px;
+}
+
+.result-score {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--accent);
+  text-shadow: 0 0 20px var(--accent-glow);
+  margin-bottom: 4px;
+}
+
+.result-detail {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+/* Unos imena */
+.name-input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.name-input {
+  flex: 1;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.name-input::placeholder {
+  color: var(--text-muted);
+}
+
+.name-input:focus {
+  border-color: var(--accent);
+}
+
+.save-status {
+  font-size: 0.85rem;
+  color: var(--success);
+  margin-bottom: 16px;
+  min-height: 20px;
+}
+
+.result-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+/* ============================================
+   LEADERBOARD
+   ============================================ */
+.leaderboard-header {
+  text-align: center;
+  padding-top: 6vh;
+  margin-bottom: 28px;
+}
+
+.leaderboard-header h1 {
+  font-size: 1.6rem;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.leaderboard-header p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.leaderboard-table {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.lb-row {
+  display: grid;
+  grid-template-columns: 48px 1fr 70px 80px;
+  align-items: center;
+  padding: 14px 16px;
+  gap: 8px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s ease;
+}
+
+.lb-row:last-child {
+  border-bottom: none;
+}
+
+.lb-row.header {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 12px 16px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.lb-rank {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.lb-row:nth-child(2) .lb-rank { color: #ffd700; font-size: 1.1rem; }
+.lb-row:nth-child(3) .lb-rank { color: #c0c0c0; font-size: 1rem; }
+.lb-row:nth-child(4) .lb-rank { color: #cd7f32; font-size: 1rem; }
+
+.lb-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lb-score {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  color: var(--accent);
+  text-align: right;
+}
+
+.lb-time {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-align: right;
+}
+
+.lb-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* Animacija za novi rezultat */
+.lb-row.new-entry {
+  animation: highlight 1.5s ease;
+}
+
+@keyframes highlight {
+  0% { background: rgba(0, 212, 255, 0.15); }
+  100% { background: transparent; }
+}
+
+/* Live indikator */
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: var(--success);
+  margin-top: 8px;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--success);
+  border-radius: 50%;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+/* Nav link */
+.nav-link {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: var(--accent);
+}
+
+/* Loader */
+.loader {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 12px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 400px) {
+  .welcome-title { font-size: 1.6rem; }
+  .result-score { font-size: 2rem; }
+  .question-text { font-size: 1.05rem; }
+  .btn { padding: 14px 28px; font-size: 0.9rem; }
+  .lb-row { grid-template-columns: 40px 1fr 60px 70px; padding: 12px 12px; }
+}
+
+@media (min-width: 600px) {
+  .container { padding: 24px; }
+  .welcome-icon { font-size: 5.5rem; margin-top: 14vh; }
+  .welcome-title { font-size: 2.4rem; }
+}
