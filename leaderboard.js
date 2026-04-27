@@ -4,6 +4,8 @@
 // ============================================
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
+import { getAuth, signInAnonymously }
+  from "https://www.gstatic.com/firebasejs/11.7.1/firebase-auth.js";
 import { getDatabase, ref, query, orderByChild, limitToLast, onValue }
   from "https://www.gstatic.com/firebasejs/11.7.1/firebase-database.js";
 
@@ -17,8 +19,9 @@ const firebaseConfig = {
   appId: "1:462864759911:web:5e47b89c750232f81368c2"
 };
 
-const app = initializeApp(firebaseConfig);
-const db  = getDatabase(app);
+const app  = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db   = getDatabase(app);
 
 // --------------------------------------------------
 // DOM
@@ -103,22 +106,42 @@ function escapeHtml(str) {
 }
 
 // --------------------------------------------------
-// Firebase listener — real-time ažuriranje
+// Inicijalizacija:
+// 1. Anonimna prijava (rules traže auth != null)
+// 2. Tek nakon prijave pokreni real-time listener
 // --------------------------------------------------
-const resultsRef = ref(db, "results");
-const topQuery = query(resultsRef, orderByChild("score"), limitToLast(50));
+async function init() {
+  try {
+    await signInAnonymously(auth);
+    console.log("Leaderboard: anonimna prijava uspješna");
+  } catch (err) {
+    console.error("Auth greška:", err);
+    $content.innerHTML = `
+      <div class="lb-empty">
+        Greška pri prijavi. Osvježi stranicu.
+      </div>
+    `;
+    return;
+  }
 
-onValue(topQuery, (snapshot) => {
-  const results = [];
-  snapshot.forEach((child) => {
-    results.push({ id: child.key, ...child.val() });
+  // Sada smo prijavljeni — pokreni listener
+  const resultsRef = ref(db, "results");
+  const topQuery = query(resultsRef, orderByChild("score"), limitToLast(50));
+
+  onValue(topQuery, (snapshot) => {
+    const results = [];
+    snapshot.forEach((child) => {
+      results.push({ id: child.key, ...child.val() });
+    });
+    renderLeaderboard(results);
+  }, (error) => {
+    console.error("Firebase čitanje greška:", error);
+    $content.innerHTML = `
+      <div class="lb-empty">
+        Greška pri učitavanju. Osvježi stranicu.
+      </div>
+    `;
   });
-  renderLeaderboard(results);
-}, (error) => {
-  console.error("Firebase čitanje greška:", error);
-  $content.innerHTML = `
-    <div class="lb-empty">
-      Greška pri učitavanju. Osvježi stranicu.
-    </div>
-  `;
-});
+}
+
+init();
