@@ -10,12 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet" />
 
   <style>
-    /* ============================================
-       PROJEKTOR VERZIJA
-       Optimizirano za prikaz na velikom ekranu
-       (1920×1080 ili slično)
-       ============================================ */
-
     :root {
       --bg-primary: #060a14;
       --bg-card: #0d1220;
@@ -36,11 +30,7 @@
       --font-body: 'Nunito', sans-serif;
     }
 
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html, body {
       height: 100%;
@@ -48,38 +38,30 @@
       font-family: var(--font-body);
       background: var(--bg-primary);
       color: var(--text-primary);
-      cursor: none; /* sakrij kursor na projektoru */
+      cursor: none;
     }
 
-    /* Animirana pozadina */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(ellipse 800px 600px at 15% 30%, rgba(0, 212, 255, 0.05), transparent),
-        radial-gradient(ellipse 600px 600px at 85% 70%, rgba(46, 232, 123, 0.03), transparent),
-        radial-gradient(ellipse 400px 400px at 50% 50%, rgba(0, 212, 255, 0.02), transparent);
+        radial-gradient(ellipse 800px 600px at 15% 30%, rgba(0,212,255,.05), transparent),
+        radial-gradient(ellipse 600px 600px at 85% 70%, rgba(46,232,123,.03), transparent);
       pointer-events: none;
       z-index: 0;
       animation: bgPulse 8s ease-in-out infinite alternate;
     }
+    @keyframes bgPulse { 0%{opacity:.6} 100%{opacity:1} }
 
-    @keyframes bgPulse {
-      0% { opacity: 0.6; }
-      100% { opacity: 1; }
-    }
-
-    h1, h2, h3, h4 {
+    h1,h2,h3,h4 {
       font-family: var(--font-display);
-      letter-spacing: 0.04em;
+      letter-spacing: .04em;
       text-transform: uppercase;
     }
 
     /* ============================================
-       LAYOUT: dva stupca
-       Lijevo: naslov + pravila + QR
-       Desno: rang-lista
+       LAYOUT
        ============================================ */
     .projector-layout {
       display: grid;
@@ -95,13 +77,10 @@
       flex-direction: column;
       padding: 48px 40px;
       border-right: 1px solid var(--border);
-      background: rgba(0, 0, 0, 0.2);
+      background: rgba(0,0,0,.2);
     }
 
-    .logo-area {
-      text-align: center;
-      margin-bottom: 36px;
-    }
+    .logo-area { text-align: center; margin-bottom: 36px; }
 
     .logo-icon {
       font-size: 4rem;
@@ -110,11 +89,7 @@
       filter: drop-shadow(0 0 24px var(--accent-glow));
       animation: float 3s ease-in-out infinite;
     }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
 
     .logo-title {
       font-size: 1.8rem;
@@ -124,7 +99,7 @@
     }
 
     .logo-subtitle {
-      font-size: 0.85rem;
+      font-size: .85rem;
       color: var(--text-secondary);
       margin-top: 6px;
       font-family: var(--font-body);
@@ -133,105 +108,57 @@
     }
 
     /* Pravila */
-    .rules-section {
-      margin-bottom: 36px;
-    }
+    .rules-section { margin-bottom: 36px; }
 
     .rules-title {
-      font-size: 0.75rem;
+      font-size: .75rem;
       color: var(--accent);
       margin-bottom: 16px;
-      letter-spacing: 0.12em;
+      letter-spacing: .12em;
     }
 
-    .rule-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 14px;
-    }
+    .rule-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
 
     .rule-number {
-      flex-shrink: 0;
-      width: 28px;
-      height: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      flex-shrink: 0; width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
       border-radius: 8px;
-      font-family: var(--font-display);
-      font-size: 0.65rem;
-      font-weight: 700;
-      background: rgba(0, 212, 255, 0.1);
-      color: var(--accent);
-      border: 1px solid rgba(0, 212, 255, 0.2);
+      font-family: var(--font-display); font-size: .65rem; font-weight: 700;
+      background: rgba(0,212,255,.1); color: var(--accent);
+      border: 1px solid rgba(0,212,255,.2);
     }
 
-    .rule-text {
-      font-size: 0.95rem;
-      line-height: 1.4;
-      color: var(--text-primary);
-      padding-top: 3px;
-    }
+    .rule-text { font-size: .95rem; line-height: 1.4; padding-top: 3px; }
+    .rule-text strong { color: var(--accent); }
 
-    .rule-text strong {
-      color: var(--accent);
-    }
-
-    /* QR sekcija */
+    /* QR */
     .qr-section {
-      margin-top: auto;
-      text-align: center;
-      padding: 24px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
+      margin-top: auto; text-align: center; padding: 24px;
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
     }
 
     .qr-label {
-      font-family: var(--font-display);
-      font-size: 0.7rem;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 14px;
+      font-family: var(--font-display); font-size: .7rem;
+      color: var(--accent); text-transform: uppercase;
+      letter-spacing: .12em; margin-bottom: 14px;
     }
 
     .qr-placeholder {
-      width: 180px;
-      height: 180px;
-      margin: 0 auto 14px;
-      background: white;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px;
+      width: 180px; height: 180px; margin: 0 auto 14px;
+      background: white; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; padding: 8px;
     }
 
-    .qr-placeholder img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+    .qr-placeholder img { width:100%; height:100%; object-fit:contain; }
+
+    .qr-fallback {
+      font-family: var(--font-display); font-size: .5rem;
+      color: #333; text-align: center; word-break: break-all; padding: 8px;
     }
 
-    /* Fallback ako nema slike — prikaži tekst */
-    .qr-placeholder .qr-fallback {
-      font-family: var(--font-display);
-      font-size: 0.5rem;
-      color: #333;
-      text-align: center;
-      word-break: break-all;
-      padding: 8px;
-    }
+    .qr-url { font-size: .8rem; color: var(--text-secondary); word-break: break-all; }
 
-    .qr-url {
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-      word-break: break-all;
-    }
-
-    /* --- DESNI PANEL: RANG-LISTA --- */
+    /* --- DESNI PANEL --- */
     .right-panel {
       display: flex;
       flex-direction: column;
@@ -240,153 +167,192 @@
     }
 
     .leaderboard-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 28px;
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 24px;
     }
 
-    .leaderboard-heading h2 {
-      font-size: 1.5rem;
-      color: var(--text-primary);
-    }
+    .leaderboard-heading h2 { font-size: 1.5rem; }
 
     .live-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.8rem;
-      color: var(--success);
-      font-family: var(--font-display);
-      letter-spacing: 0.05em;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .8rem; color: var(--success);
+      font-family: var(--font-display); letter-spacing: .05em;
     }
 
     .live-dot {
-      width: 10px;
-      height: 10px;
-      background: var(--success);
-      border-radius: 50%;
-      animation: pulse 1.5s ease-in-out infinite;
+      width: 10px; height: 10px; background: var(--success);
+      border-radius: 50%; animation: pulse 1.5s ease-in-out infinite;
     }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.7); }
-    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
 
     /* Tablica */
-    .lb-table {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
+    .lb-table { flex: 1; display: flex; flex-direction: column; }
 
     .lb-row {
       display: grid;
-      grid-template-columns: 80px 1fr 140px 140px;
+      grid-template-columns: 80px 1fr 140px 160px;
       align-items: center;
       padding: 0 24px;
-      height: 64px;
+      height: 60px;
       border-bottom: 1px solid var(--border);
-      transition: all 0.4s ease;
+      transition: all .4s ease;
     }
 
     .lb-row.header {
-      height: 44px;
-      font-family: var(--font-display);
-      font-size: 0.65rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      background: rgba(0, 0, 0, 0.15);
+      height: 40px;
+      font-family: var(--font-display); font-size: .6rem;
+      color: var(--text-muted); text-transform: uppercase;
+      letter-spacing: .12em;
+      background: rgba(0,0,0,.15);
       border-radius: 10px 10px 0 0;
     }
 
-    .lb-row:last-child {
-      border-bottom: none;
-    }
-
+    .lb-row:last-child { border-bottom: none; }
     .lb-row:not(.header):not(.empty) {
       background: var(--bg-card);
       border-left: 3px solid transparent;
     }
 
-    /* Top 3 stilizacija */
-    .lb-row.rank-1 {
-      border-left-color: var(--gold);
-      background: linear-gradient(90deg, rgba(255, 215, 0, 0.06), var(--bg-card));
-    }
+    .lb-row.rank-1 { border-left-color: var(--gold); background: linear-gradient(90deg, rgba(255,215,0,.06), var(--bg-card)); }
+    .lb-row.rank-2 { border-left-color: var(--silver); background: linear-gradient(90deg, rgba(192,192,192,.04), var(--bg-card)); }
+    .lb-row.rank-3 { border-left-color: var(--bronze); background: linear-gradient(90deg, rgba(205,127,50,.04), var(--bg-card)); }
 
-    .lb-row.rank-2 {
-      border-left-color: var(--silver);
-      background: linear-gradient(90deg, rgba(192, 192, 192, 0.04), var(--bg-card));
-    }
-
-    .lb-row.rank-3 {
-      border-left-color: var(--bronze);
-      background: linear-gradient(90deg, rgba(205, 127, 50, 0.04), var(--bg-card));
-    }
-
-    .lb-rank {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      text-align: center;
-    }
-
-    .rank-1 .lb-rank { color: var(--gold); font-size: 1.6rem; }
-    .rank-2 .lb-rank { color: var(--silver); font-size: 1.4rem; }
-    .rank-3 .lb-rank { color: var(--bronze); font-size: 1.3rem; }
+    .lb-rank { font-family: var(--font-display); font-size: 1.2rem; text-align: center; }
+    .rank-1 .lb-rank { color: var(--gold); font-size: 1.5rem; }
+    .rank-2 .lb-rank { color: var(--silver); font-size: 1.3rem; }
+    .rank-3 .lb-rank { color: var(--bronze); font-size: 1.2rem; }
 
     .lb-name {
-      font-size: 1.25rem;
-      font-weight: 800;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      font-size: 1.2rem; font-weight: 800;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
       padding-left: 8px;
     }
-
-    .rank-1 .lb-name { font-size: 1.4rem; }
+    .rank-1 .lb-name { font-size: 1.35rem; }
 
     .lb-score {
-      font-family: var(--font-display);
-      font-size: 1.15rem;
-      color: var(--accent);
-      text-align: right;
+      font-family: var(--font-display); font-size: 1.1rem;
+      color: var(--accent); text-align: right;
     }
 
     .lb-time {
+      font-family: var(--font-display);
       font-size: 1rem;
       color: var(--text-secondary);
       text-align: right;
+      letter-spacing: .02em;
     }
 
-    .lb-empty {
-      text-align: center;
-      padding: 80px 20px;
+    /* Milisekunde posebno */
+    .lb-time .ms {
+      font-size: .75rem;
       color: var(--text-muted);
-      font-size: 1.3rem;
     }
 
-    /* Animacija za nove zapise */
-    .lb-row.new-entry {
-      animation: slideIn 0.6s ease;
-    }
+    .lb-empty { text-align: center; padding: 80px 20px; color: var(--text-muted); font-size: 1.3rem; }
 
-    @keyframes slideIn {
-      0% { opacity: 0; transform: translateX(30px); }
-      100% { opacity: 1; transform: translateX(0); }
-    }
+    .lb-row.new-entry { animation: slideIn .6s ease; }
+    @keyframes slideIn { 0%{opacity:0;transform:translateX(30px)} 100%{opacity:1;transform:translateX(0)} }
 
-    /* Sat u kutu */
+    /* Sat */
     .clock {
+      position: fixed; bottom: 20px; right: 28px;
+      font-family: var(--font-display); font-size: 1.1rem;
+      color: var(--text-muted); z-index: 10;
+    }
+
+    /* ============================================
+       ZANIMLJIVOST POPUP
+       ============================================ */
+    .fact-overlay {
       position: fixed;
-      bottom: 20px;
-      right: 28px;
+      inset: 0;
+      background: rgba(6, 10, 20, 0.85);
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.6s ease;
+    }
+
+    .fact-overlay.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .fact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--accent);
+      border-radius: 20px;
+      padding: 52px 64px;
+      max-width: 800px;
+      text-align: center;
+      box-shadow:
+        0 0 60px rgba(0, 212, 255, 0.15),
+        0 0 120px rgba(0, 212, 255, 0.05);
+      transform: scale(0.9) translateY(20px);
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .fact-overlay.visible .fact-card {
+      transform: scale(1) translateY(0);
+    }
+
+    .fact-icon {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .fact-label {
       font-family: var(--font-display);
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      z-index: 10;
+      font-size: 0.7rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 8px;
+    }
+
+    .fact-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .fact-text {
+      font-size: 1.35rem;
+      line-height: 1.7;
+      color: var(--text-primary);
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    /* Progress bar na dnu fact kartice */
+    .fact-progress {
+      margin-top: 28px;
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .fact-progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+      width: 100%;
+      transform-origin: left;
+      animation: factTimer 8s linear forwards;
+    }
+
+    @keyframes factTimer {
+      0% { transform: scaleX(1); }
+      100% { transform: scaleX(0); }
     }
   </style>
 </head>
@@ -405,7 +371,6 @@
 
       <div class="rules-section">
         <h3 class="rules-title">📋 Kako igrati</h3>
-
         <div class="rule-item">
           <span class="rule-number">1</span>
           <span class="rule-text">Skeniraj <strong>QR kod</strong> mobitelom</span>
@@ -424,22 +389,9 @@
         </div>
       </div>
 
-      <!-- QR kod -->
       <div class="qr-section">
         <div class="qr-label">Skeniraj i igraj</div>
         <div class="qr-placeholder" id="qr-container">
-          <!--
-            UPUTA: Zamijeni ovo s pravim QR kodom!
-
-            Opcija A — Slika:
-            Generiraj QR na https://goqr.me/ ili https://www.qr-code-generator.com/
-            Spremi kao qr.png u isti direktorij i otkomentiraj:
-            <img src="qr.png" alt="QR kod" />
-
-            Opcija B — Automatski (koristi besplatni API):
-            Skripta na dnu stranice automatski generira QR.
-            Samo promijeni QUIZ_URL konstantu u <script> sekciji.
-          -->
           <div class="qr-fallback" id="qr-fallback">QR se generira…</div>
         </div>
         <div class="qr-url" id="qr-url-display"></div>
@@ -447,7 +399,7 @@
 
     </div>
 
-    <!-- ========== DESNI PANEL: RANG-LISTA ========== -->
+    <!-- ========== DESNI PANEL ========== -->
     <div class="right-panel">
 
       <div class="leaderboard-heading">
@@ -468,9 +420,22 @@
   <!-- Sat -->
   <div class="clock" id="clock"></div>
 
+  <!-- Zanimljivost overlay -->
+  <div class="fact-overlay" id="fact-overlay">
+    <div class="fact-card">
+      <span class="fact-icon" id="fact-icon">🧠</span>
+      <div class="fact-label">Jeste li znali?</div>
+      <div class="fact-title" id="fact-title"></div>
+      <div class="fact-text" id="fact-text"></div>
+      <div class="fact-progress">
+        <div class="fact-progress-fill" id="fact-progress"></div>
+      </div>
+    </div>
+  </div>
+
   <script type="module">
     // ============================================
-    // PROJEKTOR — Firebase + Leaderboard
+    // PROJEKTOR — Firebase + Leaderboard + Fun Facts
     // ============================================
 
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
@@ -493,13 +458,101 @@
     const auth = getAuth(app);
     const db   = getDatabase(app);
 
-    // --------------------------------------------------
-    // ⚠️  PROMIJENI OVO u URL svog kviza!
-    // --------------------------------------------------
     const QUIZ_URL = "https://tvoj-username.github.io/fizika-challenge/";
 
+    // ============================================
+    // ZANIMLJIVOSTI
+    // ============================================
+    const FACTS = [
+      { icon: "👻", title: "Neutrino", text: "Kroz tvoje tijelo svake sekunde prolaze milijarde sićušnih čestica zvanih neutrini, a da ti to uopće ne osjetiš?" },
+      { icon: "🕳️", title: "Crna rupa", text: "Crna rupa nije rupa u svemiru, nego područje s toliko jakom gravitacijom da čak ni svjetlost ne može pobjeći?" },
+      { icon: "💡", title: "Brzina svjetlosti", text: "Svjetlost ne stiže odmah, nego putuje brzinom oko 300 000 kilometara u sekundi?" },
+      { icon: "🔇", title: "Zvuk u svemiru", text: "U svemiru se eksplozija ne bi čula, jer zvuku treba zrak ili neka druga tvar da bi se širio?" },
+      { icon: "🧱", title: "Kvantno tuneliranje", text: "U svijetu jako sitnih čestica ponekad se dogodi kao da čestica 'prođe kroz zid'?" },
+      { icon: "⚡", title: "Antimaterija", text: "Postoji neka vrsta 'suprotne tvari' koja se zove antimaterija, a kad se susretne s običnom tvari, može se pretvoriti u energiju?" },
+      { icon: "🧊", title: "Supervodič", text: "Postoje materijali kroz koje struja može teći bez gubitka energije, ali samo na vrlo niskim temperaturama?" },
+      { icon: "🚄", title: "Levitacija magnetom", text: "Neki materijali mogu lebdjeti iznad magneta, kao mali vlakovi iz budućnosti?" },
+      { icon: "☀️", title: "Plazma", text: "Sunce nije ni kruto, ni tekuće, ni običan plin, nego je uglavnom plazma — jako vruća električki nabijena tvar?" },
+      { icon: "⚡", title: "Munja", text: "Munja je golema električna iskra između oblaka i tla ili između dva oblaka?" },
+      { icon: "🌩️", title: "Grom kasni", text: "Munju vidimo prije nego čujemo grom jer svjetlost putuje puno brže od zvuka?" },
+      { icon: "🥶", title: "Apsolutna nula", text: "Postoji najniža moguća temperatura, oko −273 °C, gdje se gibanje čestica gotovo potpuno zaustavlja?" },
+      { icon: "⏰", title: "Vrijeme nije svugdje jednako", text: "Vrijeme može teći malo sporije blizu velikih masa, na primjer blizu Zemlje ili crne rupe?" },
+      { icon: "👨‍🚀", title: "Astronauti stare sporije", text: "Astronauti koji se jako brzo gibaju u svemiru stare mrvicu sporije od ljudi na Zemlji?" },
+      { icon: "✨", title: "Foton", text: "Svjetlost se može zamisliti kao mnoštvo sitnih paketića energije koji se zovu fotoni?" },
+      { icon: "🌅", title: "Sunčeva svjetlost", text: "Svjetlosti sa Sunca treba oko 8 minuta da stigne do Zemlje?" },
+      { icon: "⛵", title: "Solarno jedro", text: "Svemirska letjelica se može gurati Sunčevom svjetlošću, slično kao što vjetar gura jedro broda?" },
+      { icon: "☄️", title: "Kozmičke zrake", text: "Nas stalno pogađaju sitne čestice iz svemira koje imaju jako veliku energiju?" },
+      { icon: "🌑", title: "Tamna tvar", text: "Znanstvenici misle da u svemiru postoji tvar koju ne vidimo, ali znamo da je tamo jer vuče galaksije gravitacijom?" },
+      { icon: "🔭", title: "Tamna energija", text: "Svemir se širi sve brže, a znanstvenici za to koriste naziv tamna energija?" },
+      { icon: "🌊", title: "Gravitacijski valovi", text: "Sudar dvije crne rupe može proizvesti valove u prostoru, kao kad kamen napravi valove na vodi?" },
+      { icon: "☁️", title: "Elektron", text: "Elektron se ne ponaša kao obična mala kuglica, nego kao nešto što možemo opisati oblakom mogućih položaja?" },
+      { icon: "🏟️", title: "Atom je prazan", text: "Atom je toliko prazan da bi jezgra bila kao zrno graška u sredini velikog stadiona?" },
+      { icon: "🍷", title: "Zvuk razbija staklo", text: "Pravi ton, ako je dovoljno glasan, može natjerati staklo da jako titra i pukne?" },
+      { icon: "🎠", title: "Rezonancija", text: "Ljuljačka se može sve više njihati ako je guramo u pravom ritmu, a to se u fizici zove rezonancija?" },
+      { icon: "🛑", title: "Inercija", text: "Tijelo 'voli' nastaviti ono što već radi — ako miruje, želi mirovati, a ako se giba, želi se gibati?" },
+      { icon: "🎈", title: "Tlak zraka", text: "Zrak oko nas stalno pritišće naše tijelo, ali ga ne osjećamo jer pritišće sa svih strana?" },
+      { icon: "✈️", title: "Bernoullijev učinak", text: "Avion može letjeti jer krila pomažu stvoriti razliku tlaka zraka iznad i ispod krila?" },
+      { icon: "🪞", title: "Zrcalo", text: "Zrcalo ne odbija baš svu svjetlost, nego mali dio uvijek upije ili rasprši?" },
+      { icon: "🫧", title: "Vakuum", text: "Čak i 'prazan prostor' u modernoj fizici nije baš potpuno prazan, nego se u njemu mogu događati sitne promjene energije?" },
+    ];
+
+    // Shuffle za random redoslijed
+    function shuffle(arr) {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
     // --------------------------------------------------
-    // QR kod generiranje (besplatni API)
+    // Fun facts rotacija
+    // --------------------------------------------------
+    const $factOverlay  = document.getElementById("fact-overlay");
+    const $factIcon     = document.getElementById("fact-icon");
+    const $factTitle    = document.getElementById("fact-title");
+    const $factText     = document.getElementById("fact-text");
+    const $factProgress = document.getElementById("fact-progress");
+
+    let shuffledFacts = shuffle(FACTS);
+    let factIndex = 0;
+    const FACT_INTERVAL = 35000;   // Svakih 35 sekundi
+    const FACT_DISPLAY  = 8000;    // Prikazuj 8 sekundi
+
+    function showFact() {
+      // Resetiraj ako smo prošli sve
+      if (factIndex >= shuffledFacts.length) {
+        shuffledFacts = shuffle(FACTS);
+        factIndex = 0;
+      }
+
+      const fact = shuffledFacts[factIndex];
+      factIndex++;
+
+      $factIcon.textContent = fact.icon;
+      $factTitle.textContent = fact.title;
+      $factText.textContent = fact.text;
+
+      // Resetiraj progress animaciju
+      $factProgress.style.animation = "none";
+      $factProgress.offsetHeight; // force reflow
+      $factProgress.style.animation = `factTimer ${FACT_DISPLAY}ms linear forwards`;
+
+      // Prikaži
+      $factOverlay.classList.add("visible");
+
+      // Sakrij nakon FACT_DISPLAY ms
+      setTimeout(() => {
+        $factOverlay.classList.remove("visible");
+      }, FACT_DISPLAY);
+    }
+
+    // Pokreni ciklus: prvi fact nakon 35s, zatim svaki 35s
+    setInterval(showFact, FACT_INTERVAL);
+
+    // --------------------------------------------------
+    // QR kod
     // --------------------------------------------------
     const $qrContainer = document.getElementById("qr-container");
     const $qrFallback  = document.getElementById("qr-fallback");
@@ -510,19 +563,11 @@
       const img = new Image();
       img.src = qrApiUrl;
       img.alt = "QR kod za kviz";
-      img.style.width = "100%";
-      img.style.height = "100%";
-      img.style.objectFit = "contain";
-      img.onload = () => {
-        $qrFallback.remove();
-        $qrContainer.appendChild(img);
-      };
-      img.onerror = () => {
-        $qrFallback.textContent = QUIZ_URL;
-      };
+      img.style.cssText = "width:100%;height:100%;object-fit:contain";
+      img.onload = () => { $qrFallback.remove(); $qrContainer.appendChild(img); };
+      img.onerror = () => { $qrFallback.textContent = QUIZ_URL; };
       $qrUrl.textContent = QUIZ_URL;
     }
-
     generateQR();
 
     // --------------------------------------------------
@@ -530,25 +575,26 @@
     // --------------------------------------------------
     const $clock = document.getElementById("clock");
     function updateClock() {
-      const now = new Date();
-      $clock.textContent = now.toLocaleTimeString("hr-HR", {
-        hour: "2-digit",
-        minute: "2-digit"
-      });
+      $clock.textContent = new Date().toLocaleTimeString("hr-HR", { hour:"2-digit", minute:"2-digit" });
     }
     updateClock();
     setInterval(updateClock, 10000);
 
     // --------------------------------------------------
-    // Pomoćne funkcije
+    // Leaderboard — s milisekundama
     // --------------------------------------------------
     const $content = document.getElementById("leaderboard-content");
 
+    /** Formatiraj ms u M:SS.mmm */
     function formatTime(ms) {
-      const totalSec = Math.floor(ms / 1000);
-      const m = Math.floor(totalSec / 60);
-      const s = String(totalSec % 60).padStart(2, "0");
-      return `${m}:${s}`;
+      const totalMs = Math.max(0, Math.floor(ms));
+      const minutes = Math.floor(totalMs / 60000);
+      const seconds = Math.floor((totalMs % 60000) / 1000);
+      const millis  = totalMs % 1000;
+      const m = minutes;
+      const s = String(seconds).padStart(2, "0");
+      const mil = String(millis).padStart(3, "0");
+      return `${m}:${s}<span class="ms">.${mil}</span>`;
     }
 
     function rankDisplay(pos) {
@@ -571,9 +617,6 @@
       });
     }
 
-    // --------------------------------------------------
-    // Renderiranje rang-liste
-    // --------------------------------------------------
     function renderLeaderboard(results) {
       if (results.length === 0) {
         $content.innerHTML = `<div class="lb-empty">Čekam prvi rezultat… ⚛️</div>`;
@@ -608,7 +651,7 @@
     }
 
     // --------------------------------------------------
-    // Firebase inicijalizacija
+    // Firebase
     // --------------------------------------------------
     async function init() {
       try {
