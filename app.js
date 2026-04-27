@@ -7,9 +7,6 @@
 // --------------------------------------------------
 // 1. Firebase inicijalizacija (modularni SDK)
 // --------------------------------------------------
-//    ⚠️  UPUTA: Zamijeni firebaseConfig svojim
-//    podatcima iz Firebase Console → Project Settings
-// --------------------------------------------------
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
 import { getAuth, signInAnonymously }
@@ -17,10 +14,10 @@ import { getAuth, signInAnonymously }
 import { getDatabase, ref, push, serverTimestamp }
   from "https://www.gstatic.com/firebasejs/11.7.1/firebase-database.js";
 
-// ⬇️ ZAMIJENI OVIM SVOJIM FIREBASE KONFIGURACIJOM ⬇️
 const firebaseConfig = {
   apiKey: "AIzaSyD7MxLO2H0BLSgu07mxh7cYg3d2XM91WeI",
   authDomain: "fizika-challenge-757f7.firebaseapp.com",
+  databaseURL: "https://fizika-challenge-757f7-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "fizika-challenge-757f7",
   storageBucket: "fizika-challenge-757f7.firebasestorage.app",
   messagingSenderId: "462864759911",
