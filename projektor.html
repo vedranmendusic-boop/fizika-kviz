@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fizika Challenge — Projektor</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================
+       PROJEKTOR VERZIJA
+       Optimizirano za prikaz na velikom ekranu
+       (1920×1080 ili slično)
+       ============================================ */
+
+    :root {
+      --bg-primary: #060a14;
+      --bg-card: #0d1220;
+      --bg-card-hover: #141c30;
+      --accent: #00d4ff;
+      --accent-glow: rgba(0, 212, 255, 0.3);
+      --accent-dark: #009ec2;
+      --success: #2ee87b;
+      --danger: #ff4d6a;
+      --gold: #ffd700;
+      --silver: #c0c0c0;
+      --bronze: #cd7f32;
+      --text-primary: #e8edf5;
+      --text-secondary: #8892a8;
+      --text-muted: #4a5470;
+      --border: #1a2038;
+      --font-display: 'Orbitron', sans-serif;
+      --font-body: 'Nunito', sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      font-family: var(--font-body);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      cursor: none; /* sakrij kursor na projektoru */
+    }
+
+    /* Animirana pozadina */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 800px 600px at 15% 30%, rgba(0, 212, 255, 0.05), transparent),
+        radial-gradient(ellipse 600px 600px at 85% 70%, rgba(46, 232, 123, 0.03), transparent),
+        radial-gradient(ellipse 400px 400px at 50% 50%, rgba(0, 212, 255, 0.02), transparent);
+      pointer-events: none;
+      z-index: 0;
+      animation: bgPulse 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes bgPulse {
+      0% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ============================================
+       LAYOUT: dva stupca
+       Lijevo: naslov + pravila + QR
+       Desno: rang-lista
+       ============================================ */
+    .projector-layout {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* --- LIJEVI PANEL --- */
+    .left-panel {
+      display: flex;
+      flex-direction: column;
+      padding: 48px 40px;
+      border-right: 1px solid var(--border);
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .logo-area {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .logo-icon {
+      font-size: 4rem;
+      display: block;
+      margin-bottom: 12px;
+      filter: drop-shadow(0 0 24px var(--accent-glow));
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .logo-title {
+      font-size: 1.8rem;
+      color: var(--accent);
+      text-shadow: 0 0 40px var(--accent-glow);
+      line-height: 1.2;
+    }
+
+    .logo-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-top: 6px;
+      font-family: var(--font-body);
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    /* Pravila */
+    .rules-section {
+      margin-bottom: 36px;
+    }
+
+    .rules-title {
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 16px;
+      letter-spacing: 0.12em;
+    }
+
+    .rule-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .rule-number {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      font-weight: 700;
+      background: rgba(0, 212, 255, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+    }
+
+    .rule-text {
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: var(--text-primary);
+      padding-top: 3px;
+    }
+
+    .rule-text strong {
+      color: var(--accent);
+    }
+
+    /* QR sekcija */
+    .qr-section {
+      margin-top: auto;
+      text-align: center;
+      padding: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .qr-label {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 14px;
+    }
+
+    .qr-placeholder {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 14px;
+      background: white;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+    }
+
+    .qr-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Fallback ako nema slike — prikaži tekst */
+    .qr-placeholder .qr-fallback {
+      font-family: var(--font-display);
+      font-size: 0.5rem;
+      color: #333;
+      text-align: center;
+      word-break: break-all;
+      padding: 8px;
+    }
+
+    .qr-url {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      word-break: break-all;
+    }
+
+    /* --- DESNI PANEL: RANG-LISTA --- */
+    .right-panel {
+      display: flex;
+      flex-direction: column;
+      padding: 48px 56px;
+      overflow: hidden;
+    }
+
+    .leaderboard-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+
+    .leaderboard-heading h2 {
+      font-size: 1.5rem;
+      color: var(--text-primary);
+    }
+
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--success);
+      font-family: var(--font-display);
+      letter-spacing: 0.05em;
+    }
+
+    .live-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--success);
+      border-radius: 50%;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    /* Tablica */
+    .lb-table {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .lb-row {
+      display: grid;
+      grid-template-columns: 80px 1fr 140px 140px;
+      align-items: center;
+      padding: 0 24px;
+      height: 64px;
+      border-bottom: 1px solid var(--border);
+      transition: all 0.4s ease;
+    }
+
+    .lb-row.header {
+      height: 44px;
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      background: rgba(0, 0, 0, 0.15);
+      border-radius: 10px 10px 0 0;
+    }
+
+    .lb-row:last-child {
+      border-bottom: none;
+    }
+
+    .lb-row:not(.header):not(.empty) {
+      background: var(--bg-card);
+      border-left: 3px solid transparent;
+    }
+
+    /* Top 3 stilizacija */
+    .lb-row.rank-1 {
+      border-left-color: var(--gold);
+      background: linear-gradient(90deg, rgba(255, 215, 0, 0.06), var(--bg-card));
+    }
+
+    .lb-row.rank-2 {
+      border-left-color: var(--silver);
+      background: linear-gradient(90deg, rgba(192, 192, 192, 0.04), var(--bg-card));
+    }
+
+    .lb-row.rank-3 {
+      border-left-color: var(--bronze);
+      background: linear-gradient(90deg, rgba(205, 127, 50, 0.04), var(--bg-card));
+    }
+
+    .lb-rank {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      text-align: center;
+    }
+
+    .rank-1 .lb-rank { color: var(--gold); font-size: 1.6rem; }
+    .rank-2 .lb-rank { color: var(--silver); font-size: 1.4rem; }
+    .rank-3 .lb-rank { color: var(--bronze); font-size: 1.3rem; }
+
+    .lb-name {
+      font-size: 1.25rem;
+      font-weight: 800;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-left: 8px;
+    }
+
+    .rank-1 .lb-name { font-size: 1.4rem; }
+
+    .lb-score {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: var(--accent);
+      text-align: right;
+    }
+
+    .lb-time {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      text-align: right;
+    }
+
+    .lb-empty {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--text-muted);
+      font-size: 1.3rem;
+    }
+
+    /* Animacija za nove zapise */
+    .lb-row.new-entry {
+      animation: slideIn 0.6s ease;
+    }
+
+    @keyframes slideIn {
+      0% { opacity: 0; transform: translateX(30px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Sat u kutu */
+    .clock {
+      position: fixed;
+      bottom: 20px;
+      right: 28px;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="projector-layout">
+
+    <!-- ========== LIJEVI PANEL ========== -->
+    <div class="left-panel">
+
+      <div class="logo-area">
+        <span class="logo-icon">⚛️</span>
+        <h1 class="logo-title">Fizika<br/>Challenge</h1>
+        <p class="logo-subtitle">Dan otvorenih vrata</p>
+      </div>
+
+      <div class="rules-section">
+        <h3 class="rules-title">📋 Kako igrati</h3>
+
+        <div class="rule-item">
+          <span class="rule-number">1</span>
+          <span class="rule-text">Skeniraj <strong>QR kod</strong> mobitelom</span>
+        </div>
+        <div class="rule-item">
+          <span class="rule-number">2</span>
+          <span class="rule-text">Odgovori na <strong>10 pitanja</strong> iz fizike</span>
+        </div>
+        <div class="rule-item">
+          <span class="rule-number">3</span>
+          <span class="rule-text">Upiši svoje <strong>ime</strong> i spremi rezultat</span>
+        </div>
+        <div class="rule-item">
+          <span class="rule-number">4</span>
+          <span class="rule-text">Više bodova = bolji rang.<br/>Isti bodovi? <strong>Brže vrijeme</strong> pobjeđuje!</span>
+        </div>
+      </div>
+
+      <!-- QR kod -->
+      <div class="qr-section">
+        <div class="qr-label">Skeniraj i igraj</div>
+        <div class="qr-placeholder" id="qr-container">
+          <!--
+            UPUTA: Zamijeni ovo s pravim QR kodom!
+
+            Opcija A — Slika:
+            Generiraj QR na https://goqr.me/ ili https://www.qr-code-generator.com/
+            Spremi kao qr.png u isti direktorij i otkomentiraj:
+            <img src="qr.png" alt="QR kod" />
+
+            Opcija B — Automatski (koristi besplatni API):
+            Skripta na dnu stranice automatski generira QR.
+            Samo promijeni QUIZ_URL konstantu u <script> sekciji.
+          -->
+          <div class="qr-fallback" id="qr-fallback">QR se generira…</div>
+        </div>
+        <div class="qr-url" id="qr-url-display"></div>
+      </div>
+
+    </div>
+
+    <!-- ========== DESNI PANEL: RANG-LISTA ========== -->
+    <div class="right-panel">
+
+      <div class="leaderboard-heading">
+        <h2>🏆 Top 10</h2>
+        <div class="live-badge">
+          <span class="live-dot"></span> LIVE
+        </div>
+      </div>
+
+      <div class="lb-table" id="leaderboard-content">
+        <div class="lb-empty">Čekam prvi rezultat… ⚛️</div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Sat -->
+  <div class="clock" id="clock"></div>
+
+  <script type="module">
+    // ============================================
+    // PROJEKTOR — Firebase + Leaderboard
+    // ============================================
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
+    import { getAuth, signInAnonymously }
+      from "https://www.gstatic.com/firebasejs/11.7.1/firebase-auth.js";
+    import { getDatabase, ref, query, orderByChild, limitToLast, onValue }
+      from "https://www.gstatic.com/firebasejs/11.7.1/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyD7MxLO2H0BLSgu07mxh7cYg3d2XM91WeI",
+      authDomain: "fizika-challenge-757f7.firebaseapp.com",
+      databaseURL: "https://fizika-challenge-757f7-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "fizika-challenge-757f7",
+      storageBucket: "fizika-challenge-757f7.firebasestorage.app",
+      messagingSenderId: "462864759911",
+      appId: "1:462864759911:web:5e47b89c750232f81368c2"
+    };
+
+    const app  = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db   = getDatabase(app);
+
+    // --------------------------------------------------
+    // ⚠️  PROMIJENI OVO u URL svog kviza!
+    // --------------------------------------------------
+    const QUIZ_URL = "https://tvoj-username.github.io/fizika-challenge/";
+
+    // --------------------------------------------------
+    // QR kod generiranje (besplatni API)
+    // --------------------------------------------------
+    const $qrContainer = document.getElementById("qr-container");
+    const $qrFallback  = document.getElementById("qr-fallback");
+    const $qrUrl       = document.getElementById("qr-url-display");
+
+    function generateQR() {
+      const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(QUIZ_URL)}`;
+      const img = new Image();
+      img.src = qrApiUrl;
+      img.alt = "QR kod za kviz";
+      img.style.width = "100%";
+      img.style.height = "100%";
+      img.style.objectFit = "contain";
+      img.onload = () => {
+        $qrFallback.remove();
+        $qrContainer.appendChild(img);
+      };
+      img.onerror = () => {
+        $qrFallback.textContent = QUIZ_URL;
+      };
+      $qrUrl.textContent = QUIZ_URL;
+    }
+
+    generateQR();
+
+    // --------------------------------------------------
+    // Sat
+    // --------------------------------------------------
+    const $clock = document.getElementById("clock");
+    function updateClock() {
+      const now = new Date();
+      $clock.textContent = now.toLocaleTimeString("hr-HR", {
+        hour: "2-digit",
+        minute: "2-digit"
+      });
+    }
+    updateClock();
+    setInterval(updateClock, 10000);
+
+    // --------------------------------------------------
+    // Pomoćne funkcije
+    // --------------------------------------------------
+    const $content = document.getElementById("leaderboard-content");
+
+    function formatTime(ms) {
+      const totalSec = Math.floor(ms / 1000);
+      const m = Math.floor(totalSec / 60);
+      const s = String(totalSec % 60).padStart(2, "0");
+      return `${m}:${s}`;
+    }
+
+    function rankDisplay(pos) {
+      if (pos === 1) return "🥇";
+      if (pos === 2) return "🥈";
+      if (pos === 3) return "🥉";
+      return pos + ".";
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement("div");
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    function sortResults(results) {
+      return results.sort((a, b) => {
+        if (b.score !== a.score) return b.score - a.score;
+        return (a.timeMs || 0) - (b.timeMs || 0);
+      });
+    }
+
+    // --------------------------------------------------
+    // Renderiranje rang-liste
+    // --------------------------------------------------
+    function renderLeaderboard(results) {
+      if (results.length === 0) {
+        $content.innerHTML = `<div class="lb-empty">Čekam prvi rezultat… ⚛️</div>`;
+        return;
+      }
+
+      const sorted = sortResults(results).slice(0, 10);
+
+      let html = `
+        <div class="lb-row header">
+          <span style="text-align:center">#</span>
+          <span style="padding-left:8px">Ime</span>
+          <span style="text-align:right">Bodovi</span>
+          <span style="text-align:right">Vrijeme</span>
+        </div>
+      `;
+
+      sorted.forEach((entry, i) => {
+        const rank = i + 1;
+        const rankClass = rank <= 3 ? ` rank-${rank}` : "";
+        html += `
+          <div class="lb-row new-entry${rankClass}">
+            <span class="lb-rank">${rankDisplay(rank)}</span>
+            <span class="lb-name">${escapeHtml(entry.name)}</span>
+            <span class="lb-score">${entry.score}/10</span>
+            <span class="lb-time">${formatTime(entry.timeMs || 0)}</span>
+          </div>
+        `;
+      });
+
+      $content.innerHTML = html;
+    }
+
+    // --------------------------------------------------
+    // Firebase inicijalizacija
+    // --------------------------------------------------
+    async function init() {
+      try {
+        await signInAnonymously(auth);
+        console.log("Projektor: prijava uspješna");
+      } catch (err) {
+        console.error("Auth greška:", err);
+        $content.innerHTML = `<div class="lb-empty">Greška pri spajanju.</div>`;
+        return;
+      }
+
+      const resultsRef = ref(db, "results");
+      const topQuery = query(resultsRef, orderByChild("score"), limitToLast(50));
+
+      onValue(topQuery, (snapshot) => {
+        const results = [];
+        snapshot.forEach((child) => {
+          results.push({ id: child.key, ...child.val() });
+        });
+        renderLeaderboard(results);
+      }, (error) => {
+        console.error("Firebase greška:", error);
+        $content.innerHTML = `<div class="lb-empty">Greška pri učitavanju.</div>`;
+      });
+    }
+
+    init();
+  </script>
+</body>
+</html>
