@@ -1,0 +1,38 @@
+{
+  "rules": {
+
+    "results": {
+
+      // Svi prijavljeni korisnici mogu čitati rang-listu
+      ".read": "auth != null",
+
+      "$resultId": {
+        // Pisanje: prijavljeni korisnici mogu kreirati, editirati i brisati
+        ".write": "auth != null",
+
+        // Validacija strukture — primjenjuje se samo kod kreiranja/editiranja,
+        // ne kod brisanja (Firebase automatski preskače validate kod delete)
+        ".validate": "
+          newData.hasChildren(['name', 'score', 'percentage', 'timeMs', 'createdAt', 'uid'])
+          && newData.child('name').isString()
+          && newData.child('name').val().length > 0
+          && newData.child('name').val().length <= 20
+          && newData.child('score').isNumber()
+          && newData.child('score').val() >= 0
+          && newData.child('score').val() <= 10
+          && newData.child('percentage').isNumber()
+          && newData.child('percentage').val() >= 0
+          && newData.child('percentage').val() <= 100
+          && newData.child('timeMs').isNumber()
+          && newData.child('timeMs').val() > 0
+        "
+      }
+    },
+
+    // Sve ostalo zabranjeno
+    "$other": {
+      ".read": false,
+      ".write": false
+    }
+  }
+}
