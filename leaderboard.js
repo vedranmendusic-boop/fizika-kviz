@@ -7,11 +7,10 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebas
 import { getDatabase, ref, query, orderByChild, limitToLast, onValue }
   from "https://www.gstatic.com/firebasejs/11.7.1/firebase-database.js";
 
-// ⬇️ ZAMIJENI OVIM SVOJIM FIREBASE KONFIGURACIJOM ⬇️
-// (ista konfiguracija kao u app.js)
 const firebaseConfig = {
   apiKey: "AIzaSyD7MxLO2H0BLSgu07mxh7cYg3d2XM91WeI",
   authDomain: "fizika-challenge-757f7.firebaseapp.com",
+  databaseURL: "https://fizika-challenge-757f7-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "fizika-challenge-757f7",
   storageBucket: "fizika-challenge-757f7.firebasestorage.app",
   messagingSenderId: "462864759911",
@@ -105,10 +104,6 @@ function escapeHtml(str) {
 
 // --------------------------------------------------
 // Firebase listener — real-time ažuriranje
-// --------------------------------------------------
-// Dohvaćamo zadnjih 50 rezultata sortiranih po scoreu.
-// Konačno sortiranje (score + timeMs) radimo na klijentu
-// jer Realtime Database ne podržava složeni sort.
 // --------------------------------------------------
 const resultsRef = ref(db, "results");
 const topQuery = query(resultsRef, orderByChild("score"), limitToLast(50));
