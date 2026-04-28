@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "question": "Koji je glavni grad Hrvatske?",
+    "answers": ["Split", "Rijeka", "Zagreb", "Osijek"],
+    "correct": 2
+  },
+  {
+    "id": 2,
+    "question": "Koliko kontinenata postoji na Zemlji?",
+    "answers": ["5", "6", "7", "8"],
+    "correct": 2
+  },
+  {
+    "id": 3,
+    "question": "Koji je najduži rijeka u Europi?",
+    "answers": ["Dunav", "Volga", "Rajna", "Don"],
+    "correct": 1
+  },
+  {
+    "id": 4,
+    "question": "Tko je napisao 'Crvenkapicu'?",
+    "answers": ["Hans Christian Andersen", "Braća Grimm", "Charles Perrault", "Ivana Brlić-Mažuranić"],
+    "correct": 1
+  },
+  {
+    "id": 5,
+    "question": "Koji planet je poznat po prstenovima?",
+    "answers": ["Jupiter", "Uran", "Saturn", "Neptun"],
+    "correct": 2
+  },
+  {
+    "id": 6,
+    "question": "Koliko zubi ima odrasli čovjek?",
+    "answers": ["28", "30", "32", "34"],
+    "correct": 2
+  },
+  {
+    "id": 7,
+    "question": "Koji ocean je najveći na svijetu?",
+    "answers": ["Atlantski", "Indijski", "Arktički", "Tihi"],
+    "correct": 3
+  },
+  {
+    "id": 8,
+    "question": "U kojoj se državi nalazi Koloseum?",
+    "answers": ["Grčka", "Italija", "Španjolska", "Turska"],
+    "correct": 1
+  },
+  {
+    "id": 9,
+    "question": "Koja je kemijska formula vode?",
+    "answers": ["CO2", "H2O", "O2", "NaCl"],
+    "correct": 1
+  },
+  {
+    "id": 10,
+    "question": "Koji je najveći organ ljudskog tijela?",
+    "answers": ["Jetra", "Mozak", "Koža", "Pluća"],
+    "correct": 2
+  },
+  {
+    "id": 11,
+    "question": "Koliko ima boja u dugi?",
+    "answers": ["5", "6", "7", "8"],
+    "correct": 2
+  },
+  {
+    "id": 12,
+    "question": "Koji je najbrži kopneni životinja?",
+    "answers": ["Lav", "Gepard", "Gazela", "Antilopa"],
+    "correct": 1
+  },
+  {
+    "id": 13,
+    "question": "Na kojem kontinentu žive pingvini u divljini?",
+    "answers": ["Europa", "Azija", "Antarktika", "Sjeverna Amerika"],
+    "correct": 2
+  },
+  {
+    "id": 14,
+    "question": "Koji je najdulji dan u godini na sjevernoj polutki?",
+    "answers": ["21. ožujka", "21. lipnja", "21. rujna", "21. prosinca"],
+    "correct": 1
+  },
+  {
+    "id": 15,
+    "question": "Koliko nogu ima pauk?",
+    "answers": ["6", "8", "10", "12"],
+    "correct": 1
+  },
+  {
+    "id": 16,
+    "question": "Koji je glavni grad Francuske?",
+    "answers": ["Lyon", "Marseille", "Pariz", "Nice"],
+    "correct": 2
+  },
+  {
+    "id": 17,
+    "question": "Tko je izumio žarulju?",
+    "answers": ["Nikola Tesla", "Thomas Edison", "Alexander Bell", "James Watt"],
+    "correct": 1
+  },
+  {
+    "id": 18,
+    "question": "Koja je najveća pustinja na svijetu?",
+    "answers": ["Gobi", "Sahara", "Antarktička", "Arabijska"],
+    "correct": 2
+  },
+  {
+    "id": 19,
+    "question": "Koliko planeta ima Sunčev sustav?",
+    "answers": ["7", "8", "9", "10"],
+    "correct": 1
+  },
+  {
+    "id": 20,
+    "question": "Koji je nacionalni park najstariji u Hrvatskoj?",
+    "answers": ["Krka", "Plitvička jezera", "Brijuni", "Paklenica"],
+    "correct": 1
+  },
+  {
+    "id": 21,
+    "question": "Koja životinja je simbol WWF-a?",
+    "answers": ["Polarni medvjed", "Panda", "Tiger", "Slon"],
+    "correct": 1
+  },
+  {
+    "id": 22,
+    "question": "Na kojem se kontinentu nalazi Amazonska prašuma?",
+    "answers": ["Afrika", "Azija", "Južna Amerika", "Australija"],
+    "correct": 2
+  },
+  {
+    "id": 23,
+    "question": "Koliko ima slova u hrvatskom alfabetu?",
+    "answers": ["26", "27", "30", "32"],
+    "correct": 2
+  },
+  {
+    "id": 24,
+    "question": "Koji je najveći sisavac na svijetu?",
+    "answers": ["Slon", "Plavi kit", "Žirafa", "Nilski konj"],
+    "correct": 1
+  },
+  {
+    "id": 25,
+    "question": "U kojoj godini je Hrvatska postala samostalna?",
+    "answers": ["1989.", "1990.", "1991.", "1992."],
+    "correct": 2
+  },
+  {
+    "id": 26,
+    "question": "Koji plin biljke proizvode fotosintezom?",
+    "answers": ["Ugljikov dioksid", "Dušik", "Kisik", "Vodik"],
+    "correct": 2
+  },
+  {
+    "id": 27,
+    "question": "Koji je poznati hrvatski izumitelj?",
+    "answers": ["Albert Einstein", "Nikola Tesla", "Ruđer Bošković", "Oba B i C"],
+    "correct": 3
+  },
+  {
+    "id": 28,
+    "question": "Koja rijeka prolazi kroz Vukovar?",
+    "answers": ["Sava", "Drava", "Dunav", "Kupa"],
+    "correct": 2
+  },
+  {
+    "id": 29,
+    "question": "Koliko minuta ima jedan sat?",
+    "answers": ["30", "45", "60", "90"],
+    "correct": 2
+  },
+  {
+    "id": 30,
+    "question": "Koji je najmanji kontinent?",
+    "answers": ["Europa", "Antarktika", "Australija", "Južna Amerika"],
+    "correct": 2
+  }
+]

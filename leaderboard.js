@@ -1,6 +1,5 @@
 // ============================================
-// FIZIKA CHALLENGE — leaderboard.js
-// Live rang-lista s Firebase Realtime Database
+// LEADERBOARD — obje kategorije
 // ============================================
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
@@ -23,16 +22,9 @@ const app  = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db   = getDatabase(app);
 
-// --------------------------------------------------
-// DOM
-// --------------------------------------------------
-const $content = document.getElementById("leaderboard-content");
+const $fizikaContent = document.getElementById("lb-fizika");
+const $opceContent   = document.getElementById("lb-opce");
 
-// --------------------------------------------------
-// Pomoćne funkcije
-// --------------------------------------------------
-
-/** Formatiraj milisekunde u M:SS */
 function formatTime(ms) {
   const totalSec = Math.floor(ms / 1000);
   const m = Math.floor(totalSec / 60);
@@ -40,7 +32,6 @@ function formatTime(ms) {
   return `${m}:${s}`;
 }
 
-/** Medalja za poziciju */
 function rankDisplay(pos) {
   if (pos === 1) return "🥇";
   if (pos === 2) return "🥈";
@@ -48,10 +39,12 @@ function rankDisplay(pos) {
   return `${pos}.`;
 }
 
-// --------------------------------------------------
-// Sortiranje: veći score je bolji;
-// kod istog scorea, manji timeMs je bolji
-// --------------------------------------------------
+function escapeHtml(str) {
+  const div = document.createElement("div");
+  div.textContent = str;
+  return div.innerHTML;
+}
+
 function sortResults(results) {
   return results.sort((a, b) => {
     if (b.score !== a.score) return b.score - a.score;
@@ -59,26 +52,16 @@ function sortResults(results) {
   });
 }
 
-// --------------------------------------------------
-// Renderiranje tablice
-// --------------------------------------------------
-function renderLeaderboard(results) {
+function renderTable($el, results) {
   if (results.length === 0) {
-    $content.innerHTML = `
-      <div class="lb-empty">
-        Još nema rezultata.<br />Budi prvi koji igra kviz! ⚛️
-      </div>
-    `;
+    $el.innerHTML = `<div class="lb-empty">Još nema rezultata ⚛️</div>`;
     return;
   }
 
-  // Sortiraj i uzmi top 10
   const sorted = sortResults(results).slice(0, 10);
-
   let html = `
     <div class="lb-row header">
-      <span>#</span>
-      <span>Ime</span>
+      <span>#</span><span>Ime</span>
       <span style="text-align:right">Bodovi</span>
       <span style="text-align:right">Vrijeme</span>
     </div>
@@ -95,37 +78,11 @@ function renderLeaderboard(results) {
     `;
   });
 
-  $content.innerHTML = html;
+  $el.innerHTML = html;
 }
 
-/** Zaštita od XSS-a */
-function escapeHtml(str) {
-  const div = document.createElement("div");
-  div.textContent = str;
-  return div.innerHTML;
-}
-
-// --------------------------------------------------
-// Inicijalizacija:
-// 1. Anonimna prijava (rules traže auth != null)
-// 2. Tek nakon prijave pokreni real-time listener
-// --------------------------------------------------
-async function init() {
-  try {
-    await signInAnonymously(auth);
-    console.log("Leaderboard: anonimna prijava uspješna");
-  } catch (err) {
-    console.error("Auth greška:", err);
-    $content.innerHTML = `
-      <div class="lb-empty">
-        Greška pri prijavi. Osvježi stranicu.
-      </div>
-    `;
-    return;
-  }
-
-  // Sada smo prijavljeni — pokreni listener
-  const resultsRef = ref(db, "results");
+function listenCategory(dbPath, $el) {
+  const resultsRef = ref(db, dbPath);
   const topQuery = query(resultsRef, orderByChild("score"), limitToLast(50));
 
   onValue(topQuery, (snapshot) => {
@@ -133,15 +90,23 @@ async function init() {
     snapshot.forEach((child) => {
       results.push({ id: child.key, ...child.val() });
     });
-    renderLeaderboard(results);
+    renderTable($el, results);
   }, (error) => {
-    console.error("Firebase čitanje greška:", error);
-    $content.innerHTML = `
-      <div class="lb-empty">
-        Greška pri učitavanju. Osvježi stranicu.
-      </div>
-    `;
+    console.error("Greška:", error);
+    $el.innerHTML = `<div class="lb-empty">Greška pri učitavanju.</div>`;
   });
+}
+
+async function init() {
+  try {
+    await signInAnonymously(auth);
+  } catch (err) {
+    console.error("Auth greška:", err);
+    return;
+  }
+
+  listenCategory("results/fizika", $fizikaContent);
+  listenCategory("results/opce", $opceContent);
 }
 
 init();

@@ -3,13 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Rang-lista — Fizika Challenge</title>
+  <title>Rang-lista — OŠ Zrinskih Nuštar</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .lb-section-title {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 24px 0 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .lb-section-title:first-of-type {
+      margin-top: 0;
+    }
+  </style>
 </head>
 <body>
 
@@ -17,17 +33,20 @@
 
     <div class="leaderboard-header">
       <h1>🏆 Rang-lista</h1>
-      <p>Top 10 rezultata — Fizika Challenge</p>
+      <p>OŠ Zrinskih Nuštar</p>
       <div class="live-badge">
         <span class="live-dot"></span> Ažurira se u stvarnom vremenu
       </div>
     </div>
 
-    <div id="leaderboard-content" class="leaderboard-table">
-      <div class="loader">
-        <div class="spinner"></div>
-        Učitavanje…
-      </div>
+    <div class="lb-section-title">⚛️ Fizika</div>
+    <div id="lb-fizika" class="leaderboard-table">
+      <div class="loader"><div class="spinner"></div>Učitavanje…</div>
+    </div>
+
+    <div class="lb-section-title">🧠 Opće znanje</div>
+    <div id="lb-opce" class="leaderboard-table">
+      <div class="loader"><div class="spinner"></div>Učitavanje…</div>
     </div>
 
     <a href="index.html" class="nav-link">⚛️ Igraj kviz</a>

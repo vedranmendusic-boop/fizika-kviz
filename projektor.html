@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fizika Challenge — Projektor</title>
+  <title>Kviz Challenge — OŠ Zrinskih Nuštar</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,7 +15,6 @@
       --bg-card: #0d1220;
       --accent: #00d4ff;
       --accent-glow: rgba(0, 212, 255, 0.3);
-      --accent-dark: #009ec2;
       --success: #2ee87b;
       --gold: #ffd700;
       --silver: #c0c0c0;
@@ -31,8 +30,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html, body {
-      height: 100%;
-      overflow: hidden;
+      height: 100%; overflow: hidden;
       font-family: var(--font-body);
       background: var(--bg-primary);
       color: var(--text-primary);
@@ -41,29 +39,28 @@
 
     body::before {
       content: '';
-      position: fixed;
-      inset: 0;
+      position: fixed; inset: 0;
       background:
         radial-gradient(ellipse 800px 600px at 15% 30%, rgba(0,212,255,.05), transparent),
         radial-gradient(ellipse 600px 600px at 85% 70%, rgba(46,232,123,.03), transparent);
-      pointer-events: none;
-      z-index: 0;
+      pointer-events: none; z-index: 0;
     }
 
-    h1,h2,h3,h4 {
+    h1,h2,h3 {
       font-family: var(--font-display);
       letter-spacing: .04em;
       text-transform: uppercase;
     }
 
     /* ============================================
-       LAYOUT: 3 reda
-       1. Gornji: lijevi panel + rang-lista
-       2. Donji: traka sa zanimljivostima
+       LAYOUT: 3 zone
+       Top-left:  info panel (pravila + QR)
+       Top-right: DVA leaderboarda side by side
+       Bottom:    zanimljivosti traka
        ============================================ */
     .projector-layout {
       display: grid;
-      grid-template-columns: 400px 1fr;
+      grid-template-columns: 370px 1fr;
       grid-template-rows: 1fr auto;
       height: 100vh;
       position: relative;
@@ -74,77 +71,79 @@
     .left-panel {
       display: flex;
       flex-direction: column;
-      padding: 40px 36px 28px;
+      padding: 32px 32px 24px;
       border-right: 1px solid var(--border);
       background: rgba(0,0,0,.2);
       grid-row: 1;
     }
 
-    .logo-area { text-align: center; margin-bottom: 28px; }
+    /* Škola + logo */
+    .school-name {
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      text-align: center;
+      margin-bottom: 4px;
+    }
+
+    .logo-area { text-align: center; margin-bottom: 24px; }
 
     .logo-icon {
-      font-size: 3.5rem;
-      display: block;
-      margin-bottom: 10px;
+      font-size: 3rem; display: block; margin-bottom: 8px;
       filter: drop-shadow(0 0 24px var(--accent-glow));
       animation: float 3s ease-in-out infinite;
     }
     @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
 
     .logo-title {
-      font-size: 1.6rem;
-      color: var(--accent);
-      text-shadow: 0 0 40px var(--accent-glow);
-      line-height: 1.2;
+      font-size: 1.5rem; color: var(--accent);
+      text-shadow: 0 0 40px var(--accent-glow); line-height: 1.2;
     }
 
     .logo-subtitle {
-      font-size: .8rem;
-      color: var(--text-secondary);
-      margin-top: 4px;
-      font-family: var(--font-body);
-      text-transform: none;
-      letter-spacing: 0;
+      font-size: .75rem; color: var(--text-secondary);
+      margin-top: 3px; font-family: var(--font-body);
+      text-transform: none; letter-spacing: 0;
     }
 
     /* Pravila */
-    .rules-section { margin-bottom: 28px; }
+    .rules-section { margin-bottom: 20px; }
 
     .rules-title {
-      font-size: .7rem;
-      color: var(--accent);
-      margin-bottom: 14px;
-      letter-spacing: .12em;
+      font-size: .75rem; color: var(--accent);
+      margin-bottom: 14px; letter-spacing: .12em;
     }
 
     .rule-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
 
     .rule-number {
-      flex-shrink: 0; width: 26px; height: 26px;
+      flex-shrink: 0; width: 28px; height: 28px;
       display: flex; align-items: center; justify-content: center;
       border-radius: 7px;
-      font-family: var(--font-display); font-size: .6rem; font-weight: 700;
+      font-family: var(--font-display); font-size: .65rem; font-weight: 700;
       background: rgba(0,212,255,.1); color: var(--accent);
       border: 1px solid rgba(0,212,255,.2);
     }
 
-    .rule-text { font-size: .9rem; line-height: 1.4; padding-top: 2px; }
+    .rule-text { font-size: 1rem; line-height: 1.45; padding-top: 2px; }
     .rule-text strong { color: var(--accent); }
 
     /* QR */
     .qr-section {
-      margin-top: auto; text-align: center; padding: 20px;
+      margin-top: auto; text-align: center; padding: 18px;
       background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
     }
 
     .qr-label {
       font-family: var(--font-display); font-size: .65rem;
       color: var(--accent); text-transform: uppercase;
-      letter-spacing: .12em; margin-bottom: 12px;
+      letter-spacing: .12em; margin-bottom: 10px;
     }
 
     .qr-placeholder {
-      width: 160px; height: 160px; margin: 0 auto 10px;
+      width: 150px; height: 150px; margin: 0 auto 8px;
       background: white; border-radius: 10px;
       display: flex; align-items: center; justify-content: center; padding: 6px;
     }
@@ -156,54 +155,62 @@
       color: #333; text-align: center; word-break: break-all; padding: 8px;
     }
 
-    .qr-url { font-size: .75rem; color: var(--text-secondary); word-break: break-all; }
+    .qr-url { font-size: .7rem; color: var(--text-secondary); word-break: break-all; }
 
-    /* --- DESNI PANEL: RANG-LISTA --- */
+    /* --- DESNI PANEL: DVA LEADERBOARDA --- */
     .right-panel {
-      display: flex;
-      flex-direction: column;
-      padding: 40px 48px 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      padding: 32px 36px 16px;
       overflow: hidden;
       grid-row: 1;
     }
 
-    .leaderboard-heading {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 20px;
+    .lb-column {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
     }
 
-    .leaderboard-heading h2 { font-size: 1.4rem; }
+    .lb-heading {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .lb-heading h2 { font-size: 1.2rem; }
+
+    .lb-cat-icon { font-size: 1.6rem; }
 
     .live-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: .75rem; color: var(--success);
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: .65rem; color: var(--success);
       font-family: var(--font-display); letter-spacing: .05em;
     }
 
     .live-dot {
-      width: 10px; height: 10px; background: var(--success);
+      width: 8px; height: 8px; background: var(--success);
       border-radius: 50%; animation: pulse 1.5s ease-in-out infinite;
     }
     @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
 
-    /* Tablica */
+    /* Tablica — kompaktnija, veći font */
     .lb-table { flex: 1; display: flex; flex-direction: column; }
 
     .lb-row {
       display: grid;
-      grid-template-columns: 72px 1fr 120px 150px;
+      grid-template-columns: 52px 1fr 80px 110px;
       align-items: center;
-      padding: 0 20px;
-      height: 54px;
+      padding: 0 14px;
+      height: 50px;
       border-bottom: 1px solid var(--border);
-      transition: all .4s ease;
     }
 
     .lb-row.header {
-      height: 36px;
+      height: 32px;
       font-family: var(--font-display); font-size: .55rem;
       color: var(--text-muted); text-transform: uppercase;
-      letter-spacing: .12em;
+      letter-spacing: .1em;
       background: rgba(0,0,0,.15);
       border-radius: 8px 8px 0 0;
     }
@@ -219,19 +226,18 @@
     .lb-row.rank-3 { border-left-color: var(--bronze); background: linear-gradient(90deg, rgba(205,127,50,.04), var(--bg-card)); }
 
     .lb-rank { font-family: var(--font-display); font-size: 1.1rem; text-align: center; }
-    .rank-1 .lb-rank { color: var(--gold); font-size: 1.4rem; }
+    .rank-1 .lb-rank { color: var(--gold); font-size: 1.3rem; }
     .rank-2 .lb-rank { color: var(--silver); font-size: 1.2rem; }
-    .rank-3 .lb-rank { color: var(--bronze); font-size: 1.1rem; }
+    .rank-3 .lb-rank { color: var(--bronze); }
 
     .lb-name {
-      font-size: 1.1rem; font-weight: 800;
+      font-size: 1.15rem; font-weight: 800;
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-      padding-left: 8px;
+      padding-left: 4px;
     }
-    .rank-1 .lb-name { font-size: 1.25rem; }
 
     .lb-score {
-      font-family: var(--font-display); font-size: 1rem;
+      font-family: var(--font-display); font-size: 1.05rem;
       color: var(--accent); text-align: right;
     }
 
@@ -240,50 +246,43 @@
       font-size: .95rem;
       color: var(--text-secondary);
       text-align: right;
-      letter-spacing: .02em;
     }
 
-    .lb-time .ms {
-      font-size: .7rem;
-      color: var(--text-muted);
-    }
+    .lb-time .ms { font-size: .7rem; color: var(--text-muted); }
 
-    .lb-empty { text-align: center; padding: 60px 20px; color: var(--text-muted); font-size: 1.2rem; }
+    .lb-empty { text-align: center; padding: 40px 10px; color: var(--text-muted); font-size: 1.1rem; }
 
-    .lb-row.new-entry { animation: slideIn .6s ease; }
-    @keyframes slideIn { 0%{opacity:0;transform:translateX(30px)} 100%{opacity:1;transform:translateX(0)} }
+    .lb-row.new-entry { animation: slideIn .5s ease; }
+    @keyframes slideIn { 0%{opacity:0;transform:translateX(20px)} 100%{opacity:1;transform:translateX(0)} }
 
     /* Sat */
     .clock {
-      position: fixed; top: 16px; right: 24px;
-      font-family: var(--font-display); font-size: .9rem;
+      position: fixed; top: 12px; right: 20px;
+      font-family: var(--font-display); font-size: .85rem;
       color: var(--text-muted); z-index: 10;
     }
 
     /* ============================================
-       DONJA TRAKA — ZANIMLJIVOSTI
+       DONJA TRAKA — ZANIMLJIVOSTI (veća)
        ============================================ */
     .fact-strip {
       grid-column: 1 / -1;
       grid-row: 2;
-      background: var(--bg-card);
+      background: linear-gradient(180deg, var(--bg-card), rgba(6,10,20,0.95));
       border-top: 1px solid var(--border);
       padding: 0 48px;
-      height: 90px;
+      height: 120px;
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 24px;
       position: relative;
       overflow: hidden;
     }
 
-    /* Progress bar na vrhu trake */
     .fact-strip-progress {
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
+      top: 0; left: 0; right: 0;
+      height: 4px;
       background: var(--border);
     }
 
@@ -305,54 +304,46 @@
     }
 
     .fact-icon {
-      font-size: 2.4rem;
+      font-size: 3.2rem;
       flex-shrink: 0;
-      width: 56px;
+      width: 64px;
       text-align: center;
     }
 
-    .fact-content {
-      flex: 1;
-      min-width: 0;
-    }
+    .fact-content { flex: 1; min-width: 0; }
 
     .fact-label-title {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 4px;
+      gap: 12px;
+      margin-bottom: 6px;
     }
 
     .fact-label {
       font-family: var(--font-display);
-      font-size: .55rem;
+      font-size: .65rem;
       color: var(--accent);
       text-transform: uppercase;
       letter-spacing: .12em;
-      flex-shrink: 0;
     }
 
     .fact-title {
       font-family: var(--font-display);
-      font-size: .8rem;
+      font-size: .9rem;
       color: var(--accent);
       text-transform: uppercase;
     }
 
     .fact-text {
-      font-size: 1.05rem;
-      line-height: 1.4;
+      font-size: 1.3rem;
+      line-height: 1.45;
       color: var(--text-primary);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
-    /* Fade in/out animacija za promjenu teksta */
     .fact-content-wrapper {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 24px;
       flex: 1;
       min-width: 0;
       transition: opacity 0.5s ease, transform 0.5s ease;
@@ -376,9 +367,11 @@
     <!-- ========== LIJEVI PANEL ========== -->
     <div class="left-panel">
 
+      <div class="school-name">OŠ Zrinskih Nuštar</div>
+
       <div class="logo-area">
-        <span class="logo-icon">⚛️</span>
-        <h1 class="logo-title">Fizika<br/>Challenge</h1>
+        <span class="logo-icon">🏫</span>
+        <h1 class="logo-title">Kviz<br/>Challenge</h1>
         <p class="logo-subtitle">Dan otvorenih vrata</p>
       </div>
 
@@ -390,40 +383,51 @@
         </div>
         <div class="rule-item">
           <span class="rule-number">2</span>
-          <span class="rule-text">Odgovori na <strong>10 pitanja</strong> iz fizike</span>
+          <span class="rule-text">Odaberi <strong>Fiziku</strong> ili <strong>Opće znanje</strong></span>
         </div>
         <div class="rule-item">
           <span class="rule-number">3</span>
-          <span class="rule-text">Upiši svoje <strong>ime</strong> i spremi rezultat</span>
+          <span class="rule-text">Odgovori na <strong>10 pitanja</strong> što brže!</span>
         </div>
         <div class="rule-item">
           <span class="rule-number">4</span>
-          <span class="rule-text">Više bodova = bolji rang.<br/>Isti bodovi? <strong>Brže vrijeme</strong> pobjeđuje!</span>
+          <span class="rule-text">Upiši ime i gledaj svoju poziciju na <strong>rang-listi</strong>!</span>
         </div>
       </div>
 
       <div class="qr-section">
         <div class="qr-label">Skeniraj i igraj</div>
         <div class="qr-placeholder" id="qr-container">
-          <div class="qr-fallback" id="qr-fallback">QR se generira…</div>
+          <div class="qr-fallback" id="qr-fallback">QR…</div>
         </div>
         <div class="qr-url" id="qr-url-display"></div>
       </div>
 
     </div>
 
-    <!-- ========== DESNI PANEL ========== -->
+    <!-- ========== DESNI PANEL: DVA LEADERBOARDA ========== -->
     <div class="right-panel">
 
-      <div class="leaderboard-heading">
-        <h2>🏆 Top 10</h2>
-        <div class="live-badge">
-          <span class="live-dot"></span> LIVE
+      <!-- Fizika -->
+      <div class="lb-column">
+        <div class="lb-heading">
+          <h2><span class="lb-cat-icon">⚛️</span> Fizika</h2>
+          <div class="live-badge"><span class="live-dot"></span> LIVE</div>
+        </div>
+        <div class="lb-table" id="lb-fizika">
+          <div class="lb-empty">Čekam rezultate…</div>
         </div>
       </div>
 
-      <div class="lb-table" id="leaderboard-content">
-        <div class="lb-empty">Čekam prvi rezultat… ⚛️</div>
+      <!-- Opće znanje -->
+      <div class="lb-column">
+        <div class="lb-heading">
+          <h2><span class="lb-cat-icon">🧠</span> Opće znanje</h2>
+          <div class="live-badge"><span class="live-dot"></span> LIVE</div>
+        </div>
+        <div class="lb-table" id="lb-opce">
+          <div class="lb-empty">Čekam rezultate…</div>
+        </div>
       </div>
 
     </div>
@@ -438,16 +442,15 @@
         <div class="fact-content">
           <div class="fact-label-title">
             <span class="fact-label">Jeste li znali?</span>
-            <span class="fact-title" id="fact-title">Fizika</span>
+            <span class="fact-title" id="fact-title"></span>
           </div>
-          <div class="fact-text" id="fact-text">Zanimljivosti iz fizike dolaze uskoro…</div>
+          <div class="fact-text" id="fact-text">Zanimljivosti dolaze uskoro…</div>
         </div>
       </div>
     </div>
 
   </div>
 
-  <!-- Sat -->
   <div class="clock" id="clock"></div>
 
   <script type="module">
@@ -518,9 +521,7 @@
       return a;
     }
 
-    // --------------------------------------------------
-    // Zanimljivosti — rotacija u donjoj traci
-    // --------------------------------------------------
+    // Facts rotacija
     const $factWrapper  = document.getElementById("fact-wrapper");
     const $factIcon     = document.getElementById("fact-icon");
     const $factTitle    = document.getElementById("fact-title");
@@ -529,7 +530,6 @@
 
     let shuffledFacts = shuffle(FACTS);
     let factIndex = 0;
-    const FACT_INTERVAL = 35000; // 35 sekundi
 
     function showNextFact() {
       if (factIndex >= shuffledFacts.length) {
@@ -537,56 +537,42 @@
         factIndex = 0;
       }
 
-      // Fade out
       $factWrapper.classList.remove("fade-in");
       $factWrapper.classList.add("fade-out");
 
       setTimeout(() => {
-        const fact = shuffledFacts[factIndex];
-        factIndex++;
-
+        const fact = shuffledFacts[factIndex++];
         $factIcon.textContent = fact.icon;
         $factTitle.textContent = fact.title;
         $factText.textContent = fact.text;
-
-        // Fade in
         $factWrapper.classList.remove("fade-out");
         $factWrapper.classList.add("fade-in");
-
-        // Resetiraj progress bar
         $factProgress.classList.remove("animate");
-        $factProgress.offsetHeight; // force reflow
+        $factProgress.offsetHeight;
         $factProgress.classList.add("animate");
       }, 500);
     }
 
-    // Pokreni odmah prvi fact
     showNextFact();
-    // Zatim svakih 35s
-    setInterval(showNextFact, FACT_INTERVAL);
+    setInterval(showNextFact, 35000);
 
-    // --------------------------------------------------
-    // QR kod
-    // --------------------------------------------------
+    // QR
     const $qrContainer = document.getElementById("qr-container");
     const $qrFallback  = document.getElementById("qr-fallback");
     const $qrUrl       = document.getElementById("qr-url-display");
 
-    function generateQR() {
-      const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(QUIZ_URL)}`;
+    (function generateQR() {
+      const url = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(QUIZ_URL)}`;
       const img = new Image();
-      img.src = qrApiUrl;
-      img.alt = "QR kod za kviz";
+      img.src = url;
+      img.alt = "QR";
       img.style.cssText = "width:100%;height:100%;object-fit:contain";
       img.onload = () => { $qrFallback.remove(); $qrContainer.appendChild(img); };
       img.onerror = () => { $qrFallback.textContent = QUIZ_URL; };
       $qrUrl.textContent = QUIZ_URL;
-    }
-    generateQR();
+    })();
 
-    // --------------------------------------------------
     // Sat
-    // --------------------------------------------------
     const $clock = document.getElementById("clock");
     function updateClock() {
       $clock.textContent = new Date().toLocaleTimeString("hr-HR", { hour:"2-digit", minute:"2-digit" });
@@ -594,19 +580,18 @@
     updateClock();
     setInterval(updateClock, 10000);
 
-    // --------------------------------------------------
-    // Leaderboard s milisekundama
-    // --------------------------------------------------
-    const $content = document.getElementById("leaderboard-content");
+    // ============================================
+    // LEADERBOARD — obje kategorije
+    // ============================================
+    const $lbFizika = document.getElementById("lb-fizika");
+    const $lbOpce   = document.getElementById("lb-opce");
 
     function formatTime(ms) {
-      const totalMs = Math.max(0, Math.floor(ms));
-      const minutes = Math.floor(totalMs / 60000);
-      const seconds = Math.floor((totalMs % 60000) / 1000);
-      const millis  = totalMs % 1000;
-      const s = String(seconds).padStart(2, "0");
-      const mil = String(millis).padStart(3, "0");
-      return `${minutes}:${s}<span class="ms">.${mil}</span>`;
+      const t = Math.max(0, Math.floor(ms));
+      const m = Math.floor(t / 60000);
+      const s = String(Math.floor((t % 60000) / 1000)).padStart(2, "0");
+      const mil = String(t % 1000).padStart(3, "0");
+      return `${m}:${s}<span class="ms">.${mil}</span>`;
     }
 
     function rankDisplay(pos) {
@@ -617,76 +602,63 @@
     }
 
     function escapeHtml(str) {
-      const div = document.createElement("div");
-      div.textContent = str;
-      return div.innerHTML;
+      const d = document.createElement("div");
+      d.textContent = str;
+      return d.innerHTML;
     }
 
-    function sortResults(results) {
-      return results.sort((a, b) => {
-        if (b.score !== a.score) return b.score - a.score;
-        return (a.timeMs || 0) - (b.timeMs || 0);
-      });
+    function sortResults(r) {
+      return r.sort((a, b) => b.score !== a.score ? b.score - a.score : (a.timeMs||0) - (b.timeMs||0));
     }
 
-    function renderLeaderboard(results) {
-      if (results.length === 0) {
-        $content.innerHTML = `<div class="lb-empty">Čekam prvi rezultat… ⚛️</div>`;
+    function renderLB($el, results) {
+      if (!results.length) {
+        $el.innerHTML = `<div class="lb-empty">Čekam rezultate…</div>`;
         return;
       }
 
       const sorted = sortResults(results).slice(0, 10);
-
       let html = `
         <div class="lb-row header">
           <span style="text-align:center">#</span>
-          <span style="padding-left:8px">Ime</span>
-          <span style="text-align:right">Bodovi</span>
+          <span>Ime</span>
+          <span style="text-align:right">Bod.</span>
           <span style="text-align:right">Vrijeme</span>
         </div>
       `;
 
-      sorted.forEach((entry, i) => {
+      sorted.forEach((e, i) => {
         const rank = i + 1;
-        const rankClass = rank <= 3 ? ` rank-${rank}` : "";
+        const rc = rank <= 3 ? ` rank-${rank}` : "";
         html += `
-          <div class="lb-row new-entry${rankClass}">
+          <div class="lb-row new-entry${rc}">
             <span class="lb-rank">${rankDisplay(rank)}</span>
-            <span class="lb-name">${escapeHtml(entry.name)}</span>
-            <span class="lb-score">${entry.score}/10</span>
-            <span class="lb-time">${formatTime(entry.timeMs || 0)}</span>
-          </div>
-        `;
+            <span class="lb-name">${escapeHtml(e.name)}</span>
+            <span class="lb-score">${e.score}/10</span>
+            <span class="lb-time">${formatTime(e.timeMs || 0)}</span>
+          </div>`;
       });
 
-      $content.innerHTML = html;
+      $el.innerHTML = html;
     }
 
-    // --------------------------------------------------
-    // Firebase
-    // --------------------------------------------------
-    async function init() {
-      try {
-        await signInAnonymously(auth);
-      } catch (err) {
-        console.error("Auth greška:", err);
-        $content.innerHTML = `<div class="lb-empty">Greška pri spajanju.</div>`;
-        return;
-      }
-
-      const resultsRef = ref(db, "results");
-      const topQuery = query(resultsRef, orderByChild("score"), limitToLast(50));
-
-      onValue(topQuery, (snapshot) => {
-        const results = [];
-        snapshot.forEach((child) => {
-          results.push({ id: child.key, ...child.val() });
-        });
-        renderLeaderboard(results);
-      }, (error) => {
-        console.error("Firebase greška:", error);
-        $content.innerHTML = `<div class="lb-empty">Greška pri učitavanju.</div>`;
+    function listenCategory(path, $el) {
+      const q = query(ref(db, path), orderByChild("score"), limitToLast(50));
+      onValue(q, (snap) => {
+        const r = [];
+        snap.forEach(c => r.push({ id: c.key, ...c.val() }));
+        renderLB($el, r);
+      }, (err) => {
+        $el.innerHTML = `<div class="lb-empty">Greška.</div>`;
       });
+    }
+
+    async function init() {
+      try { await signInAnonymously(auth); }
+      catch { $lbFizika.innerHTML = `<div class="lb-empty">Auth greška.</div>`; return; }
+
+      listenCategory("results/fizika", $lbFizika);
+      listenCategory("results/opce", $lbOpce);
     }
 
     init();

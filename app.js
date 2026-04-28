@@ -1,12 +1,7 @@
 // ============================================
 // FIZIKA CHALLENGE — app.js
-// Glavni kviz: učitavanje pitanja, timer,
-// bodovanje, spremanje rezultata u Firebase
+// Kviz s odabirom kategorije: Fizika / Opće znanje
 // ============================================
-
-// --------------------------------------------------
-// 1. Firebase inicijalizacija (modularni SDK)
-// --------------------------------------------------
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
 import { getAuth, signInAnonymously }
@@ -29,49 +24,67 @@ const auth = getAuth(app);
 const db   = getDatabase(app);
 
 // --------------------------------------------------
-// 2. Globalne varijable stanja
+// Kategorije
 // --------------------------------------------------
-let allQuestions = [];       // Sva pitanja iz JSON-a
-let quizQuestions = [];      // 10 nasumičnih za ovaj pokušaj
-let currentIndex = 0;        // Indeks trenutnog pitanja
-let score = 0;               // Broj točnih odgovora
-let timerInterval = null;    // Interval za štopericu
-let startTime = 0;           // Početak kviza (ms)
-let elapsedMs = 0;           // Proteklo vrijeme (ms)
-let resultSaved = false;     // Zaštita od dvostrukog spremanja
-let currentUser = null;      // Firebase anonimni korisnik
+const CATEGORIES = {
+  fizika: {
+    file: "questions.json",
+    dbPath: "results/fizika",
+    label: "Fizika",
+    icon: "⚛️"
+  },
+  opce: {
+    file: "questions-opce.json",
+    dbPath: "results/opce",
+    label: "Opće znanje",
+    icon: "🧠"
+  }
+};
 
 // --------------------------------------------------
-// 3. DOM elementi
+// Stanje
+// --------------------------------------------------
+let allQuestions = [];
+let quizQuestions = [];
+let currentIndex = 0;
+let score = 0;
+let timerInterval = null;
+let startTime = 0;
+let elapsedMs = 0;
+let resultSaved = false;
+let currentUser = null;
+let currentCategory = null; // "fizika" ili "opce"
+
+// --------------------------------------------------
+// DOM elementi
 // --------------------------------------------------
 const $welcome      = document.getElementById("screen-welcome");
 const $quiz         = document.getElementById("screen-quiz");
-const $result        = document.getElementById("screen-result");
-const $btnStart      = document.getElementById("btn-start");
-const $progressFill  = document.getElementById("progress-fill");
-const $counter       = document.getElementById("question-counter");
-const $timer         = document.getElementById("timer");
-const $questionText  = document.getElementById("question-text");
-const $answersGrid   = document.getElementById("answers-grid");
-const $resultEmoji   = document.getElementById("result-emoji");
-const $resultScore   = document.getElementById("result-score");
-const $resultDetail  = document.getElementById("result-detail");
-const $nameInput     = document.getElementById("name-input");
-const $btnSave       = document.getElementById("btn-save");
-const $saveStatus    = document.getElementById("save-status");
-const $btnRetry      = document.getElementById("btn-retry");
+const $result       = document.getElementById("screen-result");
+const $btnFizika    = document.getElementById("btn-fizika");
+const $btnOpce      = document.getElementById("btn-opce");
+const $categoryLabel = document.getElementById("category-label");
+const $progressFill = document.getElementById("progress-fill");
+const $counter      = document.getElementById("question-counter");
+const $timer        = document.getElementById("timer");
+const $questionText = document.getElementById("question-text");
+const $answersGrid  = document.getElementById("answers-grid");
+const $resultEmoji  = document.getElementById("result-emoji");
+const $resultScore  = document.getElementById("result-score");
+const $resultDetail = document.getElementById("result-detail");
+const $nameInput    = document.getElementById("name-input");
+const $btnSave      = document.getElementById("btn-save");
+const $saveStatus   = document.getElementById("save-status");
+const $btnRetry     = document.getElementById("btn-retry");
 
 // --------------------------------------------------
-// 4. Pomoćne funkcije
+// Pomoćne funkcije
 // --------------------------------------------------
-
-/** Prikaži jedan ekran, sakrij ostale */
 function showScreen(screen) {
   [$welcome, $quiz, $result].forEach(s => s.classList.remove("active"));
   screen.classList.add("active");
 }
 
-/** Fisher-Yates shuffle za nasumičan odabir pitanja */
 function shuffle(arr) {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -81,7 +94,6 @@ function shuffle(arr) {
   return a;
 }
 
-/** Formatiraj milisekunde u MM:SS */
 function formatTime(ms) {
   const totalSec = Math.floor(ms / 1000);
   const m = String(Math.floor(totalSec / 60)).padStart(2, "0");
@@ -89,7 +101,6 @@ function formatTime(ms) {
   return `${m}:${s}`;
 }
 
-/** Emoji na temelju postotka */
 function getResultEmoji(pct) {
   if (pct === 100) return "🏆";
   if (pct >= 80)  return "🌟";
@@ -99,43 +110,27 @@ function getResultEmoji(pct) {
 }
 
 // --------------------------------------------------
-// 5. Učitavanje pitanja iz JSON datoteke
+// Učitavanje pitanja i pokretanje kviza
 // --------------------------------------------------
-async function loadQuestions() {
+async function startCategory(catKey) {
+  currentCategory = catKey;
+  const cat = CATEGORIES[catKey];
+
+  // Učitaj pitanja
   try {
-    const res = await fetch("questions.json");
-    if (!res.ok) throw new Error("Nije moguće učitati pitanja.");
+    const res = await fetch(cat.file);
+    if (!res.ok) throw new Error("Greška pri učitavanju.");
     allQuestions = await res.json();
-    console.log(`Učitano ${allQuestions.length} pitanja.`);
   } catch (err) {
-    console.error("Greška pri učitavanju pitanja:", err);
-    $btnStart.textContent = "Greška ❌";
+    console.error("Greška:", err);
+    alert("Ne mogu učitati pitanja. Pokušaj ponovo.");
     return;
   }
 
-  // Aktiviraj gumb za start
-  $btnStart.textContent = "🚀 Započni kviz";
-  $btnStart.disabled = false;
-}
+  // Postavi label kategorije
+  $categoryLabel.textContent = `${cat.icon} ${cat.label}`;
 
-// --------------------------------------------------
-// 6. Firebase anonimna prijava
-// --------------------------------------------------
-async function signIn() {
-  try {
-    const cred = await signInAnonymously(auth);
-    currentUser = cred.user;
-    console.log("Anonimna prijava:", currentUser.uid);
-  } catch (err) {
-    console.error("Firebase Auth greška:", err);
-  }
-}
-
-// --------------------------------------------------
-// 7. Pokretanje kviza
-// --------------------------------------------------
-function startQuiz() {
-  // Odaberi 10 nasumičnih pitanja
+  // Pripremi kviz
   quizQuestions = shuffle(allQuestions).slice(0, 10);
   currentIndex = 0;
   score = 0;
@@ -143,7 +138,6 @@ function startQuiz() {
   elapsedMs = 0;
   $saveStatus.textContent = "";
 
-  // Pokreni štopericu
   startTime = Date.now();
   timerInterval = setInterval(() => {
     elapsedMs = Date.now() - startTime;
@@ -155,20 +149,16 @@ function startQuiz() {
 }
 
 // --------------------------------------------------
-// 8. Prikaz pitanja
+// Prikaz pitanja
 // --------------------------------------------------
 function renderQuestion() {
   const q = quizQuestions[currentIndex];
   const total = quizQuestions.length;
 
-  // Ažuriraj progress bar i brojač
   $progressFill.style.width = `${((currentIndex) / total) * 100}%`;
   $counter.textContent = `${currentIndex + 1} / ${total}`;
-
-  // Postavi tekst pitanja
   $questionText.textContent = q.question;
 
-  // Generiraj gumbe za odgovore
   const letters = ["A", "B", "C", "D"];
   $answersGrid.innerHTML = "";
 
@@ -185,26 +175,21 @@ function renderQuestion() {
 }
 
 // --------------------------------------------------
-// 9. Obrada odgovora
+// Obrada odgovora
 // --------------------------------------------------
 function handleAnswer(selectedIndex, selectedBtn) {
   const q = quizQuestions[currentIndex];
   const allBtns = $answersGrid.querySelectorAll(".answer-btn");
 
-  // Onemogući sve gumbe
   allBtns.forEach(b => b.disabled = true);
-
-  // Označi točan odgovor
   allBtns[q.correct].classList.add("correct");
 
-  // Provjeri je li odgovor točan
   if (selectedIndex === q.correct) {
     score++;
   } else {
     selectedBtn.classList.add("wrong");
   }
 
-  // Pauza pa sljedeće pitanje
   setTimeout(() => {
     currentIndex++;
     if (currentIndex < quizQuestions.length) {
@@ -216,23 +201,21 @@ function handleAnswer(selectedIndex, selectedBtn) {
 }
 
 // --------------------------------------------------
-// 10. Završetak kviza
+// Završetak kviza
 // --------------------------------------------------
 function endQuiz() {
-  // Zaustavi štopericu
   clearInterval(timerInterval);
   elapsedMs = Date.now() - startTime;
 
   const total = quizQuestions.length;
   const pct = Math.round((score / total) * 100);
+  const cat = CATEGORIES[currentCategory];
 
-  // Prikaz rezultata
   $resultEmoji.textContent = getResultEmoji(pct);
   $resultScore.textContent = `${score} / ${total}`;
-  $resultDetail.textContent = `${pct}% točno · ${formatTime(elapsedMs)}`;
+  $resultDetail.textContent = `${cat.icon} ${cat.label} · ${pct}% · ${formatTime(elapsedMs)}`;
   $progressFill.style.width = "100%";
 
-  // Resetiraj input
   $nameInput.value = "";
   $btnSave.disabled = false;
 
@@ -240,10 +223,9 @@ function endQuiz() {
 }
 
 // --------------------------------------------------
-// 11. Spremanje rezultata u Firebase
+// Spremanje rezultata
 // --------------------------------------------------
 async function saveResult() {
-  // Zaštita od dvostrukog spremanja
   if (resultSaved) {
     $saveStatus.textContent = "Rezultat je već spremljen!";
     return;
@@ -262,9 +244,10 @@ async function saveResult() {
 
   const total = quizQuestions.length;
   const pct = Math.round((score / total) * 100);
+  const cat = CATEGORIES[currentCategory];
 
   try {
-    const resultsRef = ref(db, "results");
+    const resultsRef = ref(db, cat.dbPath);
     await push(resultsRef, {
       name: name,
       score: score,
@@ -286,21 +269,25 @@ async function saveResult() {
 }
 
 // --------------------------------------------------
-// 12. Event listeneri
+// Event listeneri
 // --------------------------------------------------
-$btnStart.addEventListener("click", startQuiz);
+$btnFizika.addEventListener("click", () => startCategory("fizika"));
+$btnOpce.addEventListener("click", () => startCategory("opce"));
 $btnSave.addEventListener("click", saveResult);
-$btnRetry.addEventListener("click", () => {
-  showScreen($welcome);
-});
-
-// Enter tipka za spremanje
-$nameInput.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") saveResult();
-});
+$btnRetry.addEventListener("click", () => showScreen($welcome));
+$nameInput.addEventListener("keydown", (e) => { if (e.key === "Enter") saveResult(); });
 
 // --------------------------------------------------
-// 13. Inicijalizacija
+// Firebase prijava
 // --------------------------------------------------
-loadQuestions();
+async function signIn() {
+  try {
+    const cred = await signInAnonymously(auth);
+    currentUser = cred.user;
+    console.log("Prijava:", currentUser.uid);
+  } catch (err) {
+    console.error("Auth greška:", err);
+  }
+}
+
 signIn();

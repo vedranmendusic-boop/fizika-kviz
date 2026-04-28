@@ -1,36 +1,121 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="hr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Fizika Challenge</title>
+  <title>Kviz — OŠ Zrinskih Nuštar</title>
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .school-badge {
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-align: center;
+      margin-top: 6vh;
+      margin-bottom: 8px;
+    }
+    .category-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      width: 100%;
+      max-width: 300px;
+    }
+    .btn-category {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+      padding: 18px 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn-category:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .btn-category:active {
+      transform: translateY(0);
+    }
+    .btn-category .cat-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+    .btn-category .cat-label {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .btn-category .cat-desc {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+      margin-top: 2px;
+    }
+    .category-label {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+  </style>
 </head>
 <body>
 
   <div class="container">
 
-    <!-- ========== EKRAN 1: Dobrodošlica ========== -->
+    <!-- ========== EKRAN 1: Dobrodošlica + odabir kategorije ========== -->
     <div id="screen-welcome" class="screen active">
-      <div class="welcome-icon">⚛️</div>
-      <h1 class="welcome-title">Fizika Challenge</h1>
+      <div class="school-badge">OŠ Zrinskih Nuštar</div>
+      <div class="welcome-icon">🏫</div>
+      <h1 class="welcome-title">Kviz Challenge</h1>
       <p class="welcome-subtitle">
-        Testiraj svoje znanje iz fizike!<br />10 pitanja — koliko brzo možeš odgovoriti?
+        Odaberi kategoriju i testiraj znanje!<br />10 pitanja — tko je najbrži?
       </p>
-      <button id="btn-start" class="btn btn-primary" disabled>
-        Učitavanje…
-      </button>
-      <a href="leaderboard.html" class="nav-link">📊 Rang-lista</a>
+
+      <div class="category-buttons">
+        <button id="btn-fizika" class="btn-category">
+          <span class="cat-icon">⚛️</span>
+          <div>
+            <div class="cat-label">Fizika</div>
+            <div class="cat-desc">Sile, energija, valovi…</div>
+          </div>
+        </button>
+        <button id="btn-opce" class="btn-category">
+          <span class="cat-icon">🧠</span>
+          <div>
+            <div class="cat-label">Opće znanje</div>
+            <div class="cat-desc">Geografija, priroda, povijest…</div>
+          </div>
+        </button>
+      </div>
+
+      <a href="leaderboard.html" class="nav-link" style="margin-top:20px">📊 Rang-lista</a>
     </div>
 
     <!-- ========== EKRAN 2: Kviz ========== -->
     <div id="screen-quiz" class="screen">
+      <div id="category-label" class="category-label"></div>
       <div class="progress-bar">
         <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
       </div>
@@ -40,13 +125,11 @@
         <span id="timer" class="timer">00:00</span>
       </div>
 
-      <div id="question-card" class="question-card">
+      <div class="question-card">
         <p id="question-text" class="question-text"></p>
       </div>
 
-      <div id="answers-grid" class="answers-grid">
-        <!-- Gumbi se generiraju dinamički -->
-      </div>
+      <div id="answers-grid" class="answers-grid"></div>
     </div>
 
     <!-- ========== EKRAN 3: Rezultat ========== -->
@@ -78,7 +161,6 @@
 
   </div>
 
-  <!-- Firebase SDK (modularni, putem CDN-a) -->
   <script type="module" src="app.js"></script>
 </body>
 </html>
