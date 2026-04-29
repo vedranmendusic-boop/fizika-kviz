@@ -18,13 +18,13 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
       text-align: center;
-      margin-top: 6vh;
+      margin-top: 5vh;
       margin-bottom: 8px;
     }
     .category-buttons {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
       width: 100%;
       max-width: 300px;
     }
@@ -33,7 +33,7 @@
       align-items: center;
       gap: 14px;
       width: 100%;
-      padding: 18px 24px;
+      padding: 16px 22px;
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -51,13 +51,8 @@
       border-color: var(--accent);
       transform: translateY(-2px);
     }
-    .btn-category:active {
-      transform: translateY(0);
-    }
-    .btn-category .cat-icon {
-      font-size: 1.8rem;
-      flex-shrink: 0;
-    }
+    .btn-category:active { transform: translateY(0); }
+    .btn-category .cat-icon { font-size: 1.8rem; flex-shrink: 0; }
     .btn-category .cat-label {
       font-family: var(--font-display);
       font-size: 0.75rem;
@@ -84,28 +79,35 @@
 
   <div class="container">
 
-    <!-- ========== EKRAN 1: Dobrodošlica + odabir kategorije ========== -->
+    <!-- ========== EKRAN 1: Odabir kategorije ========== -->
     <div id="screen-welcome" class="screen active">
       <div class="school-badge">OŠ Zrinskih Nuštar</div>
       <div class="welcome-icon">🏫</div>
       <h1 class="welcome-title">Kviz Challenge</h1>
       <p class="welcome-subtitle">
-        Odaberi kategoriju i testiraj znanje!<br />10 pitanja — tko je najbrži?
+        Odaberi kategoriju i testiraj znanje!<br />20 pitanja — tko je najbrži?
       </p>
 
       <div class="category-buttons">
-        <button id="btn-fizika" class="btn-category">
+        <button id="btn-fizika7" class="btn-category">
           <span class="cat-icon">⚛️</span>
           <div>
-            <div class="cat-label">Fizika</div>
-            <div class="cat-desc">Sile, energija, valovi…</div>
+            <div class="cat-label">Fizika 7. razred</div>
+            <div class="cat-desc">Sile, gibanje, energija, tlak…</div>
+          </div>
+        </button>
+        <button id="btn-fizika8" class="btn-category">
+          <span class="cat-icon">🔬</span>
+          <div>
+            <div class="cat-label">Fizika 8. razred</div>
+            <div class="cat-desc">Toplina, struja, optika, valovi…</div>
           </div>
         </button>
         <button id="btn-opce" class="btn-category">
           <span class="cat-icon">🧠</span>
           <div>
             <div class="cat-label">Opće znanje</div>
-            <div class="cat-desc">Geografija, priroda, povijest…</div>
+            <div class="cat-desc">Zanimljivosti za djecu</div>
           </div>
         </button>
       </div>
@@ -121,7 +123,7 @@
       </div>
 
       <div class="quiz-info">
-        <span id="question-counter" class="question-counter">1 / 10</span>
+        <span id="question-counter" class="question-counter">1 / 20</span>
         <span id="timer" class="timer">00:00</span>
       </div>
 

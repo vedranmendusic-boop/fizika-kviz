@@ -1,0 +1,1102 @@
+[
+  {
+    "id": 1,
+    "question": "Ako isti kamen izmjeriš tri puta i dobiješ 51 g, 50 g i 52 g, što je najpametnije zapisati kao rezultat mjerenja?",
+    "answers": [
+      "152 g jer se sve zbraja",
+      "0 g jer mjerenja nisu ista",
+      "Samo 50 g jer je sredina okrugla",
+      "Otprilike 51 g"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 2,
+    "question": "Učenik tvrdi da je olovka duga 0,17 m. Koji je to zapis u centimetrima?",
+    "answers": [
+      "17 cm",
+      "170 cm",
+      "0,017 cm",
+      "1,7 cm"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 3,
+    "question": "Zašto je gustoća korisna kada želimo pogoditi od čega je napravljeno nepoznato tijelo?",
+    "answers": [
+      "Jer gustoća uvijek ovisi samo o boji",
+      "Jer gustoća pokazuje koliko je tijelo staro",
+      "Jer gustoća ne ovisi ni o masi ni o volumenu",
+      "Jer različite tvari često imaju različitu masu u istom volumenu"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 4,
+    "question": "Kocka ima masu 80 g i volumen 10 cm³. Kolika je njezina gustoća?",
+    "answers": [
+      "90 g/cm³",
+      "8 g/cm³",
+      "0,8 g/cm³",
+      "800 g/cm³"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 5,
+    "question": "Dva predmeta imaju isti volumen, ali jedan ima veću masu. Što sigurno vrijedi?",
+    "answers": [
+      "Taj predmet ima manju gustoću",
+      "Oba imaju jednaku gustoću",
+      "Veći volumen skriva masu",
+      "Taj predmet ima veću gustoću"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 6,
+    "question": "Zašto veliki brod od čelika može plutati iako je čelik gušći od vode?",
+    "answers": [
+      "Jer brod ne dodiruje vodu",
+      "Jer brod zajedno sa zrakom u trupu ima manju srednju gustoću od vode",
+      "Jer more odbija sve metalne predmete",
+      "Jer čelik u vodi izgubi svu masu"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 7,
+    "question": "U menzuri je bilo 40 mL vode. Nakon ubacivanja kamenčića očitanje je 55 mL. Koliki je volumen kamenčića?",
+    "answers": [
+      "15 cm³",
+      "40 cm³",
+      "95 cm³",
+      "55 cm³"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 8,
+    "question": "Koja je najprikladnija mjerna jedinica za masu školskog ruksaka?",
+    "answers": [
+      "kilogram",
+      "njutn po kvadratnom metru",
+      "sekunda",
+      "metar"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 9,
+    "question": "Zašto se pri mjerenju duljine ravnalom oko mora postaviti ravno iznad oznake?",
+    "answers": [
+      "Da se smanji pogreška očitanja zbog gledanja iskosa",
+      "Da se predmet učini duljim",
+      "Da se ravnalo zagrije",
+      "Da se promijeni mjerna jedinica"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 10,
+    "question": "Ako se masa tijela udvostruči, a volumen ostane isti, gustoća će se:",
+    "answers": [
+      "ostati ista",
+      "udvostručiti",
+      "prepoloviti",
+      "postati nula"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 11,
+    "question": "Predmet pluta u vodi tako da je dio iznad površine. Što je najtočnije?",
+    "answers": [
+      "Nema masu",
+      "Njegova srednja gustoća manja je od gustoće vode",
+      "Voda nema tlak",
+      "Njegova gustoća veća je od gustoće vode"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 12,
+    "question": "Koja je razlika između tijela i tvari?",
+    "answers": [
+      "Tijelo nema masu, a tvar ima",
+      "Tvar je uvijek veća od tijela",
+      "Tijelo je određeni predmet, a tvar je ono od čega je napravljen",
+      "Tijelo postoji samo u plinu"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 13,
+    "question": "Zašto spužva i kamen jednake veličine nemaju jednaku masu?",
+    "answers": [
+      "Kamen nema čestice",
+      "Spužva nema volumen",
+      "Masa ovisi samo o obliku",
+      "Građeni su od tvari različite gustoće"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 14,
+    "question": "Koji zapis najbolje prikazuje fizičku veličinu?",
+    "answers": [
+      "metar",
+      "3 m",
+      "dugo",
+      "tri"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 15,
+    "question": "Što znači oznaka 'mili' u mjernim jedinicama, npr. milimetar?",
+    "answers": [
+      "sto puta veće",
+      "tisućiti dio osnovne jedinice",
+      "jednako kao kilogram",
+      "deset puta veće"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 16,
+    "question": "Ako je 1 L = 1000 cm³, koliko je 0,25 L?",
+    "answers": [
+      "2500 cm³",
+      "250 cm³",
+      "2,5 cm³",
+      "25 cm³"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 17,
+    "question": "Što sila može učiniti tijelu?",
+    "answers": [
+      "Ukloniti mu volumen",
+      "Uvijek mu promijeniti boju",
+      "Promijeniti mu gibanje ili oblik",
+      "Uvijek mu smanjiti masu"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 18,
+    "question": "Dva učenika vuku konop u suprotnim smjerovima: jedan silom 80 N, drugi 50 N. Kolika je rezultantna sila?",
+    "answers": [
+      "130 N prema slabijem učeniku",
+      "4000 N",
+      "0 N",
+      "30 N prema jačem učeniku"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 19,
+    "question": "Dva psa vuku sanjke u istom smjeru silama 40 N i 60 N. Kolika je rezultantna sila?",
+    "answers": [
+      "0 N",
+      "100 N",
+      "2400 N",
+      "20 N"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 20,
+    "question": "Zašto se opruga više produlji kad na nju objesimo veći uteg?",
+    "answers": [
+      "Uteg postane topliji",
+      "Opruga gubi čestice",
+      "Veća težina djeluje većom silom na oprugu",
+      "Zrak ju gura prema gore jače od utega"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 21,
+    "question": "Dinamometar je sprava za mjerenje:",
+    "answers": [
+      "sile",
+      "gustoće",
+      "temperature",
+      "volumena"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 22,
+    "question": "Masa učenika je 40 kg. Kolika je njegova približna težina na Zemlji ako uzmemo g ≈ 10 N/kg?",
+    "answers": [
+      "4 N",
+      "400 N",
+      "40 N",
+      "4000 kg"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 23,
+    "question": "Što se dogodi s težinom tijela ako ga odnesemo na Mjesec?",
+    "answers": [
+      "Pretvori se u gustoću",
+      "Ostaje ista jer je masa ista",
+      "Postane nula čim ga ispustimo",
+      "Smanji se jer je gravitacija slabija"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 24,
+    "question": "Koja tvrdnja najbolje razlikuje masu i težinu?",
+    "answers": [
+      "Masa se mjeri u njutnima, a težina u kilogramima",
+      "Masa postoji samo u svemiru",
+      "Masa opisuje količinu tvari, a težina je gravitacijska sila",
+      "Težina ne ovisi o gravitaciji"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 25,
+    "question": "Zašto nogometaš koristi kopačke s čepovima na travi?",
+    "answers": [
+      "Povećavaju trenje s podlogom",
+      "Povećavaju volumen lopte",
+      "Smanjuju masu igrača",
+      "Uklanjaju silu težu"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 26,
+    "question": "Zašto se kotači lakše kotrljaju nego što kutija klizi po podu?",
+    "answers": [
+      "Kutija nema dodir s podom",
+      "Kotači nemaju masu",
+      "Kotrljanje ne uključuje sile",
+      "Trenje kotrljanja obično je manje od trenja klizanja"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 27,
+    "question": "Koji primjer pokazuje da trenje može biti korisno?",
+    "answers": [
+      "Kočnice zaustavljaju bicikl",
+      "Led je sklizak",
+      "Ruksak ima masu",
+      "Balon ima volumen"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 28,
+    "question": "Koji primjer pokazuje da trenje može biti štetno?",
+    "answers": [
+      "Guma ne proklizava pri hodu",
+      "Olovka ostavlja trag na papiru",
+      "Kočnice zaustavljaju auto",
+      "Dijelovi stroja se zagrijavaju i troše"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 29,
+    "question": "Zašto led posipan pijeskom postaje sigurniji za hodanje?",
+    "answers": [
+      "Pijesak smanjuje gravitaciju",
+      "Pijesak pretvara led u metal",
+      "Pijesak povećava masu čovjeka",
+      "Pijesak povećava trenje između obuće i leda"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 30,
+    "question": "Kad na knjigu koja miruje na stolu djeluje sila teža prema dolje, zašto knjiga ne propadne kroz stol?",
+    "answers": [
+      "Stol djeluje silom potpore prema gore",
+      "Na knjigu ne djeluje nikakva sila",
+      "Zrak potpuno poništava masu knjige",
+      "Knjiga nema težinu"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 31,
+    "question": "Koja je rezultantna sila ako na tijelo djeluju 12 N udesno i 12 N ulijevo?",
+    "answers": [
+      "0 N",
+      "144 N",
+      "24 N ulijevo",
+      "24 N udesno"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 32,
+    "question": "Zašto je sigurnosni pojas važan pri naglom kočenju automobila?",
+    "answers": [
+      "Jer pojas povećava brzinu auta",
+      "Jer uklanja težinu putnika",
+      "Zbog tromosti tijelo želi nastaviti gibanje prema naprijed",
+      "Jer smanjuje gustoću zraka"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 33,
+    "question": "Koja sila vraća gumicu u početni oblik nakon rastezanja?",
+    "answers": [
+      "elastična sila",
+      "magnetska sila uvijek",
+      "hidrostatička sila",
+      "sila trenja"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 34,
+    "question": "Ako se opruga produlji dvostruko više u pravilnom području rada, što je najvjerojatnije s vučnom silom?",
+    "answers": [
+      "Dva puta je manja",
+      "Pretvorila se u temperaturu",
+      "Dva puta je veća",
+      "Jednaka je nuli"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 35,
+    "question": "Zašto je kvaka na vratima najčešće daleko od šarki?",
+    "answers": [
+      "Tako manjom silom stvaramo veći učinak okretanja",
+      "Tako se smanjuje gustoća vrata",
+      "Tako vrata postaju lakša",
+      "Tako nestaje trenje u šarkama"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 36,
+    "question": "Na klackalici sjede dva učenika. Jedan je teži. Kako se lakši može uravnotežiti s težim?",
+    "answers": [
+      "Sjedne bliže osloncu",
+      "Sjedne dalje od oslonca",
+      "Podigne noge u zrak i masa mu nestane",
+      "Sjedne točno na oslonac"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 37,
+    "question": "Što je poluga?",
+    "answers": [
+      "Kruto tijelo koje se može okretati oko oslonca",
+      "Tekućina koja prenosi tlak",
+      "Uređaj za mjerenje temperature",
+      "Tvar bez mase"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 38,
+    "question": "Koji je primjer poluge iz svakodnevice?",
+    "answers": [
+      "termometar",
+      "škare",
+      "magla",
+      "čaša vode"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 39,
+    "question": "Zašto je lakše otvoriti tvrdoglavu staklenku većim otvaračem nego prstima?",
+    "answers": [
+      "Otvarač smanjuje masu poklopca",
+      "Poklopac prestaje imati trenje",
+      "Staklenka izgubi volumen",
+      "Veći krak sile daje veći učinak okretanja"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 40,
+    "question": "Što je težište tijela?",
+    "answers": [
+      "Točka koja postoji samo u tekućinama",
+      "Dio tijela s najmanjom gustoćom",
+      "Mjesto gdje tijelo ima najveću temperaturu",
+      "Točka u kojoj možemo zamišljati da je težina tijela koncentrirana"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 41,
+    "question": "Zašto se toranj s vrlo širokim postoljem teže prevrne?",
+    "answers": [
+      "Tlak zraka ga zalijepi",
+      "Težište i oslonac daju stabilniju ravnotežu",
+      "Široko postolje briše gravitaciju",
+      "Masa tornja postaje manja"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 42,
+    "question": "Koja situacija je najnestabilnija?",
+    "answers": [
+      "Kocka na sredini poda",
+      "Visoka uska čaša na rubu stola",
+      "Knjiga položena ravno na stol",
+      "Niska široka kutija na podu"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 43,
+    "question": "Zašto planinar s teškim ruksakom mora paziti na naginjanje?",
+    "answers": [
+      "Ruksak uklanja silu trenja",
+      "Ruksak smanjuje tlak zraka",
+      "Ruksak može pomaknuti težište i narušiti ravnotežu",
+      "Ruksak hladi planinu"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 44,
+    "question": "Kod poluge vrijedi: ako je krak sile dvostruko veći, za istu ravnotežu potrebna sila može biti:",
+    "answers": [
+      "mjerena u kelvinima",
+      "dvostruko veća",
+      "dvostruko manja",
+      "jednaka nuli"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 45,
+    "question": "Koji alat najviše koristi načelo poluge za vađenje čavla?",
+    "answers": [
+      "spužva",
+      "čaša",
+      "termometar",
+      "čekić s rašljastim krajem"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 46,
+    "question": "Zašto se biciklist nagne u zavoju?",
+    "answers": [
+      "Da zadrži ravnotežu pri promjeni smjera gibanja",
+      "Da se zrak pretvori u toplinu",
+      "Da poništi tlak u gumama",
+      "Da mu se masa smanji"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 47,
+    "question": "Zašto štikle mogu ostaviti dublji trag u mekoj zemlji nego tenisice?",
+    "answers": [
+      "Zemlja odbija široke predmete",
+      "Ista težina djeluje na manju površinu pa je tlak veći",
+      "Štikle imaju veću temperaturu",
+      "Tenisice nemaju masu"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 48,
+    "question": "Kako se može smanjiti tlak koji tijelo vrši na podlogu?",
+    "answers": [
+      "Povećati silu bez promjene površine",
+      "Pretvoriti masu u volumen",
+      "Povećati površinu oslonca",
+      "Smanjiti površinu oslonca"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 49,
+    "question": "Zašto skije pomažu da čovjek manje propada u snijeg?",
+    "answers": [
+      "Uklanjaju silu težu",
+      "Smanjuju masu čovjeka na nulu",
+      "Hladi ih bijela boja",
+      "Raspoređuju težinu na veću površinu"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 50,
+    "question": "Ako ista sila djeluje na dvostruko veću površinu, tlak je:",
+    "answers": [
+      "dvostruko veći",
+      "dvostruko manji",
+      "četiri puta veći",
+      "uvijek jednak"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 51,
+    "question": "Zašto ronioc osjeća veći pritisak što ide dublje?",
+    "answers": [
+      "Jer se volumen mora smanjuje na nulu",
+      "Jer hidrostatički tlak raste s dubinom",
+      "Jer voda na dubini nema gustoću",
+      "Jer gravitacija nestaje pod vodom"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 52,
+    "question": "Gdje je tlak vode veći: 1 m ili 5 m ispod površine jezera?",
+    "answers": [
+      "Na 5 m",
+      "Jednak je na svim dubinama",
+      "Na 1 m",
+      "Nema tlaka u vodi"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 53,
+    "question": "Zašto zrak u napuhanoj lopti pritišće stijenke lopte?",
+    "answers": [
+      "Zrak nema čestice",
+      "Tlak postoji samo u vodi",
+      "Lopta sama proizvodi gravitaciju",
+      "Čestice zraka se gibaju i sudaraju sa stijenkama"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 54,
+    "question": "Što pokazuje atmosferski tlak?",
+    "answers": [
+      "Temperaturu Sunca",
+      "Masa samo oblaka",
+      "Gustoću školske ploče",
+      "Pritisak zraka oko nas"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 55,
+    "question": "Zašto se prazna plastična boca može zgnječiti kad iz nje isisamo zrak?",
+    "answers": [
+      "Nestane gravitacija",
+      "Vanjski atmosferski tlak postane veći od unutarnjeg",
+      "Voda u zraku postane čvrsta",
+      "Boca izgubi svu masu"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 56,
+    "question": "Što je uzgon?",
+    "answers": [
+      "Sila koja uvijek vuče tijelo prema dolje",
+      "Mjerna jedinica za gustoću",
+      "Vrsta trenja između suhih ploha",
+      "Sila kojom tekućina ili plin djeluje na tijelo prema gore"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 57,
+    "question": "Zašto balon pun helija leti prema gore?",
+    "answers": [
+      "Helij nema masu",
+      "Uzgon zraka veći je od težine balona s helijem",
+      "Tlak u balonu je uvijek nula",
+      "Balon se odbija od Sunca"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 58,
+    "question": "Tijelo tone u vodi kada je:",
+    "answers": [
+      "uzgon veći od težine",
+      "gustoća tijela uvijek manja od vode",
+      "volumen tijela jednak nuli",
+      "težina tijela veća od uzgona"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 59,
+    "question": "Zašto je lakše podići kamen dok je uronjen u vodi nego kad je u zraku?",
+    "answers": [
+      "Kamen postane šupalj",
+      "Voda djeluje uzgonom prema gore",
+      "Kamen u vodi izgubi masu",
+      "Voda uklanja trenje iz ruke"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 60,
+    "question": "Zašto oštra igla lako probija tkaninu?",
+    "answers": [
+      "Mala površina vrha stvara velik tlak",
+      "Tkanina nema čestice",
+      "Igla nema masu",
+      "Igla pretvara silu u temperaturu"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 61,
+    "question": "Kada u fizici kažemo da sila obavlja rad?",
+    "answers": [
+      "Kad tijelo samo ima masu",
+      "Kad je predmet lijepo obojan",
+      "Kad sila pomiče tijelo u smjeru djelovanja sile",
+      "Kad se netko jako umori bez pomaka"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 62,
+    "question": "Učenik drži tešku torbu mirno u zraku 20 sekundi. U školskom smislu, obavlja li rad na torbi?",
+    "answers": [
+      "Da, jer se umorio",
+      "Ne, jer torba nema gustoću",
+      "Ne, jer nema pomaka torbe",
+      "Da, jer torba ima masu"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 63,
+    "question": "Ako silom 10 N guraš kutiju 3 m u smjeru sile, koliki je rad?",
+    "answers": [
+      "300 W",
+      "13 J",
+      "3,3 J",
+      "30 J"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 64,
+    "question": "Koja je mjerna jedinica za rad i energiju?",
+    "answers": [
+      "džul",
+      "paskal",
+      "vat",
+      "kelvin"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 65,
+    "question": "Koja je mjerna jedinica za snagu?",
+    "answers": [
+      "džul",
+      "njutn",
+      "vat",
+      "kilogram po litri"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 66,
+    "question": "Stroj obavi 100 J rada za 5 s. Kolika je snaga?",
+    "answers": [
+      "5 J",
+      "20 W",
+      "95 W",
+      "500 W"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 67,
+    "question": "Zašto mikrovalna pećnica od 1000 W može brže zagrijati vodu od uređaja od 500 W?",
+    "answers": [
+      "Ima manju energiju",
+      "Ima veću snagu, pa u istom vremenu preda više energije",
+      "Snaga se mjeri u litrima",
+      "Voda u njoj nema toplinski kapacitet"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 68,
+    "question": "Koja lopta ima veću gravitacijsku potencijalnu energiju?",
+    "answers": [
+      "Lopta bez mase",
+      "Lopta koja miruje u kutiji na podu",
+      "Ista lopta na podu",
+      "Ista lopta na višoj polici"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 69,
+    "question": "Kad se skateboarder spušta niz rampu, što se uglavnom događa s energijom?",
+    "answers": [
+      "Tlak zraka prelazi u volumen daske",
+      "Masa prelazi u boju",
+      "Kinetička energija nestaje bez traga",
+      "Gravitacijska potencijalna energija prelazi u kinetičku"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 70,
+    "question": "Što najbolje opisuje zakon očuvanja energije?",
+    "answers": [
+      "Energija se ne stvara ni ne uništava, nego se pretvara iz jednog oblika u drugi",
+      "Energija se uvijek pretvara u masu",
+      "Energija nestaje čim tijelo stane",
+      "Energija postoji samo u baterijama"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 71,
+    "question": "Koji primjer prikazuje elastičnu potencijalnu energiju?",
+    "answers": [
+      "Nategnuta gumica",
+      "Zrak u mirnoj učionici",
+      "Prazna bilježnica",
+      "Čaša vode na stolu"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 72,
+    "question": "Ako se brzina autića udvostruči, njegova kinetička energija se, približno prema formuli, poveća:",
+    "answers": [
+      "prepolovi se",
+      "četiri puta",
+      "ostane ista",
+      "dva puta"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 73,
+    "question": "Koje tijelo ima veću kinetičku energiju ako imaju istu masu?",
+    "answers": [
+      "Ono koje ima manji volumen",
+      "Ono koje se brže giba",
+      "Ono koje je hladnije",
+      "Ono koje je plave boje"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 74,
+    "question": "Dizalo podigne učenika na treći kat. Koji oblik energije učenik dobiva u odnosu na prizemlje?",
+    "answers": [
+      "elastičnu energiju opruge",
+      "samo kemijsku energiju",
+      "gravitacijsku potencijalnu energiju",
+      "nultu energiju"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 75,
+    "question": "Zašto se dlanovi zagriju kad ih brzo trljamo?",
+    "answers": [
+      "Dlanovi dobivaju masu",
+      "Mehanički rad se zbog trenja pretvara u unutarnju energiju",
+      "Tlak zraka nestaje",
+      "Koža postaje tekućina"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 76,
+    "question": "Koji primjer pokazuje pretvorbu kemijske energije u kinetičku?",
+    "answers": [
+      "Termometar pokazuje temperaturu",
+      "Led se topi na stolu",
+      "Biciklist koristi energiju iz hrane za vožnju",
+      "Knjiga miruje na polici"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 77,
+    "question": "Ako dvije osobe nose isti teret na istu visinu, ali jedna to učini dvostruko brže, što je veće kod brže osobe?",
+    "answers": [
+      "visina",
+      "obavljeni rad",
+      "snaga",
+      "masa tereta"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 78,
+    "question": "Koja izjava je fizički najtočnija za 'umorio sam se noseći torbu ravno po hodniku'?",
+    "answers": [
+      "Snaga se mjeri u kilogramima",
+      "Rad je nula u svakom mogućem smislu",
+      "Torba nema težinu dok se nosi",
+      "Tijelo troši energiju, ali rad na torbi protiv sile teže nije jednak kao pri podizanju"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 79,
+    "question": "Što se prema čestičnom modelu događa s česticama kad se tijelo zagrijava?",
+    "answers": [
+      "Gibaju se brže",
+      "Pretvaraju se u svjetlost",
+      "Udaljenost između njih uvijek postane nula",
+      "Nestaju"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 80,
+    "question": "Zašto se metalni poklopac na staklenci lakše odvrne nakon zagrijavanja toplom vodom?",
+    "answers": [
+      "Staklo izgubi masu",
+      "Voda poništi trenje u svemiru",
+      "Poklopac postane magnet",
+      "Metal se toplinski raširi"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 81,
+    "question": "Zašto se na mostovima ostavljaju male praznine ili spojevi?",
+    "answers": [
+      "Da se smanji gustoća zraka",
+      "Da se materijal može širiti i skupljati pri promjeni temperature",
+      "Da voda ne bi imala tlak",
+      "Da most bude lakši za brojanje"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 82,
+    "question": "Što termometar zapravo uspoređuje kad mjeri temperaturu tijela?",
+    "answers": [
+      "Stanje zagrijanosti povezano s gibanjem čestica",
+      "Silu trenja na podu",
+      "Točnu masu tijela",
+      "Ukupni broj atoma u svemiru"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 83,
+    "question": "Koliko kelvina približno odgovara temperaturi 0 °C?",
+    "answers": [
+      "373 K",
+      "0 K",
+      "100 K",
+      "273 K"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 84,
+    "question": "Koja je temperatura približno jednaka 20 °C na Kelvinovoj ljestvici?",
+    "answers": [
+      "253 K",
+      "293 K",
+      "20 K",
+      "373 K"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 85,
+    "question": "Što se obično događa s gustoćom većine tvari kad se zagriju i rašire?",
+    "answers": [
+      "Smanjuje se jer isti iznos mase zauzima veći volumen",
+      "Povećava se jer masa nestaje",
+      "Uvijek postaje beskonačna",
+      "Ne može se promijeniti ni u kojem slučaju"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 86,
+    "question": "Zašto se miris parfema nakon nekog vremena osjeti po cijeloj sobi?",
+    "answers": [
+      "Zrak nema čestice pa miris lebdi sam",
+      "Čestice plina se gibaju i šire prostorom",
+      "Parfem stvara gravitaciju",
+      "Miris ima noge"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 87,
+    "question": "Koji raspored čestica najbolje opisuje čvrsto tijelo?",
+    "answers": [
+      "Čestice slobodno lete kao u plinu",
+      "Čestice su jako udaljene i ne sudaraju se nikad",
+      "Čestice su blizu i titraju oko stalnih položaja",
+      "Čestice uopće ne postoje"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 88,
+    "question": "Koja tvrdnja najbolje opisuje tekućinu?",
+    "answers": [
+      "Ne može teći",
+      "Ima vlastiti volumen, ali poprima oblik posude",
+      "Nema masu",
+      "Ima stalan oblik i nema volumen"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 89,
+    "question": "Što se događa pri isparavanju?",
+    "answers": [
+      "Temperatura se mjeri u njutnima",
+      "Čestice plina prelaze u čvrsto stanje bez promjene",
+      "Tvar gubi sve atome",
+      "Čestice tekućine prelaze u plinovito stanje"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 90,
+    "question": "Zašto tlak plina u zatvorenoj limenci može porasti ako se limenka jako zagrije?",
+    "answers": [
+      "Plin izgubi volumen limenke",
+      "Čestice postanu teže od metala",
+      "Čestice plina brže udaraju o stijenke",
+      "Tlak postoji samo u vodi"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 91,
+    "question": "Što je toplina u fizici?",
+    "answers": [
+      "Sila koja uvijek djeluje prema gore",
+      "Energija koja prelazi s toplijeg tijela na hladnije",
+      "Isto što i temperatura",
+      "Mjerna jedinica za masu"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 92,
+    "question": "U kojem smjeru spontano prelazi toplina?",
+    "answers": [
+      "S hladnijeg tijela na toplije",
+      "Uvijek s lakšeg na teže",
+      "Uvijek s manjeg volumena na veći",
+      "S toplijeg tijela na hladnije"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 93,
+    "question": "Zašto metalna žlica u vrućem čaju brzo postane vruća?",
+    "answers": [
+      "Jer metal nema čestice",
+      "Jer čaj povećava masu metala",
+      "Zbog zračenja Mjeseca",
+      "Zbog vođenja topline kroz metal"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 94,
+    "question": "Zašto se zrak iznad radijatora diže?",
+    "answers": [
+      "Hladni zrak uvijek leti gore",
+      "Zagrijani zrak se širi, postaje manje gustoće i struji prema gore",
+      "Zrak nema masu",
+      "Radijator stvara magnetno polje za zrak"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 95,
+    "question": "Kako Sunčeva toplina dolazi do Zemlje kroz svemirski prostor?",
+    "answers": [
+      "Zračenjem",
+      "Trenjem planeta",
+      "Vođenjem kroz prazninu",
+      "Strujanjem zraka kroz svemir"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 96,
+    "question": "Zašto voda u moru danju sporije mijenja temperaturu od pijeska?",
+    "answers": [
+      "Voda nema unutarnju energiju",
+      "Voda ima velik specifični toplinski kapacitet",
+      "More ne prima toplinu",
+      "Pijesak nema čestice"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 97,
+    "question": "Što znači da tvar ima velik specifični toplinski kapacitet?",
+    "answers": [
+      "Uvijek je hladna",
+      "Nema masu",
+      "Ne može primati toplinu",
+      "Treba joj mnogo energije za promjenu temperature"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 98,
+    "question": "Što najviše povećava unutarnju energiju tijela?",
+    "answers": [
+      "Brisanje trenja iz formule",
+      "Samo promjena boje",
+      "Smanjenje broja mjernih jedinica",
+      "Veće gibanje i međudjelovanje čestica"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 99,
+    "question": "Zašto termosica dobro čuva topli čaj?",
+    "answers": [
+      "Smanjuje prijenos topline s čaja na okolinu",
+      "Uklanja sve čestice iz čaja",
+      "Povećava masu čaja",
+      "Pretvara toplinu u težinu"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 100,
+    "question": "Zašto se crna majica na suncu obično jače zagrije od bijele?",
+    "answers": [
+      "Bijela majica nema masu",
+      "Crna majica ima manji volumen",
+      "Crna površina upija više zračenja",
+      "Boja mijenja gravitaciju"
+    ],
+    "correct": 2
+  }
+]

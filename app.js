@@ -1,6 +1,6 @@
 // ============================================
-// FIZIKA CHALLENGE — app.js
-// Kviz s odabirom kategorije: Fizika / Opće znanje
+// KVIZ CHALLENGE — app.js
+// 3 kategorije, 20 pitanja po kvizu
 // ============================================
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
@@ -27,11 +27,17 @@ const db   = getDatabase(app);
 // Kategorije
 // --------------------------------------------------
 const CATEGORIES = {
-  fizika: {
-    file: "questions.json",
-    dbPath: "results/fizika",
-    label: "Fizika",
+  fizika7: {
+    file: "questions-7.json",
+    dbPath: "results/fizika7",
+    label: "Fizika 7",
     icon: "⚛️"
+  },
+  fizika8: {
+    file: "questions-8.json",
+    dbPath: "results/fizika8",
+    label: "Fizika 8",
+    icon: "🔬"
   },
   opce: {
     file: "questions-opce.json",
@@ -40,6 +46,8 @@ const CATEGORIES = {
     icon: "🧠"
   }
 };
+
+const QUESTIONS_PER_QUIZ = 20;
 
 // --------------------------------------------------
 // Stanje
@@ -53,32 +61,33 @@ let startTime = 0;
 let elapsedMs = 0;
 let resultSaved = false;
 let currentUser = null;
-let currentCategory = null; // "fizika" ili "opce"
+let currentCategory = null;
 
 // --------------------------------------------------
-// DOM elementi
+// DOM
 // --------------------------------------------------
-const $welcome      = document.getElementById("screen-welcome");
-const $quiz         = document.getElementById("screen-quiz");
-const $result       = document.getElementById("screen-result");
-const $btnFizika    = document.getElementById("btn-fizika");
-const $btnOpce      = document.getElementById("btn-opce");
+const $welcome       = document.getElementById("screen-welcome");
+const $quiz          = document.getElementById("screen-quiz");
+const $result        = document.getElementById("screen-result");
+const $btnFizika7    = document.getElementById("btn-fizika7");
+const $btnFizika8    = document.getElementById("btn-fizika8");
+const $btnOpce       = document.getElementById("btn-opce");
 const $categoryLabel = document.getElementById("category-label");
-const $progressFill = document.getElementById("progress-fill");
-const $counter      = document.getElementById("question-counter");
-const $timer        = document.getElementById("timer");
-const $questionText = document.getElementById("question-text");
-const $answersGrid  = document.getElementById("answers-grid");
-const $resultEmoji  = document.getElementById("result-emoji");
-const $resultScore  = document.getElementById("result-score");
-const $resultDetail = document.getElementById("result-detail");
-const $nameInput    = document.getElementById("name-input");
-const $btnSave      = document.getElementById("btn-save");
-const $saveStatus   = document.getElementById("save-status");
-const $btnRetry     = document.getElementById("btn-retry");
+const $progressFill  = document.getElementById("progress-fill");
+const $counter       = document.getElementById("question-counter");
+const $timer         = document.getElementById("timer");
+const $questionText  = document.getElementById("question-text");
+const $answersGrid   = document.getElementById("answers-grid");
+const $resultEmoji   = document.getElementById("result-emoji");
+const $resultScore   = document.getElementById("result-score");
+const $resultDetail  = document.getElementById("result-detail");
+const $nameInput     = document.getElementById("name-input");
+const $btnSave       = document.getElementById("btn-save");
+const $saveStatus    = document.getElementById("save-status");
+const $btnRetry      = document.getElementById("btn-retry");
 
 // --------------------------------------------------
-// Pomoćne funkcije
+// Pomoćne
 // --------------------------------------------------
 function showScreen(screen) {
   [$welcome, $quiz, $result].forEach(s => s.classList.remove("active"));
@@ -110,33 +119,32 @@ function getResultEmoji(pct) {
 }
 
 // --------------------------------------------------
-// Učitavanje pitanja i pokretanje kviza
+// Pokretanje kategorije
 // --------------------------------------------------
 async function startCategory(catKey) {
   currentCategory = catKey;
   const cat = CATEGORIES[catKey];
 
-  // Učitaj pitanja
   try {
     const res = await fetch(cat.file);
     if (!res.ok) throw new Error("Greška pri učitavanju.");
     allQuestions = await res.json();
   } catch (err) {
     console.error("Greška:", err);
-    alert("Ne mogu učitati pitanja. Pokušaj ponovo.");
+    alert("Ne mogu učitati pitanja. Provjeri da datoteka " + cat.file + " postoji.");
     return;
   }
 
-  // Postavi label kategorije
-  $categoryLabel.textContent = `${cat.icon} ${cat.label}`;
-
-  // Pripremi kviz
-  quizQuestions = shuffle(allQuestions).slice(0, 10);
+  // Odaberi 20 nasumičnih (ili koliko ih ima ako je manje od 20)
+  const count = Math.min(QUESTIONS_PER_QUIZ, allQuestions.length);
+  quizQuestions = shuffle(allQuestions).slice(0, count);
   currentIndex = 0;
   score = 0;
   resultSaved = false;
   elapsedMs = 0;
   $saveStatus.textContent = "";
+
+  $categoryLabel.textContent = `${cat.icon} ${cat.label}`;
 
   startTime = Date.now();
   timerInterval = setInterval(() => {
@@ -201,7 +209,7 @@ function handleAnswer(selectedIndex, selectedBtn) {
 }
 
 // --------------------------------------------------
-// Završetak kviza
+// Završetak
 // --------------------------------------------------
 function endQuiz() {
   clearInterval(timerInterval);
@@ -223,7 +231,7 @@ function endQuiz() {
 }
 
 // --------------------------------------------------
-// Spremanje rezultata
+// Spremanje
 // --------------------------------------------------
 async function saveResult() {
   if (resultSaved) {
@@ -247,8 +255,7 @@ async function saveResult() {
   const cat = CATEGORIES[currentCategory];
 
   try {
-    const resultsRef = ref(db, cat.dbPath);
-    await push(resultsRef, {
+    await push(ref(db, cat.dbPath), {
       name: name,
       score: score,
       percentage: pct,
@@ -261,7 +268,7 @@ async function saveResult() {
     $saveStatus.textContent = "✅ Rezultat spremljen!";
     $saveStatus.style.color = "var(--success)";
   } catch (err) {
-    console.error("Greška pri spremanju:", err);
+    console.error("Greška:", err);
     $saveStatus.textContent = "Greška. Pokušaj ponovo.";
     $saveStatus.style.color = "var(--danger)";
     $btnSave.disabled = false;
@@ -271,23 +278,19 @@ async function saveResult() {
 // --------------------------------------------------
 // Event listeneri
 // --------------------------------------------------
-$btnFizika.addEventListener("click", () => startCategory("fizika"));
+$btnFizika7.addEventListener("click", () => startCategory("fizika7"));
+$btnFizika8.addEventListener("click", () => startCategory("fizika8"));
 $btnOpce.addEventListener("click", () => startCategory("opce"));
 $btnSave.addEventListener("click", saveResult);
 $btnRetry.addEventListener("click", () => showScreen($welcome));
 $nameInput.addEventListener("keydown", (e) => { if (e.key === "Enter") saveResult(); });
 
-// --------------------------------------------------
 // Firebase prijava
-// --------------------------------------------------
-async function signIn() {
+(async () => {
   try {
     const cred = await signInAnonymously(auth);
     currentUser = cred.user;
-    console.log("Prijava:", currentUser.uid);
   } catch (err) {
     console.error("Auth greška:", err);
   }
-}
-
-signIn();
+})();

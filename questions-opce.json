@@ -1,182 +1,1102 @@
 [
   {
     "id": 1,
-    "question": "Koji je glavni grad Hrvatske?",
-    "answers": ["Split", "Rijeka", "Zagreb", "Osijek"],
+    "question": "Koja životinja ima tri srca i plavu krv?",
+    "answers": [
+      "Dupin",
+      "Krokodil",
+      "Hobotnica",
+      "Pingvin"
+    ],
     "correct": 2
   },
   {
     "id": 2,
-    "question": "Koliko kontinenata postoji na Zemlji?",
-    "answers": ["5", "6", "7", "8"],
-    "correct": 2
+    "question": "Koja životinja radi izmet u obliku kockica?",
+    "answers": [
+      "Vombat",
+      "Koala",
+      "Jež",
+      "Dabar"
+    ],
+    "correct": 0
   },
   {
     "id": 3,
-    "question": "Koji je najduži rijeka u Europi?",
-    "answers": ["Dunav", "Volga", "Rajna", "Don"],
-    "correct": 1
+    "question": "Što se dogodi sa zvukom u svemirskom vakuumu?",
+    "answers": [
+      "Postane glasniji",
+      "Putuje samo noću",
+      "Ne može se širiti bez tvari",
+      "Pretvori se u svjetlost"
+    ],
+    "correct": 2
   },
   {
     "id": 4,
-    "question": "Tko je napisao 'Crvenkapicu'?",
-    "answers": ["Hans Christian Andersen", "Braća Grimm", "Charles Perrault", "Ivana Brlić-Mažuranić"],
+    "question": "Koji planet ima dan dulji od svoje godine?",
+    "answers": [
+      "Mars",
+      "Venera",
+      "Jupiter",
+      "Merkur"
+    ],
     "correct": 1
   },
   {
     "id": 5,
-    "question": "Koji planet je poznat po prstenovima?",
-    "answers": ["Jupiter", "Uran", "Saturn", "Neptun"],
-    "correct": 2
+    "question": "Koje malo biće može preživjeti vakuum svemira u posebnom stanju mirovanja?",
+    "answers": [
+      "Komarac",
+      "Vodeni medvjedić",
+      "Mrav",
+      "Skakavac"
+    ],
+    "correct": 1
   },
   {
     "id": 6,
-    "question": "Koliko zubi ima odrasli čovjek?",
-    "answers": ["28", "30", "32", "34"],
+    "question": "Što leptiri koriste za 'kušanje' hrane?",
+    "answers": [
+      "Krila",
+      "Ticala",
+      "Noge",
+      "Rep"
+    ],
     "correct": 2
   },
   {
     "id": 7,
-    "question": "Koji ocean je najveći na svijetu?",
-    "answers": ["Atlantski", "Indijski", "Arktički", "Tihi"],
-    "correct": 3
+    "question": "Ako na Mjesecu istodobno ispustiš čekić i pero s iste visine, što će se dogoditi?",
+    "answers": [
+      "Čekić pada mnogo brže",
+      "Pero odleti prema gore",
+      "Padnu gotovo istodobno",
+      "Oboje ostanu lebdjeti"
+    ],
+    "correct": 2
   },
   {
     "id": 8,
-    "question": "U kojoj se državi nalazi Koloseum?",
-    "answers": ["Grčka", "Italija", "Španjolska", "Turska"],
+    "question": "Koja je najtvrđa prirodna tvar poznata iz svakodnevne nastave kemije i geografije?",
+    "answers": [
+      "Kvarc",
+      "Dijamant",
+      "Granit",
+      "Željezo"
+    ],
     "correct": 1
   },
   {
     "id": 9,
-    "question": "Koja je kemijska formula vode?",
-    "answers": ["CO2", "H2O", "O2", "NaCl"],
-    "correct": 1
+    "question": "Što je Velika crvena pjega na Jupiteru?",
+    "answers": [
+      "Ogromna oluja",
+      "Vulkan",
+      "Krater",
+      "More lave"
+    ],
+    "correct": 0
   },
   {
     "id": 10,
-    "question": "Koji je najveći organ ljudskog tijela?",
-    "answers": ["Jetra", "Mozak", "Koža", "Pluća"],
-    "correct": 2
+    "question": "Zašto je nebo najčešće plavo?",
+    "answers": [
+      "Zbog plave boje oceana",
+      "Zbog raspršenja plave svjetlosti u atmosferi",
+      "Zbog oblaka",
+      "Zato što Sunce svijetli plavo"
+    ],
+    "correct": 1
   },
   {
     "id": 11,
-    "question": "Koliko ima boja u dugi?",
-    "answers": ["5", "6", "7", "8"],
-    "correct": 2
+    "question": "Koji je jedini sisavac koji aktivno leti, a nije samo životinja koja klizi kroz zrak?",
+    "answers": [
+      "Vjeverica letjelica",
+      "Šišmiš",
+      "Lemur",
+      "Koala"
+    ],
+    "correct": 1
   },
   {
     "id": 12,
-    "question": "Koji je najbrži kopneni životinja?",
-    "answers": ["Lav", "Gepard", "Gazela", "Antilopa"],
+    "question": "Koji je metal tekuć na sobnoj temperaturi?",
+    "answers": [
+      "Bakar",
+      "Živa",
+      "Aluminij",
+      "Srebro"
+    ],
     "correct": 1
   },
   {
     "id": 13,
-    "question": "Na kojem kontinentu žive pingvini u divljini?",
-    "answers": ["Europa", "Azija", "Antarktika", "Sjeverna Amerika"],
-    "correct": 2
+    "question": "Koji plin u balonu čini da balon leti prema gore?",
+    "answers": [
+      "Helij",
+      "Kisik",
+      "Ugljikov dioksid",
+      "Dušik"
+    ],
+    "correct": 0
   },
   {
     "id": 14,
-    "question": "Koji je najdulji dan u godini na sjevernoj polutki?",
-    "answers": ["21. ožujka", "21. lipnja", "21. rujna", "21. prosinca"],
-    "correct": 1
+    "question": "Koja životinja može spavati tako da joj jedna polovica mozga ostane budna?",
+    "answers": [
+      "Delfin",
+      "Mačka",
+      "Kokoš",
+      "Medvjed"
+    ],
+    "correct": 0
   },
   {
     "id": 15,
-    "question": "Koliko nogu ima pauk?",
-    "answers": ["6", "8", "10", "12"],
+    "question": "Što je zapravo 'padajuća zvijezda'?",
+    "answers": [
+      "Zvijezda koja se ugasila",
+      "Mali komad svemirske stijene koji izgara u atmosferi",
+      "Planet koji pada",
+      "Kometa koja dodiruje Zemlju"
+    ],
     "correct": 1
   },
   {
     "id": 16,
-    "question": "Koji je glavni grad Francuske?",
-    "answers": ["Lyon", "Marseille", "Pariz", "Nice"],
-    "correct": 2
+    "question": "Koja je biljka botanički bliža bobici nego što većina ljudi misli?",
+    "answers": [
+      "Banana",
+      "Krumpir",
+      "Mrkva",
+      "Luk"
+    ],
+    "correct": 0
   },
   {
     "id": 17,
-    "question": "Tko je izumio žarulju?",
-    "answers": ["Nikola Tesla", "Thomas Edison", "Alexander Bell", "James Watt"],
+    "question": "Koja životinja najčešće 'pleše' kako bi drugim članovima zajednice pokazala gdje je hrana?",
+    "answers": [
+      "Mrav",
+      "Pčela",
+      "Vrabac",
+      "Žaba"
+    ],
     "correct": 1
   },
   {
     "id": 18,
-    "question": "Koja je najveća pustinja na svijetu?",
-    "answers": ["Gobi", "Sahara", "Antarktička", "Arabijska"],
-    "correct": 2
+    "question": "Što nastaje kad svjetlost promijeni smjer prolazeći iz zraka u vodu?",
+    "answers": [
+      "Magnetizam",
+      "Lom svjetlosti",
+      "Isparavanje",
+      "Elektriziranje"
+    ],
+    "correct": 1
   },
   {
     "id": 19,
-    "question": "Koliko planeta ima Sunčev sustav?",
-    "answers": ["7", "8", "9", "10"],
-    "correct": 1
+    "question": "Koji dio biljke najviše sudjeluje u fotosintezi?",
+    "answers": [
+      "Korijen",
+      "Cvijet",
+      "List",
+      "Sjemenka"
+    ],
+    "correct": 2
   },
   {
     "id": 20,
-    "question": "Koji je nacionalni park najstariji u Hrvatskoj?",
-    "answers": ["Krka", "Plitvička jezera", "Brijuni", "Paklenica"],
-    "correct": 1
+    "question": "Koja životinja ima najduži vrat, ali ima isti broj vratnih kralježaka kao čovjek?",
+    "answers": [
+      "Žirafa",
+      "Konj",
+      "Noj",
+      "Kamelopard"
+    ],
+    "correct": 0
   },
   {
     "id": 21,
-    "question": "Koja životinja je simbol WWF-a?",
-    "answers": ["Polarni medvjed", "Panda", "Tiger", "Slon"],
+    "question": "Što označava rimski broj XL?",
+    "answers": [
+      "60",
+      "40",
+      "90",
+      "15"
+    ],
     "correct": 1
   },
   {
     "id": 22,
-    "question": "Na kojem se kontinentu nalazi Amazonska prašuma?",
-    "answers": ["Afrika", "Azija", "Južna Amerika", "Australija"],
-    "correct": 2
+    "question": "Koji je rezultat zagonetke: tri svijeće gore, ugasiš jednu; nakon nekog vremena druge dvije izgore. Koliko svijeća ostane?",
+    "answers": [
+      "0",
+      "1",
+      "2",
+      "3"
+    ],
+    "correct": 1
   },
   {
     "id": 23,
-    "question": "Koliko ima slova u hrvatskom alfabetu?",
-    "answers": ["26", "27", "30", "32"],
-    "correct": 2
+    "question": "Otac i sin imaju zajedno 36 godina. Otac je 30 godina stariji od sina. Koliko godina ima sin?",
+    "answers": [
+      "3",
+      "5",
+      "6",
+      "8"
+    ],
+    "correct": 0
   },
   {
     "id": 24,
-    "question": "Koji je najveći sisavac na svijetu?",
-    "answers": ["Slon", "Plavi kit", "Žirafa", "Nilski konj"],
+    "question": "Koja riječ je palindrom, tj. čita se jednako slijeva i zdesna?",
+    "answers": [
+      "škola",
+      "radar",
+      "olovka",
+      "prozor"
+    ],
     "correct": 1
   },
   {
     "id": 25,
-    "question": "U kojoj godini je Hrvatska postala samostalna?",
-    "answers": ["1989.", "1990.", "1991.", "1992."],
-    "correct": 2
+    "question": "Ako je danas srijeda, koji će dan biti za 10 dana?",
+    "answers": [
+      "Petak",
+      "Subota",
+      "Nedjelja",
+      "Ponedjeljak"
+    ],
+    "correct": 1
   },
   {
     "id": 26,
-    "question": "Koji plin biljke proizvode fotosintezom?",
-    "answers": ["Ugljikov dioksid", "Dušik", "Kisik", "Vodik"],
+    "question": "Koji broj je djeljiv i s 3 i s 4?",
+    "answers": [
+      "18",
+      "20",
+      "24",
+      "25"
+    ],
     "correct": 2
   },
   {
     "id": 27,
-    "question": "Koji je poznati hrvatski izumitelj?",
-    "answers": ["Albert Einstein", "Nikola Tesla", "Ruđer Bošković", "Oba B i C"],
-    "correct": 3
+    "question": "Koji je najbliži veći cijeli broj od 7,99?",
+    "answers": [
+      "7",
+      "8",
+      "9",
+      "79"
+    ],
+    "correct": 1
   },
   {
     "id": 28,
-    "question": "Koja rijeka prolazi kroz Vukovar?",
-    "answers": ["Sava", "Drava", "Dunav", "Kupa"],
-    "correct": 2
+    "question": "Koji znak u matematici znači 'približno jednako'?",
+    "answers": [
+      "=",
+      "≈",
+      "≠",
+      ">"
+    ],
+    "correct": 1
   },
   {
     "id": 29,
-    "question": "Koliko minuta ima jedan sat?",
-    "answers": ["30", "45", "60", "90"],
-    "correct": 2
+    "question": "Ako sat pokazuje 15:45, koliko je to u uobičajenom govoru?",
+    "answers": [
+      "Tri i petnaest",
+      "Petnaest do četiri"",
+      "Pet i četrdeset pet",
+      "Pola četiri"
+    ],
+    "correct": 1
   },
   {
     "id": 30,
-    "question": "Koji je najmanji kontinent?",
-    "answers": ["Europa", "Antarktika", "Australija", "Južna Amerika"],
+    "question": "Koji geometrijski lik ima točno tri stranice?",
+    "answers": [
+      "Kvadrat",
+      "Trokut",
+      "Peterokut",
+      "Krug"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 31,
+    "question": "Što je teže: kilogram perja ili kilogram željeza?",
+    "answers": [
+      "Perje",
+      "Željezo",
+      "Jednako su teški",
+      "Ovisi o boji perja"
+    ],
     "correct": 2
+  },
+  {
+    "id": 32,
+    "question": "Koji se broj dobije ako rimskom broju IX dodaš I?",
+    "answers": [
+      "8",
+      "9",
+      "10",
+      "11"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 33,
+    "question": "Koji od ovih razlomaka je jednak jednoj polovini?",
+    "answers": [
+      "2/4",
+      "3/4",
+      "1/3",
+      "4/6"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 34,
+    "question": "Ako kocka ima 6 strana, koliko strana imaju dvije kocke zajedno?",
+    "answers": [
+      "8",
+      "10",
+      "12",
+      "14"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 35,
+    "question": "Koji je sljedeći broj u nizu: 2, 4, 8, 16, __?",
+    "answers": [
+      "20",
+      "24",
+      "30",
+      "32"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 36,
+    "question": "Koji grad je poznat po tornju koji se nagnuo, ali još stoji?",
+    "answers": [
+      "Pisa",
+      "Berlin",
+      "Beč",
+      "Oslo"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 37,
+    "question": "Koji jezik se najviše povezuje s rimskim brojevima i starim Rimom?",
+    "answers": [
+      "Latinski",
+      "Švedski",
+      "Japanski",
+      "Arapski"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 38,
+    "question": "Koja drevna građevina u Egiptu ima oblik velike kamene piramide?",
+    "answers": [
+      "Akropola",
+      "Keopsova piramida",
+      "Koloseum",
+      "Stonehenge"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 39,
+    "question": "Koji istraživač se najčešće povezuje s putovanjem u Ameriku 1492. godine?",
+    "answers": [
+      "Marco Polo",
+      "Kristofor Kolumbo",
+      "Isaac Newton",
+      "Galileo Galilei"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 40,
+    "question": "Koja je država poznata po samurajima, trešnjinom cvatu i planini Fuji?",
+    "answers": [
+      "Kina",
+      "Japan",
+      "Indija",
+      "Mongolija"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 41,
+    "question": "Koji se hrvatski izumitelj povezuje s padobranom u djelu 'Homo volans'?",
+    "answers": [
+      "Faust Vrančić",
+      "Nikola Tesla",
+      "Slavoljub Penkala",
+      "Ruđer Bošković"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 42,
+    "question": "Koji se izum najviše povezuje sa Slavoljubom Penkalom?",
+    "answers": [
+      "Nalivpero i mehanička olovka",
+      "Parni stroj",
+      "Radioaktivnost",
+      "Teleskop"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 43,
+    "question": "Koji je hrvatski grad poznat po Dioklecijanovoj palači?",
+    "answers": [
+      "Zadar",
+      "Split",
+      "Pula",
+      "Dubrovnik"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 44,
+    "question": "Koja arena u Hrvatskoj izgleda kao rimski amfiteatar?",
+    "answers": [
+      "Pulska Arena",
+      "Zagrebačka Arena",
+      "Dvorana Lisinski",
+      "Tvrđava Nehaj"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 45,
+    "question": "Koji kontinent nema stalno stanovništvo u gradovima kao ostali kontinenti?",
+    "answers": [
+      "Afrika",
+      "Antarktika",
+      "Europa",
+      "Azija"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 46,
+    "question": "Koji ocean dodiruje zapadnu obalu Europe?",
+    "answers": [
+      "Indijski ocean",
+      "Tihi ocean",
+      "Atlantski ocean",
+      "Južni ocean"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 47,
+    "question": "Koja pustinja je hladna i ledena, a ipak je najveća pustinja na svijetu?",
+    "answers": [
+      "Sahara",
+      "Gobi",
+      "Antarktika",
+      "Kalahari"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 48,
+    "question": "Koja rijeka teče kroz Osijek?",
+    "answers": [
+      "Drava",
+      "Kupa",
+      "Cetina",
+      "Mirna"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 49,
+    "question": "Koji hrvatski nacionalni park je poznat po slapovima rijeke Krke?",
+    "answers": [
+      "Brijuni",
+      "Krka",
+      "Risnjak",
+      "Mljet"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 50,
+    "question": "Koja je najviša planina na svijetu ako gledamo visinu iznad razine mora?",
+    "answers": [
+      "Kilimandžaro",
+      "Mont Blanc",
+      "Mount Everest",
+      "Velebit"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 51,
+    "question": "Koja životinja može promijeniti boju kože radi komunikacije i skrivanja?",
+    "answers": [
+      "Kameleon",
+      "Slon",
+      "Pas",
+      "Konj"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 52,
+    "question": "Koja ptica može okrenuti glavu vrlo daleko, ali ne punih 360 stupnjeva?",
+    "answers": [
+      "Sova",
+      "Golub",
+      "Vrabac",
+      "Kokoš"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 53,
+    "question": "Koja životinja ima crno-bijele pruge koje joj pomažu zbuniti grabežljivce i kukce?",
+    "answers": [
+      "Zebra",
+      "Tigar",
+      "Jazavac",
+      "Panda"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 54,
+    "question": "Koja morska životinja može pustiti oblak tinte da zbuni neprijatelja?",
+    "answers": [
+      "Sipa",
+      "Morska zvijezda",
+      "Meduza",
+      "Dupin"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 55,
+    "question": "Koja životinja ima najsporiji puls tijekom zimskog sna?",
+    "answers": [
+      "Medvjed",
+      "Zec",
+      "Vrana",
+      "Pijetao"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 56,
+    "question": "Koja ptica ne leti, ali je odličan plivač i živi u hladnim krajevima južne polutke?",
+    "answers": [
+      "Pingvin",
+      "Noj",
+      "Papiga",
+      "Galeb"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 57,
+    "question": "Koje se životinje orijentiraju pomoću eholokacije?",
+    "answers": [
+      "Šišmiši",
+      "Kornjače",
+      "Ovce",
+      "Pilići"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 58,
+    "question": "Koja životinja ima kljun kao patka, polaže jaja i ipak je sisavac?",
+    "answers": [
+      "Čudnovati kljunaš",
+      "Dabar",
+      "Vidra",
+      "Rakun"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 59,
+    "question": "Koja životinja ima otrovne žarne stanice na lovkama?",
+    "answers": [
+      "Meduza",
+      "Tuna",
+      "Morski konjic",
+      "Šaran"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 60,
+    "question": "Koja je najveća životinja koja je ikada živjela na Zemlji, koliko znamo?",
+    "answers": [
+      "Tiranosaur",
+      "Plavi kit",
+      "Afrički slon",
+      "Megalodon"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 61,
+    "question": "Koji se instrument koristi za gledanje vrlo sitnih stvari, poput stanica?",
+    "answers": [
+      "Teleskop",
+      "Mikroskop",
+      "Barometar",
+      "Kompas"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 62,
+    "question": "Koji se instrument koristi za gledanje udaljenih planeta i zvijezda?",
+    "answers": [
+      "Mikroskop",
+      "Teleskop",
+      "Termometar",
+      "Metronom"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 63,
+    "question": "Što mjeri termometar?",
+    "answers": [
+      "Masu",
+      "Temperaturu",
+      "Brzinu",
+      "Električni napon"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 64,
+    "question": "Zašto se metalna žlica u vrućem čaju zagrije?",
+    "answers": [
+      "Zbog provođenja topline",
+      "Zbog gravitacije",
+      "Zbog magnetizma",
+      "Zbog zvuka"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 65,
+    "question": "Zašto se led na vodi obično nalazi gore, a ne na dnu?",
+    "answers": [
+      "Led je gušći od vode",
+      "Led je manje gustoće od tekuće vode",
+      "Led je magnetičan",
+      "Led se lijepi za zrak"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 66,
+    "question": "Koji dio oka propušta svjetlost i može izgledati crno kao mala rupica?",
+    "answers": [
+      "Zjenica",
+      "Uho",
+      "Obrva",
+      "Nokat"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 67,
+    "question": "Koji organ najviše pumpa krv kroz tijelo?",
+    "answers": [
+      "Mozak",
+      "Srce",
+      "Pluća",
+      "Želudac"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 68,
+    "question": "Zašto štucamo?",
+    "answers": [
+      "Zbog naglog stezanja ošita",
+      "Zbog rasta kose",
+      "Zbog rada kostiju",
+      "Zbog treptanja očiju"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 69,
+    "question": "Koji je osnovni građevni dio živih bića?",
+    "answers": [
+      "Stanica",
+      "Kamenčić",
+      "Kristal soli",
+      "Kap vode"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 70,
+    "question": "Koji organ koristiš najviše kad rješavaš zagonetku?",
+    "answers": [
+      "Mozak",
+      "Jetru",
+      "Koljena",
+      "Laktove"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 71,
+    "question": "Koja rečenica najbolje opisuje toplinu?",
+    "answers": [
+      "Toplina je energija u prijelazu s toplijeg na hladnije tijelo",
+      "Toplina je boja tijela",
+      "Toplina je isto što i masa",
+      "Toplina postoji samo ljeti"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 72,
+    "question": "Što će se najvjerojatnije dogoditi s balonom ako ga staviš na jako hladno mjesto?",
+    "answers": [
+      "Malo će se smanjiti",
+      "Pretvorit će se u kamen",
+      "Postat će teži od olova",
+      "Počet će svijetliti"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 73,
+    "question": "Koji materijal najčešće privlači magnet?",
+    "answers": [
+      "Drvo",
+      "Plastika",
+      "Željezo",
+      "Staklo"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 74,
+    "question": "Koja je glavna uloga zaštitne ozonske ovojnice?",
+    "answers": [
+      "Zaustavlja dio štetnog UV zračenja",
+      "Stvara oblake od šećera",
+      "Povećava gravitaciju",
+      "Pretvara noć u dan"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 75,
+    "question": "Zašto astronaut u orbiti izgleda kao da lebdi?",
+    "answers": [
+      "Jer je u stalnom slobodnom padu oko Zemlje",
+      "Jer nema masu",
+      "Jer ga svemir gura gore",
+      "Jer mu odijelo ima krila"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 76,
+    "question": "Koja je najmanja kost u ljudskom tijelu?",
+    "answers": [
+      "Stremen u uhu",
+      "Bedrena kost",
+      "Lakatna kost",
+      "Rebro"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 77,
+    "question": "Koji jezik koristi riječ 'hej' slično kao hrvatski, ali ima slovo å?",
+    "answers": [
+      "Švedski",
+      "Latinski",
+      "Mađarski",
+      "Grčki"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 78,
+    "question": "Koji književni lik često kaže da je 'mali princ' s drugog planeta?",
+    "answers": [
+      "Mali princ",
+      "Pinokio",
+      "Hlapić",
+      "Harry Potter"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 79,
+    "question": "Koji znak najčešće pišemo na kraju upitne rečenice?",
+    "answers": [
+      "?",
+      "!",
+      ":",
+      ";"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 80,
+    "question": "Koja riječ označava osobu koja piše pjesme?",
+    "answers": [
+      "Pjesnik",
+      "Kovač",
+      "Pilot",
+      "Arhitekt"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 81,
+    "question": "U kojoj se bajci pojavljuje kućica od slatkiša?",
+    "answers": [
+      "Ivica i Marica",
+      "Pepeljuga",
+      "Snjeguljica",
+      "Mačak u čizmama"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 82,
+    "question": "Koja je od ovih riječi umanjenica?",
+    "answers": [
+      "kućica",
+      "kuća",
+      "zgrada",
+      "grad"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 83,
+    "question": "Koji je naziv za riječ suprotnog značenja, npr. dan — noć?",
+    "answers": [
+      "Antonim",
+      "Sinonim",
+      "Rima",
+      "Glagol"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 84,
+    "question": "Koja riječ najviše zvuči kao onomatopeja, tj. oponašanje zvuka?",
+    "answers": [
+      "bum",
+      "stol",
+      "plavo",
+      "visoko"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 85,
+    "question": "Koji je najpoznatiji čarobnjak iz knjiga J. K. Rowling?",
+    "answers": [
+      "Harry Potter",
+      "Sherlock Holmes",
+      "Robin Hood",
+      "Mowgli"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 86,
+    "question": "Koji se sport igra metlom i kamenjem na ledu?",
+    "answers": [
+      "Curling",
+      "Ragbi",
+      "Badminton",
+      "Vaterpolo"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 87,
+    "question": "U kojem sportu se koristi riječ 'mat' za kraj partije?",
+    "answers": [
+      "Šah",
+      "Nogomet",
+      "Skijanje",
+      "Plivanje"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 88,
+    "question": "Koji sport se igra u bazenu s loptom i golovima?",
+    "answers": [
+      "Vaterpolo",
+      "Hokej",
+      "Rukomet na pijesku",
+      "Stolni tenis"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 89,
+    "question": "Koji je predmet u igri badmintonu lagan i često ima perca?",
+    "answers": [
+      "Loptica za badminton",
+      "Pak",
+      "Kugla",
+      "Disk"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 90,
+    "question": "Koji sportaš koristi spravu koja se zove reket?",
+    "answers": [
+      "Tenisač",
+      "Ronilac",
+      "Boksač",
+      "Skakač u vis"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 91,
+    "question": "Koja hrana nastaje djelovanjem kvasca u tijestu?",
+    "answers": [
+      "Kruh",
+      "Led",
+      "Sol",
+      "Ulje"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 92,
+    "question": "Koja namirnica nastaje fermentacijom mlijeka i često sadrži dobre bakterije?",
+    "answers": [
+      "Jogurt",
+      "Šećer",
+      "Riža",
+      "Sol"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 93,
+    "question": "Koji začin se često dobiva iz kore drveta i miriše na kolače?",
+    "answers": [
+      "Cimet",
+      "Papar",
+      "Sol",
+      "Lovor"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 94,
+    "question": "Koje voće ima sjemenke izvana, iako ga ljudi često zovu bobičastim voćem?",
+    "answers": [
+      "Jagoda",
+      "Jabuka",
+      "Banana",
+      "Lubenica"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 95,
+    "question": "Koja tvar u ljutim papričicama stvara osjećaj pečenja?",
+    "answers": [
+      "Kapsaicin",
+      "Klorofil",
+      "Gluten",
+      "Laktoza"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 96,
+    "question": "Koji je najpoznatiji simbol za recikliranje?",
+    "answers": [
+      "Tri strelice u krugu",
+      "Crveno srce",
+      "Plavi trokut bez strelica",
+      "Zvjezdica"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 97,
+    "question": "Što je najbolje napraviti s baterijama koje se više ne mogu koristiti?",
+    "answers": [
+      "Odložiti ih u posebno mjesto za baterije",
+      "Baciti ih u prirodu",
+      "Spaliti ih u peći",
+      "Baciti ih u rijeku"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 98,
+    "question": "Koji izvor energije izravno koristi Sunčevu svjetlost?",
+    "answers": [
+      "Solarna ploča",
+      "Ugljen",
+      "Nafta",
+      "Plinska boca"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 99,
+    "question": "Koji je najpametniji način da se smanji potrošnja vode dok pereš zube?",
+    "answers": [
+      "Zatvoriti slavinu dok četkaš",
+      "Pustiti vodu jače",
+      "Koristiti dvije slavine",
+      "Prati zube samo ljeti"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 100,
+    "question": "Koji je najbolji opis znanstvenog pokusa?",
+    "answers": [
+      "Provjera ideje promatranjem i mjerenjem",
+      "Pogađanje bez provjere",
+      "Prepisivanje tuđeg odgovora",
+      "Čarolija bez pravila"
+    ],
+    "correct": 0
   }
 ]

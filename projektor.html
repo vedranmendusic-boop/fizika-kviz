@@ -41,26 +41,21 @@
       content: '';
       position: fixed; inset: 0;
       background:
-        radial-gradient(ellipse 800px 600px at 15% 30%, rgba(0,212,255,.05), transparent),
-        radial-gradient(ellipse 600px 600px at 85% 70%, rgba(46,232,123,.03), transparent);
+        radial-gradient(ellipse 800px 600px at 10% 30%, rgba(0,212,255,.05), transparent),
+        radial-gradient(ellipse 600px 600px at 90% 70%, rgba(46,232,123,.03), transparent);
       pointer-events: none; z-index: 0;
     }
 
-    h1,h2,h3 {
-      font-family: var(--font-display);
-      letter-spacing: .04em;
-      text-transform: uppercase;
-    }
+    h1,h2,h3 { font-family: var(--font-display); letter-spacing: .04em; text-transform: uppercase; }
 
     /* ============================================
-       LAYOUT: 3 zone
-       Top-left:  info panel (pravila + QR)
-       Top-right: DVA leaderboarda side by side
-       Bottom:    zanimljivosti traka
+       LAYOUT:
+       Left panel (info) | 3 leaderboard columns
+       Bottom: fact strip
        ============================================ */
     .projector-layout {
       display: grid;
-      grid-template-columns: 370px 1fr;
+      grid-template-columns: 340px 1fr;
       grid-template-rows: 1fr auto;
       height: 100vh;
       position: relative;
@@ -71,98 +66,95 @@
     .left-panel {
       display: flex;
       flex-direction: column;
-      padding: 32px 32px 24px;
+      padding: 28px 28px 20px;
       border-right: 1px solid var(--border);
       background: rgba(0,0,0,.2);
       grid-row: 1;
     }
 
-    /* Škola + logo */
     .school-name {
       font-family: var(--font-display);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.12em;
       text-align: center;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
 
-    .logo-area { text-align: center; margin-bottom: 24px; }
+    .logo-area { text-align: center; margin-bottom: 20px; }
 
     .logo-icon {
-      font-size: 3rem; display: block; margin-bottom: 8px;
+      font-size: 2.8rem; display: block; margin-bottom: 6px;
       filter: drop-shadow(0 0 24px var(--accent-glow));
       animation: float 3s ease-in-out infinite;
     }
     @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
 
     .logo-title {
-      font-size: 1.5rem; color: var(--accent);
+      font-size: 1.4rem; color: var(--accent);
       text-shadow: 0 0 40px var(--accent-glow); line-height: 1.2;
     }
 
     .logo-subtitle {
-      font-size: .75rem; color: var(--text-secondary);
-      margin-top: 3px; font-family: var(--font-body);
-      text-transform: none; letter-spacing: 0;
+      font-size: .7rem; color: var(--text-secondary);
+      margin-top: 2px; font-family: var(--font-body);
+      text-transform: none;
     }
 
-    /* Pravila */
-    .rules-section { margin-bottom: 20px; }
+    .rules-section { margin-bottom: 16px; }
 
     .rules-title {
-      font-size: .9rem; color: var(--accent);
-      margin-bottom: 14px; letter-spacing: .12em;
+      font-size: .85rem; color: var(--accent);
+      margin-bottom: 12px; letter-spacing: .12em;
     }
 
-    .rule-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+    .rule-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
 
     .rule-number {
-      flex-shrink: 0; width: 32px; height: 32px;
+      flex-shrink: 0; width: 30px; height: 30px;
       display: flex; align-items: center; justify-content: center;
       border-radius: 7px;
-      font-family: var(--font-display); font-size: .75rem; font-weight: 700;
+      font-family: var(--font-display); font-size: .7rem; font-weight: 700;
       background: rgba(0,212,255,.1); color: var(--accent);
       border: 1px solid rgba(0,212,255,.2);
     }
 
-    .rule-text { font-size: 1.15rem; line-height: 1.45; padding-top: 2px; }
+    .rule-text { font-size: 1.05rem; line-height: 1.4; padding-top: 2px; }
     .rule-text strong { color: var(--accent); }
 
-    /* QR */
     .qr-section {
-      margin-top: auto; text-align: center; padding: 18px;
+      margin-top: auto; text-align: center; padding: 16px;
       background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
     }
 
     .qr-label {
-      font-family: var(--font-display); font-size: .65rem;
+      font-family: var(--font-display); font-size: .6rem;
       color: var(--accent); text-transform: uppercase;
-      letter-spacing: .12em; margin-bottom: 10px;
+      letter-spacing: .12em; margin-bottom: 8px;
     }
 
     .qr-placeholder {
-      width: 150px; height: 150px; margin: 0 auto 8px;
+      width: 140px; height: 140px; margin: 0 auto 6px;
       background: white; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center; padding: 6px;
+      display: flex; align-items: center; justify-content: center; padding: 5px;
     }
 
     .qr-placeholder img { width:100%; height:100%; object-fit:contain; }
 
     .qr-fallback {
-      font-family: var(--font-display); font-size: .45rem;
+      font-family: var(--font-display); font-size: .4rem;
       color: #333; text-align: center; word-break: break-all; padding: 8px;
     }
 
-    .qr-url { font-size: .7rem; color: var(--text-secondary); word-break: break-all; }
+    .qr-url { font-size: .65rem; color: var(--text-secondary); word-break: break-all; }
 
-    /* --- DESNI PANEL: DVA LEADERBOARDA --- */
+    /* --- DESNI PANEL: 3 LEADERBOARDA --- */
     .right-panel {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      padding: 32px 36px 16px;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      padding: 28px 24px 12px;
       overflow: hidden;
       grid-row: 1;
     }
@@ -175,44 +167,44 @@
 
     .lb-heading {
       display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
-    .lb-heading h2 { font-size: 1.5rem; }
+    .lb-heading h2 { font-size: 1.1rem; }
 
-    .lb-cat-icon { font-size: 1.8rem; }
+    .lb-cat-icon { font-size: 1.4rem; }
 
     .live-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: .65rem; color: var(--success);
-      font-family: var(--font-display); letter-spacing: .05em;
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: .55rem; color: var(--success);
+      font-family: var(--font-display);
     }
 
     .live-dot {
-      width: 8px; height: 8px; background: var(--success);
+      width: 7px; height: 7px; background: var(--success);
       border-radius: 50%; animation: pulse 1.5s ease-in-out infinite;
     }
     @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
 
-    /* Tablica — kompaktnija, veći font */
+    /* Tablica */
     .lb-table { flex: 1; display: flex; flex-direction: column; }
 
     .lb-row {
       display: grid;
-      grid-template-columns: 52px 1fr 80px 120px;
+      grid-template-columns: 42px 1fr 56px 90px;
       align-items: center;
-      padding: 0 14px;
-      height: 58px;
+      padding: 0 10px;
+      height: 52px;
       border-bottom: 1px solid var(--border);
     }
 
     .lb-row.header {
-      height: 34px;
-      font-family: var(--font-display); font-size: .6rem;
+      height: 30px;
+      font-family: var(--font-display); font-size: .5rem;
       color: var(--text-muted); text-transform: uppercase;
-      letter-spacing: .1em;
+      letter-spacing: .08em;
       background: rgba(0,0,0,.15);
-      border-radius: 8px 8px 0 0;
+      border-radius: 6px 6px 0 0;
     }
 
     .lb-row:last-child { border-bottom: none; }
@@ -225,45 +217,45 @@
     .lb-row.rank-2 { border-left-color: var(--silver); background: linear-gradient(90deg, rgba(192,192,192,.04), var(--bg-card)); }
     .lb-row.rank-3 { border-left-color: var(--bronze); background: linear-gradient(90deg, rgba(205,127,50,.04), var(--bg-card)); }
 
-    .lb-rank { font-family: var(--font-display); font-size: 1.3rem; text-align: center; }
-    .rank-1 .lb-rank { color: var(--gold); font-size: 1.6rem; }
-    .rank-2 .lb-rank { color: var(--silver); font-size: 1.5rem; }
-    .rank-3 .lb-rank { color: var(--bronze); font-size: 1.4rem; }
+    .lb-rank { font-family: var(--font-display); font-size: 1.1rem; text-align: center; }
+    .rank-1 .lb-rank { color: var(--gold); font-size: 1.3rem; }
+    .rank-2 .lb-rank { color: var(--silver); font-size: 1.2rem; }
+    .rank-3 .lb-rank { color: var(--bronze); font-size: 1.1rem; }
 
     .lb-name {
-      font-size: 1.4rem; font-weight: 800;
+      font-size: 1.15rem; font-weight: 800;
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
       padding-left: 4px;
     }
 
     .lb-score {
-      font-family: var(--font-display); font-size: 1.25rem;
+      font-family: var(--font-display); font-size: .95rem;
       color: var(--accent); text-align: right;
     }
 
     .lb-time {
       font-family: var(--font-display);
-      font-size: 1.15rem;
+      font-size: .9rem;
       color: var(--text-secondary);
       text-align: right;
     }
 
-    .lb-time .ms { font-size: .85rem; color: var(--text-muted); }
+    .lb-time .ms { font-size: .65rem; color: var(--text-muted); }
 
-    .lb-empty { text-align: center; padding: 40px 10px; color: var(--text-muted); font-size: 1.1rem; }
+    .lb-empty { text-align: center; padding: 30px 8px; color: var(--text-muted); font-size: .95rem; }
 
     .lb-row.new-entry { animation: slideIn .5s ease; }
-    @keyframes slideIn { 0%{opacity:0;transform:translateX(20px)} 100%{opacity:1;transform:translateX(0)} }
+    @keyframes slideIn { 0%{opacity:0;transform:translateX(15px)} 100%{opacity:1;transform:translateX(0)} }
 
     /* Sat */
     .clock {
-      position: fixed; top: 12px; right: 20px;
-      font-family: var(--font-display); font-size: .85rem;
+      position: fixed; top: 10px; right: 18px;
+      font-family: var(--font-display); font-size: .8rem;
       color: var(--text-muted); z-index: 10;
     }
 
     /* ============================================
-       DONJA TRAKA — ZANIMLJIVOSTI (veća)
+       DONJA TRAKA — ZANIMLJIVOSTI
        ============================================ */
     .fact-strip {
       grid-column: 1 / -1;
@@ -290,85 +282,52 @@
       height: 100%;
       background: linear-gradient(90deg, var(--accent), var(--success));
       border-radius: 0 2px 2px 0;
-      width: 100%;
-      transform-origin: left;
+      width: 100%; transform-origin: left;
     }
 
     .fact-strip-progress-fill.animate {
       animation: factTimer 20s linear forwards;
     }
 
-    @keyframes factTimer {
-      0% { transform: scaleX(0); }
-      100% { transform: scaleX(1); }
-    }
+    @keyframes factTimer { 0%{transform:scaleX(0)} 100%{transform:scaleX(1)} }
 
-    .fact-icon {
-      font-size: 5rem;
-      flex-shrink: 0;
-      width: 90px;
-      text-align: center;
-    }
+    .fact-icon { font-size: 5rem; flex-shrink: 0; width: 90px; text-align: center; }
 
     .fact-content { flex: 1; min-width: 0; }
 
     .fact-label-title {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 8px;
+      display: flex; align-items: center; gap: 14px; margin-bottom: 8px;
     }
 
     .fact-label {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: .12em;
+      font-family: var(--font-display); font-size: 1rem;
+      color: var(--accent); text-transform: uppercase; letter-spacing: .12em;
     }
 
     .fact-title {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      color: var(--accent);
-      text-transform: uppercase;
+      font-family: var(--font-display); font-size: 1.4rem;
+      color: var(--accent); text-transform: uppercase;
     }
 
-    .fact-text {
-      font-size: 1.9rem;
-      line-height: 1.35;
-      color: var(--text-primary);
-    }
+    .fact-text { font-size: 1.9rem; line-height: 1.35; color: var(--text-primary); }
 
     .fact-content-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      flex: 1;
-      min-width: 0;
+      display: flex; align-items: center; gap: 32px;
+      flex: 1; min-width: 0;
       transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
-    .fact-content-wrapper.fade-out {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-
-    .fact-content-wrapper.fade-in {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .fact-content-wrapper.fade-out { opacity: 0; transform: translateY(10px); }
+    .fact-content-wrapper.fade-in { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
 
   <div class="projector-layout">
 
-    <!-- ========== LIJEVI PANEL ========== -->
+    <!-- LIJEVI PANEL -->
     <div class="left-panel">
-
       <div class="school-name">OŠ Zrinskih Nuštar</div>
-
       <div class="logo-area">
         <span class="logo-icon">🏫</span>
         <h1 class="logo-title">Kviz<br/>Challenge</h1>
@@ -383,15 +342,15 @@
         </div>
         <div class="rule-item">
           <span class="rule-number">2</span>
-          <span class="rule-text">Odaberi <strong>Fiziku</strong> ili <strong>Opće znanje</strong></span>
+          <span class="rule-text">Odaberi <strong>kategoriju</strong></span>
         </div>
         <div class="rule-item">
           <span class="rule-number">3</span>
-          <span class="rule-text">Odgovori na <strong>10 pitanja</strong> što brže!</span>
+          <span class="rule-text">Odgovori na <strong>20 pitanja</strong> što brže!</span>
         </div>
         <div class="rule-item">
           <span class="rule-number">4</span>
-          <span class="rule-text">Upiši ime i gledaj svoju poziciju na <strong>rang-listi</strong>!</span>
+          <span class="rule-text">Upiši ime i prati svoju <strong>poziciju</strong>!</span>
         </div>
       </div>
 
@@ -402,37 +361,38 @@
         </div>
         <div class="qr-url" id="qr-url-display"></div>
       </div>
-
     </div>
 
-    <!-- ========== DESNI PANEL: DVA LEADERBOARDA ========== -->
+    <!-- 3 LEADERBOARDA -->
     <div class="right-panel">
 
-      <!-- Fizika -->
       <div class="lb-column">
         <div class="lb-heading">
-          <h2><span class="lb-cat-icon">⚛️</span> Fizika</h2>
+          <h2><span class="lb-cat-icon">⚛️</span> Fizika 7</h2>
           <div class="live-badge"><span class="live-dot"></span> LIVE</div>
         </div>
-        <div class="lb-table" id="lb-fizika">
-          <div class="lb-empty">Čekam rezultate…</div>
-        </div>
+        <div class="lb-table" id="lb-fizika7"><div class="lb-empty">Čekam rezultate…</div></div>
       </div>
 
-      <!-- Opće znanje -->
       <div class="lb-column">
         <div class="lb-heading">
-          <h2><span class="lb-cat-icon">🧠</span> Opće znanje</h2>
+          <h2><span class="lb-cat-icon">🔬</span> Fizika 8</h2>
           <div class="live-badge"><span class="live-dot"></span> LIVE</div>
         </div>
-        <div class="lb-table" id="lb-opce">
-          <div class="lb-empty">Čekam rezultate…</div>
+        <div class="lb-table" id="lb-fizika8"><div class="lb-empty">Čekam rezultate…</div></div>
+      </div>
+
+      <div class="lb-column">
+        <div class="lb-heading">
+          <h2><span class="lb-cat-icon">🧠</span> Opće zn.</h2>
+          <div class="live-badge"><span class="live-dot"></span> LIVE</div>
         </div>
+        <div class="lb-table" id="lb-opce"><div class="lb-empty">Čekam rezultate…</div></div>
       </div>
 
     </div>
 
-    <!-- ========== DONJA TRAKA: ZANIMLJIVOSTI ========== -->
+    <!-- ZANIMLJIVOSTI -->
     <div class="fact-strip">
       <div class="fact-strip-progress">
         <div class="fact-strip-progress-fill" id="fact-progress"></div>
@@ -476,9 +436,7 @@
 
     const QUIZ_URL = "https://vedranmendusic-boop.github.io/fizika-kviz/index.html";
 
-    // ============================================
     // ZANIMLJIVOSTI
-    // ============================================
     const FACTS = [
       { icon: "👻", title: "Neutrino", text: "Kroz tvoje tijelo svake sekunde prolaze milijarde sićušnih čestica zvanih neutrini, a da ti to uopće ne osjetiš!" },
       { icon: "🕳️", title: "Crna rupa", text: "Crna rupa nije rupa u svemiru, nego područje s toliko jakom gravitacijom da čak ni svjetlost ne može pobjeći!" },
@@ -512,155 +470,78 @@
       { icon: "🫧", title: "Vakuum", text: "Čak i 'prazan prostor' u modernoj fizici nije potpuno prazan — u njemu se događaju sitne promjene energije!" },
     ];
 
-    function shuffle(arr) {
-      const a = [...arr];
-      for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-      }
-      return a;
+    function shuffle(a) {
+      const b=[...a]; for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];} return b;
     }
 
-    // Facts rotacija
-    const $factWrapper  = document.getElementById("fact-wrapper");
-    const $factIcon     = document.getElementById("fact-icon");
-    const $factTitle    = document.getElementById("fact-title");
-    const $factText     = document.getElementById("fact-text");
-    const $factProgress = document.getElementById("fact-progress");
+    const $fw=document.getElementById("fact-wrapper"), $fi=document.getElementById("fact-icon"),
+          $ft=document.getElementById("fact-title"), $fx=document.getElementById("fact-text"),
+          $fp=document.getElementById("fact-progress");
 
-    let shuffledFacts = shuffle(FACTS);
-    let factIndex = 0;
+    let sf=shuffle(FACTS), fi=0;
 
-    function showNextFact() {
-      if (factIndex >= shuffledFacts.length) {
-        shuffledFacts = shuffle(FACTS);
-        factIndex = 0;
-      }
-
-      $factWrapper.classList.remove("fade-in");
-      $factWrapper.classList.add("fade-out");
-
-      setTimeout(() => {
-        const fact = shuffledFacts[factIndex++];
-        $factIcon.textContent = fact.icon;
-        $factTitle.textContent = fact.title;
-        $factText.textContent = fact.text;
-        $factWrapper.classList.remove("fade-out");
-        $factWrapper.classList.add("fade-in");
-        $factProgress.classList.remove("animate");
-        $factProgress.offsetHeight;
-        $factProgress.classList.add("animate");
-      }, 500);
+    function showNextFact(){
+      if(fi>=sf.length){sf=shuffle(FACTS);fi=0;}
+      $fw.classList.remove("fade-in");$fw.classList.add("fade-out");
+      setTimeout(()=>{
+        const f=sf[fi++];
+        $fi.textContent=f.icon;$ft.textContent=f.title;$fx.textContent=f.text;
+        $fw.classList.remove("fade-out");$fw.classList.add("fade-in");
+        $fp.classList.remove("animate");$fp.offsetHeight;$fp.classList.add("animate");
+      },500);
     }
-
-    showNextFact();
-    setInterval(showNextFact, 20000);
+    showNextFact(); setInterval(showNextFact,20000);
 
     // QR
-    const $qrContainer = document.getElementById("qr-container");
-    const $qrFallback  = document.getElementById("qr-fallback");
-    const $qrUrl       = document.getElementById("qr-url-display");
-
-    (function generateQR() {
-      const url = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(QUIZ_URL)}`;
-      const img = new Image();
-      img.src = url;
-      img.alt = "QR";
-      img.style.cssText = "width:100%;height:100%;object-fit:contain";
-      img.onload = () => { $qrFallback.remove(); $qrContainer.appendChild(img); };
-      img.onerror = () => { $qrFallback.textContent = QUIZ_URL; };
-      $qrUrl.textContent = QUIZ_URL;
+    (()=>{
+      const c=document.getElementById("qr-container"),fb=document.getElementById("qr-fallback"),u=document.getElementById("qr-url-display");
+      const img=new Image();
+      img.src=`https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(QUIZ_URL)}`;
+      img.alt="QR";img.style.cssText="width:100%;height:100%;object-fit:contain";
+      img.onload=()=>{fb.remove();c.appendChild(img);};
+      img.onerror=()=>{fb.textContent=QUIZ_URL;};
+      u.textContent=QUIZ_URL;
     })();
 
     // Sat
-    const $clock = document.getElementById("clock");
-    function updateClock() {
-      $clock.textContent = new Date().toLocaleTimeString("hr-HR", { hour:"2-digit", minute:"2-digit" });
-    }
-    updateClock();
-    setInterval(updateClock, 10000);
+    const $cl=document.getElementById("clock");
+    function uc(){$cl.textContent=new Date().toLocaleTimeString("hr-HR",{hour:"2-digit",minute:"2-digit"});}
+    uc();setInterval(uc,10000);
 
-    // ============================================
-    // LEADERBOARD — obje kategorije
-    // ============================================
-    const $lbFizika = document.getElementById("lb-fizika");
-    const $lbOpce   = document.getElementById("lb-opce");
-
-    function formatTime(ms) {
-      const t = Math.max(0, Math.floor(ms));
-      const m = Math.floor(t / 60000);
-      const s = String(Math.floor((t % 60000) / 1000)).padStart(2, "0");
-      const mil = String(t % 1000).padStart(3, "0");
+    // LEADERBOARD
+    function fmtTime(ms){
+      const t=Math.max(0,Math.floor(ms)),m=Math.floor(t/60000),
+        s=String(Math.floor((t%60000)/1000)).padStart(2,"0"),
+        mil=String(t%1000).padStart(3,"0");
       return `${m}:${s}<span class="ms">.${mil}</span>`;
     }
+    function rd(p){return p===1?"🥇":p===2?"🥈":p===3?"🥉":p+".";}
+    function eh(s){const d=document.createElement("div");d.textContent=s;return d.innerHTML;}
+    function sr(r){return r.sort((a,b)=>b.score!==a.score?b.score-a.score:(a.timeMs||0)-(b.timeMs||0));}
 
-    function rankDisplay(pos) {
-      if (pos === 1) return "🥇";
-      if (pos === 2) return "🥈";
-      if (pos === 3) return "🥉";
-      return pos + ".";
-    }
-
-    function escapeHtml(str) {
-      const d = document.createElement("div");
-      d.textContent = str;
-      return d.innerHTML;
-    }
-
-    function sortResults(r) {
-      return r.sort((a, b) => b.score !== a.score ? b.score - a.score : (a.timeMs||0) - (b.timeMs||0));
-    }
-
-    function renderLB($el, results) {
-      if (!results.length) {
-        $el.innerHTML = `<div class="lb-empty">Čekam rezultate…</div>`;
-        return;
-      }
-
-      const sorted = sortResults(results).slice(0, 10);
-      let html = `
-        <div class="lb-row header">
-          <span style="text-align:center">#</span>
-          <span>Ime</span>
-          <span style="text-align:right">Bod.</span>
-          <span style="text-align:right">Vrijeme</span>
-        </div>
-      `;
-
-      sorted.forEach((e, i) => {
-        const rank = i + 1;
-        const rc = rank <= 3 ? ` rank-${rank}` : "";
-        html += `
-          <div class="lb-row new-entry${rc}">
-            <span class="lb-rank">${rankDisplay(rank)}</span>
-            <span class="lb-name">${escapeHtml(e.name)}</span>
-            <span class="lb-score">${e.score}/10</span>
-            <span class="lb-time">${formatTime(e.timeMs || 0)}</span>
-          </div>`;
+    function renderLB($el,results){
+      if(!results.length){$el.innerHTML=`<div class="lb-empty">Čekam rezultate…</div>`;return;}
+      const sorted=sr(results).slice(0,10);
+      let h=`<div class="lb-row header"><span style="text-align:center">#</span><span>Ime</span><span style="text-align:right">Bod.</span><span style="text-align:right">Vrijeme</span></div>`;
+      sorted.forEach((e,i)=>{
+        const r=i+1,rc=r<=3?` rank-${r}`:"";
+        h+=`<div class="lb-row new-entry${rc}"><span class="lb-rank">${rd(r)}</span><span class="lb-name">${eh(e.name)}</span><span class="lb-score">${e.score}/20</span><span class="lb-time">${fmtTime(e.timeMs||0)}</span></div>`;
       });
-
-      $el.innerHTML = html;
+      $el.innerHTML=h;
     }
 
-    function listenCategory(path, $el) {
-      const q = query(ref(db, path), orderByChild("score"), limitToLast(50));
-      onValue(q, (snap) => {
-        const r = [];
-        snap.forEach(c => r.push({ id: c.key, ...c.val() }));
-        renderLB($el, r);
-      }, (err) => {
-        $el.innerHTML = `<div class="lb-empty">Greška.</div>`;
-      });
+    function listen(path,$el){
+      const q=query(ref(db,path),orderByChild("score"),limitToLast(50));
+      onValue(q,(snap)=>{const r=[];snap.forEach(c=>r.push({id:c.key,...c.val()}));renderLB($el,r);},
+        ()=>{$el.innerHTML=`<div class="lb-empty">Greška.</div>`;});
     }
 
-    async function init() {
-      try { await signInAnonymously(auth); }
-      catch { $lbFizika.innerHTML = `<div class="lb-empty">Auth greška.</div>`; return; }
-
-      listenCategory("results/fizika", $lbFizika);
-      listenCategory("results/opce", $lbOpce);
+    async function init(){
+      try{await signInAnonymously(auth);}catch{return;}
+      listen("results/fizika7",document.getElementById("lb-fizika7"));
+      listen("results/fizika8",document.getElementById("lb-fizika8"));
+      listen("results/opce",document.getElementById("lb-opce"));
     }
-
     init();
   </script>
 </body>

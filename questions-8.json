@@ -1,0 +1,1102 @@
+[
+  {
+    "id": 1,
+    "question": "Balon protrljan o kosu zalijepi se za zid. Što se najvjerojatnije dogodilo?",
+    "answers": [
+      "Zid je počeo proizvoditi struju",
+      "Balon je postao topliji od zida",
+      "Balon je postao magnet",
+      "Balon se električki nabio"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 2,
+    "question": "Dva jednako električki nabijena balona vise jedan pokraj drugoga. Što će se najčešće dogoditi?",
+    "answers": [
+      "Odbijat će se",
+      "Postat će neutralni bez dodira",
+      "Počet će svijetliti",
+      "Privlačit će se kao magneti"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 3,
+    "question": "Što je električna struja u metalnoj žici?",
+    "answers": [
+      "Gibanje molekula zraka kroz žicu",
+      "Titranje magneta u bateriji",
+      "Tekućina koja prolazi kroz bakar",
+      "Usmjereno gibanje elektrona"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 4,
+    "question": "Koja je osnovna mjerna jedinica za jakost električne struje?",
+    "answers": [
+      "vat",
+      "amper",
+      "volt",
+      "om"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 5,
+    "question": "Koja je osnovna mjerna jedinica za električni napon?",
+    "answers": [
+      "amper",
+      "om",
+      "newton",
+      "volt"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 6,
+    "question": "Što baterija radi u jednostavnom strujnom krugu?",
+    "answers": [
+      "Troši žarulju da bi nastala struja",
+      "Razdvaja naboje i stvara napon",
+      "Pretvara sve metale u magnete",
+      "Stvara elektrone iz ničega"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 7,
+    "question": "Ako iz serijskog spoja izvadiš jednu žaruljicu, što se događa s ostalima?",
+    "answers": [
+      "Uglavnom se sve ugase",
+      "Sve mijenjaju boju",
+      "Samo baterija prestaje postojati",
+      "Sve svijetle jače"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 8,
+    "question": "Zašto se u paralelnom spoju jedna žaruljica može ugasiti, a druge i dalje svijetle?",
+    "answers": [
+      "Svaka grana ima svoj put struje",
+      "Jer žaruljice same proizvode napon",
+      "Jer struja uvijek preskače kvar",
+      "Jer paralelni spoj nema bateriju"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 9,
+    "question": "Koji je od ovih materijala dobar električni vodič?",
+    "answers": [
+      "bakar",
+      "suho drvo",
+      "guma",
+      "plastika"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 10,
+    "question": "Zašto su električne žice često obložene plastikom?",
+    "answers": [
+      "Plastika pretvara struju u svjetlost",
+      "Plastika je izolator i štiti od dodira vodiča",
+      "Plastika povećava brzinu elektrona",
+      "Plastika hladi bateriju na nulu"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 11,
+    "question": "Koji uređaj najjasnije pokazuje toplinski učinak električne struje?",
+    "answers": [
+      "zrcalo",
+      "toster",
+      "pješčani sat",
+      "kompas"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 12,
+    "question": "Kako najlakše napraviš jednostavan elektromagnet?",
+    "answers": [
+      "Zalijepiš magnet na plastičnu žlicu",
+      "Staviš čavao u čašu vode",
+      "Omotaš žicu oko čavla i spojiš je na bateriju",
+      "Ohladiš gumicu u zamrzivaču"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 13,
+    "question": "Zašto se igla kompasa okreće prema sjeveru?",
+    "answers": [
+      "Zbog gravitacije Mjeseca",
+      "Zbog Sunčeve svjetlosti",
+      "Zbog električne utičnice u blizini škole",
+      "Zbog Zemljina magnetskog polja"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 14,
+    "question": "Što se događa kada približiš dva jednaka pola magneta?",
+    "answers": [
+      "Uvijek se spoje",
+      "Odbijaju se",
+      "Počinju se vrtjeti oko Sunca",
+      "Nestanu im polovi"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 15,
+    "question": "Kako možeš pojačati elektromagnet u školskom pokusu?",
+    "answers": [
+      "Staviti ga u mrak",
+      "Povećati broj namotaja žice",
+      "Smanjiti struju na nulu",
+      "Zamijeniti žicu koncem"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 16,
+    "question": "Što je elektromagnetska indukcija u najjednostavnijem opisu?",
+    "answers": [
+      "Pretvaranje zvuka u sjenu",
+      "Nastanak napona promjenom magnetskog polja",
+      "Hlađenje žice zbog svjetlosti",
+      "Nestanak mase u magnetu"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 17,
+    "question": "Električni otpor vodiča govori nam koliko vodič...",
+    "answers": [
+      "mjeri vrijeme",
+      "proizvodi svjetlost bez izvora",
+      "otežava prolazak električne struje",
+      "privlači papir"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 18,
+    "question": "Koja formula najbolje opisuje Ohmov zakon?",
+    "answers": [
+      "v = s / t",
+      "p = F / A",
+      "F = m · a",
+      "I = U / R"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 19,
+    "question": "Ako se napon na istom otporniku udvostruči, što se događa sa strujom?",
+    "answers": [
+      "Struja se prepolovi",
+      "Struja se udvostruči",
+      "Otpor nestane",
+      "Struja postane nula"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 20,
+    "question": "Koja je mjerna jedinica za električnu snagu?",
+    "answers": [
+      "volt",
+      "sekunda",
+      "vat",
+      "kilogram"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 21,
+    "question": "Što na računu za struju najčešće označava kWh?",
+    "answers": [
+      "Potrošenu električnu energiju",
+      "Temperaturu žarulje",
+      "Jakost struje u utičnici",
+      "Mjeru za duljinu kabla"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 22,
+    "question": "Koja žarulja troši veću snagu ako obje rade normalno?",
+    "answers": [
+      "Obje nužno troše 1 W",
+      "100 W žarulja",
+      "60 W žarulja",
+      "Ona koja je bliže prozoru"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 23,
+    "question": "Zašto osigurač ili automatska sklopka prekida strujni krug?",
+    "answers": [
+      "Da baterija postane magnet",
+      "Da pojača internet",
+      "Da žarulje budu plavije",
+      "Da spriječi preveliku struju i pregrijavanje"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 24,
+    "question": "Zašto je opasno dirati električne uređaje mokrim rukama?",
+    "answers": [
+      "Voda uvijek gasi elektrone",
+      "Mokra ruka nema masu",
+      "Mokra koža bolje provodi struju",
+      "Napon se tada pretvara u zvuk"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 25,
+    "question": "Zašto ptica često može stajati na jednoj električnoj žici bez strujnog udara?",
+    "answers": [
+      "Nema velike razlike napona između njezinih nogu",
+      "Perje je uvijek supervodič",
+      "Ptice nemaju električni naboj",
+      "Žica zna da je ptica lagana"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 26,
+    "question": "Mala iskra kad dotakneš kvaku nakon hodanja po tepihu primjer je...",
+    "answers": [
+      "loma svjetlosti",
+      "slobodnog pada",
+      "paralelnog spoja",
+      "električnog pražnjenja"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 27,
+    "question": "Munja je u osnovi golemi primjer...",
+    "answers": [
+      "električnog pražnjenja u atmosferi",
+      "ravnog zrcala",
+      "zvučne izolacije",
+      "mehaničke poluge"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 28,
+    "question": "Dogovoreni smjer električne struje u vanjskom dijelu strujnog kruga ide...",
+    "answers": [
+      "od minusa prema plusu",
+      "uvijek prema sjeveru",
+      "uvijek u krug bez izvora",
+      "od plusa prema minusu"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 29,
+    "question": "Zašto je stara baterija slabija u uređaju?",
+    "answers": [
+      "U njoj se stvori više gravitacije",
+      "Struja se pretvori u boju",
+      "Bakar u njoj postane plastika",
+      "Teže održava potreban napon i energiju"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 30,
+    "question": "Kad dvije jednake baterije spojiš serijski, što se najčešće poveća?",
+    "answers": [
+      "ukupni napon",
+      "masa elektrona",
+      "broj magnetskih polova Zemlje",
+      "duljina žarulje"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 31,
+    "question": "Kako se računa srednja brzina?",
+    "answers": [
+      "ukupni put podijeljen ukupnim vremenom",
+      "sila podijeljena površinom",
+      "masa pomnožena naponom",
+      "ukupno vrijeme podijeljeno putem"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 32,
+    "question": "Koja je mjerna jedinica za brzinu u SI sustavu?",
+    "answers": [
+      "kg/m³",
+      "N/m²",
+      "m/s",
+      "A/s"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 33,
+    "question": "Automobil vozi 72 km/h. Koliko je to približno u m/s?",
+    "answers": [
+      "20 m/s",
+      "200 m/s",
+      "72 m/s",
+      "2 m/s"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 34,
+    "question": "Biciklist vozi stalnom brzinom 3 m/s kroz 10 s. Koliki put prijeđe?",
+    "answers": [
+      "3 m",
+      "300 m",
+      "30 m",
+      "10 m"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 35,
+    "question": "Na grafu puta i vremena strmiji pravac znači...",
+    "answers": [
+      "veću brzinu",
+      "veći otpor zraka uvijek",
+      "manju masu",
+      "nižu temperaturu"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 36,
+    "question": "Vodoravna crta na grafu puta u ovisnosti o vremenu znači da tijelo...",
+    "answers": [
+      "ubrzava sve više",
+      "miruje",
+      "pada slobodno",
+      "postaje lakše"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 37,
+    "question": "Što površina ispod grafa brzine i vremena može prikazivati?",
+    "answers": [
+      "prijeđeni put",
+      "električni otpor",
+      "boju svjetlosti",
+      "masu baterije"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 38,
+    "question": "Akceleracija opisuje...",
+    "answers": [
+      "boju tijela",
+      "promjenu brzine u vremenu",
+      "broj elektrona u slici",
+      "količinu vode u čaši"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 39,
+    "question": "Koja je mjerna jedinica za akceleraciju?",
+    "answers": [
+      "m/s",
+      "N",
+      "V",
+      "m/s²"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 40,
+    "question": "Ako se skateboarder giba udesno, ali usporava, akceleracija je usmjerena...",
+    "answers": [
+      "prema najbližem magnetu",
+      "uvijek udesno",
+      "uvijek prema gore",
+      "suprotno od gibanja"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 41,
+    "question": "Tromost je svojstvo tijela da...",
+    "answers": [
+      "privlači sve metale",
+      "se opire promjeni stanja gibanja",
+      "samo od sebe svijetli",
+      "mjeri temperaturu zraka"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 42,
+    "question": "Zašto je puna kolica iz trgovine teže pokrenuti nego prazna?",
+    "answers": [
+      "Zrak ih gura unatrag samo noću",
+      "Imaju veću masu i veću tromost",
+      "Imaju manje trenja uvijek",
+      "Imaju manji napon"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 43,
+    "question": "Prema temeljnom zakonu gibanja, što se dogodi s akceleracijom ako je sila veća, a masa ista?",
+    "answers": [
+      "Akceleracija je manja",
+      "Akceleracija uvijek ostaje nula",
+      "Akceleracija je veća",
+      "Masa se pretvori u put"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 44,
+    "question": "Kad bi zanemarili otpor zraka, pero i kamen ispušteni s iste visine pali bi...",
+    "answers": [
+      "oba bi pala prema gore",
+      "pero bi uvijek palo prije",
+      "jednako ubrzano",
+      "kamen bi stao u zraku"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 45,
+    "question": "Zašto u stvarnosti pero pada sporije od kamena?",
+    "answers": [
+      "Zbog manjeg broja boja",
+      "Jer pero nema gravitaciju",
+      "Zbog električnog napona u peru",
+      "Zbog velikog utjecaja otpora zraka"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 46,
+    "question": "Kolika je približna akceleracija slobodnog pada blizu površine Zemlje?",
+    "answers": [
+      "10 m/s²",
+      "0,1 m/s²",
+      "100 m/s²",
+      "1 m/s²"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 47,
+    "question": "Zašto je sigurnosni pojas važan pri naglom kočenju auta?",
+    "answers": [
+      "Jer pretvara silu u zvuk",
+      "Zbog tromosti tijelo nastavlja gibanje prema naprijed",
+      "Jer povećava masu auta",
+      "Jer smanjuje brzinu svjetlosti"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 48,
+    "question": "Putnici u autobusu pri naglom kočenju 'polete' prema naprijed zbog...",
+    "answers": [
+      "loma svjetlosti",
+      "zvučne rezonancije",
+      "tromosti",
+      "elektromagnetske indukcije"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 49,
+    "question": "Ako je rezultantna sila na tijelo nula, tijelo može...",
+    "answers": [
+      "samo ubrzavati",
+      "postati bez mase",
+      "samo padati prema gore",
+      "mirovati ili se gibati stalnom brzinom po pravcu"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 50,
+    "question": "Koja je mjerna jedinica za silu?",
+    "answers": [
+      "amper",
+      "newton",
+      "vat",
+      "kelvin"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 51,
+    "question": "Što val najčešće prenosi kroz prostor?",
+    "answers": [
+      "električni račun",
+      "energiju",
+      "trajnu količinu tvari od izvora do cilja",
+      "masu izvora"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 52,
+    "question": "Zašto se zvuk ne može širiti kroz potpuno prazan svemir?",
+    "answers": [
+      "Nema čestica koje bi titrale i prenosile val",
+      "Zvuk se boji vakuuma",
+      "Zvuk je prespor za svemir",
+      "Svjetlost ga zaustavlja"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 53,
+    "question": "U kojem se sredstvu zvuk najčešće širi najbrže?",
+    "answers": [
+      "u vakuumu",
+      "u dimu bez čestica",
+      "u zraku uvijek najbrže",
+      "u čvrstim tijelima"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 54,
+    "question": "Što se događa s glasnoćom zvuka kad je amplituda titranja veća?",
+    "answers": [
+      "Zvuk nestaje",
+      "Zvuk je nužno niži",
+      "Zvuk postaje svjetlost",
+      "Zvuk je glasniji"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 55,
+    "question": "Viša frekvencija zvučnog vala znači...",
+    "answers": [
+      "veći električni otpor",
+      "viši ton",
+      "sporije svjetlo",
+      "tiši zvuk uvijek"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 56,
+    "question": "Odjek u planini nastaje zbog...",
+    "answers": [
+      "loma magneta",
+      "slobodnog pada zvuka",
+      "serijskog spoja oblaka",
+      "odbijanja zvučnog vala"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 57,
+    "question": "Što je valna duljina?",
+    "answers": [
+      "vrijeme potrebno za jedan sat",
+      "udaljenost između dva susjedna brijega vala",
+      "broj elektrona u vodi",
+      "masa vala u kilogramima"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 58,
+    "question": "Period titranja je...",
+    "answers": [
+      "broj titraja u sekundi",
+      "duljina žice u voltima",
+      "snaga baterije",
+      "vrijeme jednog potpunog titraja"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 59,
+    "question": "Frekvencija se mjeri u...",
+    "answers": [
+      "litrama",
+      "hercima",
+      "omima",
+      "njutnima"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 60,
+    "question": "Ako tijelo titra frekvencijom 2 Hz, koliko titraja napravi u jednoj sekundi?",
+    "answers": [
+      "2",
+      "10",
+      "0,5",
+      "20"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 61,
+    "question": "Kod poprečnog vala čestice sredstva titraju...",
+    "answers": [
+      "samo kružno oko baterije",
+      "bez ikakvog gibanja",
+      "okomito na smjer širenja vala",
+      "uvijek u smjeru sjevera"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 62,
+    "question": "Zvuk u zraku najčešće opisujemo kao...",
+    "answers": [
+      "poprečni val svjetlosti",
+      "ravno zrcalo",
+      "uzdužni val",
+      "električni luk"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 63,
+    "question": "Zašto napetija žica gitare daje viši ton?",
+    "answers": [
+      "Prestaje biti vodič",
+      "Postaje prozirna",
+      "Ima manji broj atoma",
+      "Titra većom frekvencijom"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 64,
+    "question": "Promjena visine tona sirene hitne pomoći dok prolazi pokraj nas naziva se...",
+    "answers": [
+      "Dopplerov učinak",
+      "Faradayeva sjena",
+      "Ohmov zakon",
+      "totalna sjena"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 65,
+    "question": "Svjetlost se u homogenom sredstvu širi...",
+    "answers": [
+      "uvijek cik-cak",
+      "samo kružno",
+      "pravocrtno",
+      "samo ako ima zraka"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 66,
+    "question": "Koji predmet je proziran?",
+    "answers": [
+      "debeli karton",
+      "čisto staklo",
+      "metalna tava",
+      "drvena ploča"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 67,
+    "question": "Koji zakon vrijedi kod odbijanja svjetlosti na zrcalu?",
+    "answers": [
+      "Kut upada uvijek je 90°",
+      "Kut upada jednak je kutu odbijanja",
+      "Svjetlost se odbija samo noću",
+      "Zrcalo poništava brzinu svjetlosti"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 68,
+    "question": "Slika u ravnom zrcalu najčešće je...",
+    "answers": [
+      "plava jer zrcalo upija crvenu",
+      "okrenuta naopako i manja",
+      "uvijek stvarna i na papiru",
+      "uspravna, jednake veličine i prividno iza zrcala"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 69,
+    "question": "Periskop u najjednostavnijem obliku koristi...",
+    "answers": [
+      "dva termometra",
+      "dvije baterije bez žice",
+      "dva magneta",
+      "dva zrcala"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 70,
+    "question": "Koje zrcalo daje široko vidno polje i koristi se npr. u prometu?",
+    "answers": [
+      "ispupčeno zrcalo",
+      "ravno zrcalo samo u mraku",
+      "vodeno zrcalo u čaši",
+      "udubljeno zrcalo uvijek"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 71,
+    "question": "Udubljeno zrcalo može bliski predmet prikazati...",
+    "answers": [
+      "uvećano",
+      "uvijek zeleno",
+      "bez svjetlosti",
+      "uvijek nevidljivo"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 72,
+    "question": "Lom svjetlosti nastaje kada svjetlost...",
+    "answers": [
+      "postane zvuk",
+      "prelazi iz jednog optičkog sredstva u drugo i mijenja smjer",
+      "izgubi masu",
+      "udari u magnet"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 73,
+    "question": "Zašto slamka u čaši vode izgleda kao da je prelomljena?",
+    "answers": [
+      "Zbog zvuka iz slamke",
+      "Zbog loma svjetlosti na granici vode i zraka",
+      "Zbog električne struje u vodi",
+      "Zbog težine slamke"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 74,
+    "question": "Prizma razlaže bijelu svjetlost na boje jer se različite boje...",
+    "answers": [
+      "različito magnetiziraju",
+      "različito čuju",
+      "različito lome",
+      "različito padaju zbog mase"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 75,
+    "question": "Duga nastaje zbog loma, odbijanja i razlaganja svjetlosti u...",
+    "answers": [
+      "zrncima soli u zemlji",
+      "kapljicama vode",
+      "metalnim žicama",
+      "električnim utičnicama"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 76,
+    "question": "Sabirna leća je najčešće...",
+    "answers": [
+      "uvijek napravljena od metala",
+      "tanja u sredini nego na rubovima",
+      "deblja u sredini nego na rubovima",
+      "potpuno ravna ploča"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 77,
+    "question": "Rasipna leća svjetlosne zrake...",
+    "answers": [
+      "zaustavlja u staklu",
+      "uvijek skuplja u žarištu iza leće",
+      "širi kao da dolaze iz jedne točke",
+      "pretvara u zvuk"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 78,
+    "question": "Kratkovidnost se najčešće ispravlja...",
+    "answers": [
+      "ravnim zrcalom",
+      "sabirnom lećom uvijek",
+      "magnetom",
+      "rasipnom lećom"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 79,
+    "question": "Oko i fotoaparat imaju nešto zajedničko: koriste leću za...",
+    "answers": [
+      "stvaranje slike",
+      "mjerenje mase",
+      "stvaranje zvuka",
+      "proizvodnju električnog naboja"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 80,
+    "question": "Potpuno odbijanje svjetlosti ključno je za rad...",
+    "answers": [
+      "drvene ravnala",
+      "papirnatog aviona",
+      "obične gumice",
+      "optičkih vlakana"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 81,
+    "question": "Zašto nastaje sjena?",
+    "answers": [
+      "Zrak iza tijela nestane",
+      "Svjetlost se širi pravocrtno, a neprozirno tijelo je zaustavi",
+      "Magnet povuče svjetlost dolje",
+      "Tijelo stvara hladnoću"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 82,
+    "question": "Pomrčina Sunca događa se kada je...",
+    "answers": [
+      "Mjesec između Sunca i Zemlje",
+      "Mars između učionice i ploče",
+      "Zemlja između Sunca i Mjeseca",
+      "Sunce između Zemlje i Mjeseca"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 83,
+    "question": "Koja boja svjetlosti ima najveću frekvenciju među navedenima?",
+    "answers": [
+      "narančasta",
+      "crvena",
+      "žuta",
+      "ljubičasta"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 84,
+    "question": "Zašto crna majica na Suncu često postane toplija od bijele?",
+    "answers": [
+      "Odbija svu svjetlost",
+      "Upija više svjetlosti",
+      "Ima veći električni napon",
+      "Ne sadrži atome"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 85,
+    "question": "Kad plastični češalj privuče sitne papiriće nakon češljanja, to je posljedica...",
+    "answers": [
+      "statičkog elektriciteta",
+      "slobodnog pada",
+      "zvučne rezonancije",
+      "loma svjetlosti"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 86,
+    "question": "Koji spoj je bolji ako želiš da ostale lampice rade i kad jedna pregori?",
+    "answers": [
+      "spoj bez izvora",
+      "paralelni spoj",
+      "spoj samo od izolatora",
+      "serijski spoj"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 87,
+    "question": "Ako je U = 6 V, a R = 2 Ω, kolika je jakost struje prema Ohmovu zakonu?",
+    "answers": [
+      "4 A",
+      "12 A",
+      "3 A",
+      "0,33 A"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 88,
+    "question": "Ako kroz otpornik od 5 Ω teče struja 2 A, koliki je napon?",
+    "answers": [
+      "0,4 V",
+      "10 V",
+      "7 V",
+      "2,5 V"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 89,
+    "question": "Uređaj radi na 12 V i kroz njega teče 2 A. Kolika mu je snaga?",
+    "answers": [
+      "120 W",
+      "6 W",
+      "14 W",
+      "24 W"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 90,
+    "question": "Žarulja od 100 W radi 2 sata. Koliko energije potroši?",
+    "answers": [
+      "100 W",
+      "50 Wh",
+      "200 Wh",
+      "2 Wh"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 91,
+    "question": "U poštenom pokusu najbolje je mijenjati...",
+    "answers": [
+      "mjerne jedinice usred pokusa",
+      "samo jednu nezavisnu varijablu",
+      "sve uvjete odjednom",
+      "rezultate nakon mjerenja"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 92,
+    "question": "Zašto pri očitanju ravnala oko treba biti točno iznad oznake?",
+    "answers": [
+      "Da ravnalo postane dulje",
+      "Da se ubrza svjetlost",
+      "Da se poveća masa predmeta",
+      "Da se smanji pogreška paralakse"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 93,
+    "question": "Zašto je dobro ponoviti mjerenje nekoliko puta?",
+    "answers": [
+      "Da se izbrišu svi loši podaci bez razloga",
+      "Da se promijeni zakon prirode",
+      "Da rezultat bude veći",
+      "Da se smanji utjecaj slučajnih pogrešaka"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 94,
+    "question": "Hipoteza u fizici je...",
+    "answers": [
+      "konačna istina koju ne smijemo testirati",
+      "provjerljiva pretpostavka",
+      "mjerna jedinica za svjetlost",
+      "popis pribora"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 95,
+    "question": "Nezavisna varijabla je ono što u pokusu...",
+    "answers": [
+      "namjerno mijenjamo",
+      "nikad ne zapisujemo",
+      "slučajno izgubimo",
+      "uvijek držimo istim"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 96,
+    "question": "Zavisna varijabla je ono što u pokusu...",
+    "answers": [
+      "uvijek crtamo kao ukras",
+      "mjerimo kao rezultat promjene",
+      "držimo skriveno",
+      "biramo nakon zaključka"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 97,
+    "question": "Kontrolirana varijabla je uvjet koji...",
+    "answers": [
+      "mijenjamo što brže možemo",
+      "nikad ne spominjemo",
+      "pretvaramo u pitanje",
+      "držimo istim radi pravedne usporedbe"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 98,
+    "question": "Zašto fizičari često crtaju grafove?",
+    "answers": [
+      "Da izbjegnu jedinice",
+      "Da zamijene mjerenje pogađanjem",
+      "Da sakriju rezultate",
+      "Da lakše vide odnos između veličina"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 99,
+    "question": "Ako rezultat pokusa ne odgovara očekivanju, najbolje je...",
+    "answers": [
+      "provjeriti postupak i podatke, a ne izmišljati rezultat",
+      "zaključiti da fizika ne vrijedi",
+      "odmah prepisati očekivani rezultat",
+      "baciti bilježnicu"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 100,
+    "question": "Zašto magnet ne privlači običnu aluminijsku limenku kao željezni čavao?",
+    "answers": [
+      "Aluminij nema atome",
+      "Limenka je previše sjajna",
+      "Aluminij nije feromagnetičan poput željeza",
+      "Magnet radi samo na okrugle predmete"
+    ],
+    "correct": 2
+  }
+]
