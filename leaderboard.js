@@ -3,8 +3,6 @@
 // ============================================
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
-import { getAuth, signInAnonymously }
-  from "https://www.gstatic.com/firebasejs/11.7.1/firebase-auth.js";
 import { getDatabase, ref, onValue }
   from "https://www.gstatic.com/firebasejs/11.7.1/firebase-database.js";
 
@@ -19,7 +17,6 @@ const firebaseConfig = {
 };
 
 const app  = initializeApp(firebaseConfig);
-const auth = getAuth(app);
 const db   = getDatabase(app);
 
 function formatTime(ms) {
@@ -68,9 +65,7 @@ function listen(path, $el) {
   });
 }
 
-async function init() {
-  try { await signInAnonymously(auth); } catch { return; }
-
+function init() {
   listen("results/fizika7", document.getElementById("lb-fizika7"));
   listen("results/fizika8", document.getElementById("lb-fizika8"));
   listen("results/opce",    document.getElementById("lb-opce"));

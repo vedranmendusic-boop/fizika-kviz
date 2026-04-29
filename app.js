@@ -278,7 +278,7 @@ async function saveResult() {
     $saveStatus.style.color = "var(--success)";
   } catch (err) {
     console.error("Greška:", err);
-    $saveStatus.textContent = "Greška. Pokušaj ponovo.";
+    $saveStatus.textContent = "Greška: " + (err && err.code ? err.code : "spremanje nije uspjelo");
     $saveStatus.style.color = "var(--danger)";
     $btnSave.disabled = false;
   }

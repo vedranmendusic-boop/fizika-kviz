@@ -531,13 +531,12 @@
     }
 
     function listen(path,$el){
-      const q=query(ref(db,path),orderByChild("score"),limitToLast(10));
+      const q=query(ref(db,path),orderByChild("score"),limitToLast(50));
       onValue(q,(snap)=>{const r=[];snap.forEach(c=>r.push({id:c.key,...c.val()}));renderLB($el,r);},
         ()=>{$el.innerHTML=`<div class="lb-empty">Greška.</div>`;});
     }
 
-    async function init(){
-      try{await signInAnonymously(auth);}catch{return;}
+    function init(){
       listen("results/fizika7",document.getElementById("lb-fizika7"));
       listen("results/fizika8",document.getElementById("lb-fizika8"));
       listen("results/opce",document.getElementById("lb-opce"));
