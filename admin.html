@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Admin — Fizika Challenge</title>
+  <title>Admin — Kviz Challenge</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,24 +11,20 @@
 
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* Admin-specifični stilovi */
     .admin-login {
       margin-top: 15vh;
       text-align: center;
     }
-
     .admin-login h1 {
       font-size: 1.4rem;
       color: var(--accent);
       margin-bottom: 8px;
     }
-
     .admin-login p {
       font-size: 0.85rem;
       color: var(--text-secondary);
       margin-bottom: 28px;
     }
-
     .pin-input {
       background: var(--bg-primary);
       border: 1px solid var(--border);
@@ -43,16 +39,42 @@
       outline: none;
       transition: border-color 0.2s;
     }
-
-    .pin-input:focus {
-      border-color: var(--accent);
-    }
-
+    .pin-input:focus { border-color: var(--accent); }
     .pin-error {
       color: var(--danger);
       font-size: 0.85rem;
       margin-top: 12px;
       min-height: 20px;
+    }
+
+    /* Category tabs */
+    .admin-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .admin-tab {
+      flex: 1;
+      padding: 12px 8px;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .admin-tab.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(0, 212, 255, 0.08);
+    }
+    .admin-tab:hover:not(.active) {
+      background: var(--bg-card-hover);
     }
 
     .admin-toolbar {
@@ -63,30 +85,21 @@
       flex-wrap: wrap;
       gap: 10px;
     }
-
-    .admin-toolbar h1 {
-      font-size: 1.2rem;
-      color: var(--accent);
-    }
-
+    .admin-toolbar h1 { font-size: 1.2rem; color: var(--accent); }
     .admin-count {
       font-size: 0.8rem;
       color: var(--text-muted);
       font-family: var(--font-display);
     }
-
     .btn-danger {
       background: rgba(255, 77, 106, 0.1);
       color: var(--danger);
       border: 1px solid rgba(255, 77, 106, 0.3);
     }
-
     .btn-danger:hover {
       background: rgba(255, 77, 106, 0.2);
       border-color: var(--danger);
     }
-
-    /* Admin tablica */
     .admin-row {
       display: grid;
       grid-template-columns: 1fr 50px 70px auto;
@@ -96,15 +109,8 @@
       border-bottom: 1px solid var(--border);
       transition: background 0.2s;
     }
-
-    .admin-row:hover {
-      background: var(--bg-card-hover);
-    }
-
-    .admin-row:last-child {
-      border-bottom: none;
-    }
-
+    .admin-row:hover { background: var(--bg-card-hover); }
+    .admin-row:last-child { border-bottom: none; }
     .admin-row.header {
       font-family: var(--font-display);
       font-size: 0.65rem;
@@ -114,183 +120,97 @@
       padding: 10px 16px;
       background: rgba(0, 0, 0, 0.2);
     }
-
-    .admin-row.header:hover {
-      background: rgba(0, 0, 0, 0.2);
-    }
-
+    .admin-row.header:hover { background: rgba(0, 0, 0, 0.2); }
     .admin-name {
-      font-weight: 700;
-      font-size: 0.9rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      font-weight: 700; font-size: 0.9rem;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
-
     .admin-score {
       font-family: var(--font-display);
       font-size: 0.8rem;
       color: var(--accent);
       text-align: center;
     }
-
     .admin-time {
       font-size: 0.8rem;
       color: var(--text-secondary);
       text-align: center;
     }
-
-    .admin-actions {
-      display: flex;
-      gap: 6px;
-      justify-content: flex-end;
-    }
-
+    .admin-actions { display: flex; gap: 6px; justify-content: flex-end; }
     .btn-icon {
-      width: 34px;
-      height: 34px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 34px; height: 34px;
+      display: flex; align-items: center; justify-content: center;
       border-radius: 8px;
       border: 1px solid var(--border);
       background: var(--bg-primary);
       color: var(--text-secondary);
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: all 0.2s;
-      padding: 0;
+      cursor: pointer; font-size: 0.9rem;
+      transition: all 0.2s; padding: 0;
     }
-
     .btn-icon:hover {
       border-color: var(--danger);
       color: var(--danger);
       background: rgba(255, 77, 106, 0.08);
     }
-
     .btn-icon.edit:hover {
       border-color: var(--accent);
       color: var(--accent);
       background: rgba(0, 212, 255, 0.08);
     }
-
-    /* Edit modal */
     .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
+      display: none; position: fixed; inset: 0;
       background: rgba(0, 0, 0, 0.7);
       z-index: 100;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      align-items: center; justify-content: center; padding: 20px;
     }
-
-    .modal-overlay.active {
-      display: flex;
-    }
-
+    .modal-overlay.active { display: flex; }
     .modal {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 28px 24px;
-      width: 100%;
-      max-width: 380px;
+      width: 100%; max-width: 380px;
     }
-
-    .modal h2 {
-      font-size: 1rem;
-      color: var(--accent);
-      margin-bottom: 20px;
-    }
-
-    .form-group {
-      margin-bottom: 14px;
-    }
-
+    .modal h2 { font-size: 1rem; color: var(--accent); margin-bottom: 20px; }
+    .form-group { margin-bottom: 14px; }
     .form-label {
-      display: block;
-      font-size: 0.75rem;
+      display: block; font-size: 0.75rem;
       font-family: var(--font-display);
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 6px;
+      color: var(--text-muted); text-transform: uppercase;
+      letter-spacing: 0.08em; margin-bottom: 6px;
     }
-
     .form-input {
-      width: 100%;
-      background: var(--bg-primary);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 10px 12px;
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      color: var(--text-primary);
-      outline: none;
+      width: 100%; background: var(--bg-primary);
+      border: 1px solid var(--border); border-radius: 8px;
+      padding: 10px 12px; font-family: var(--font-body);
+      font-size: 0.95rem; color: var(--text-primary); outline: none;
     }
-
-    .form-input:focus {
-      border-color: var(--accent);
-    }
-
-    .modal-actions {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .modal-actions .btn {
-      flex: 1;
-    }
-
-    /* Confirm dialog */
-    .confirm-text {
-      font-size: 0.95rem;
-      color: var(--text-primary);
-      line-height: 1.6;
-      margin-bottom: 8px;
-    }
-
-    .confirm-warning {
-      font-size: 0.8rem;
-      color: var(--danger);
-      margin-bottom: 20px;
-    }
-
+    .form-input:focus { border-color: var(--accent); }
+    .modal-actions { display: flex; gap: 10px; margin-top: 20px; }
+    .modal-actions .btn { flex: 1; }
+    .confirm-text { font-size: 0.95rem; line-height: 1.6; margin-bottom: 8px; }
+    .confirm-warning { font-size: 0.8rem; color: var(--danger); margin-bottom: 20px; }
     .admin-footer {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      margin-top: 20px;
+      display: flex; gap: 12px; justify-content: center; margin-top: 20px;
     }
   </style>
 </head>
 <body>
-
   <div class="container">
 
-    <!-- ========== EKRAN 1: PIN Prijava ========== -->
+    <!-- PIN Prijava -->
     <div id="screen-login" class="screen active">
       <div class="admin-login">
         <h1>🔐 Admin</h1>
         <p>Upiši PIN za pristup administraciji</p>
-        <input
-          id="pin-input"
-          class="pin-input"
-          type="password"
-          maxlength="4"
-          inputmode="numeric"
-          pattern="[0-9]*"
-          placeholder="····"
-          autocomplete="off"
-        />
+        <input id="pin-input" class="pin-input" type="password"
+          maxlength="4" inputmode="numeric" pattern="[0-9]*"
+          placeholder="····" autocomplete="off" />
         <div id="pin-error" class="pin-error"></div>
       </div>
     </div>
 
-    <!-- ========== EKRAN 2: Admin panel ========== -->
+    <!-- Admin panel -->
     <div id="screen-admin" class="screen">
 
       <div class="admin-toolbar">
@@ -301,22 +221,25 @@
         <button id="btn-delete-all" class="btn btn-danger btn-sm">🗑️ Obriši sve</button>
       </div>
 
+      <!-- Tabovi za kategorije -->
+      <div class="admin-tabs">
+        <button class="admin-tab active" id="tab-fizika" data-cat="fizika">⚛️ Fizika</button>
+        <button class="admin-tab" id="tab-opce" data-cat="opce">🧠 Opće znanje</button>
+      </div>
+
       <div id="admin-content" class="leaderboard-table">
-        <div class="loader">
-          <div class="spinner"></div>
-          Učitavanje…
-        </div>
+        <div class="loader"><div class="spinner"></div>Učitavanje…</div>
       </div>
 
       <div class="admin-footer">
         <a href="index.html" class="nav-link">⚛️ Kviz</a>
         <a href="leaderboard.html" class="nav-link">📊 Mob. lista</a>
         <a href="projektor.html" class="nav-link">🖥️ Projektor</a>
-        <a href="questions.json" class="nav-link" target="_blank">📝 Pitanja</a>
+        <a href="questions.json" class="nav-link" target="_blank">📝 Fizika pit.</a>
+        <a href="questions-opce.json" class="nav-link" target="_blank">📝 Opća pit.</a>
       </div>
 
     </div>
-
   </div>
 
   <!-- Edit Modal -->
