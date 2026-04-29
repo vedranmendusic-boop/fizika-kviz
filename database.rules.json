@@ -1,44 +1,31 @@
 {
   "rules": {
-    "admins": {
-      "$uid": {
-        ".read": "auth != null && auth.uid === $uid",
-        ".write": false
-      }
-    },
-
     "results": {
       "fizika7": {
-        ".read": "auth != null",
-        ".write": "auth != null && root.child('admins').child(auth.uid).val() === true",
+        ".read": true,
         ".indexOn": ["score"],
         "$resultId": {
-          ".write": "auth != null && (((!data.exists()) && newData.exists() && newData.child('uid').val() === auth.uid) || root.child('admins').child(auth.uid).val() === true)",
+          ".write": "auth != null",
           ".validate": "!newData.exists() || (newData.hasChildren(['name', 'score', 'percentage', 'timeMs', 'createdAt', 'uid']) && newData.child('name').isString() && newData.child('name').val().length > 0 && newData.child('name').val().length <= 20 && newData.child('score').isNumber() && newData.child('score').val() >= 0 && newData.child('score').val() <= 20 && newData.child('percentage').isNumber() && newData.child('percentage').val() >= 0 && newData.child('percentage').val() <= 100 && newData.child('timeMs').isNumber() && newData.child('timeMs').val() > 0 && newData.child('uid').isString())"
         }
       },
-
       "fizika8": {
-        ".read": "auth != null",
-        ".write": "auth != null && root.child('admins').child(auth.uid).val() === true",
+        ".read": true,
         ".indexOn": ["score"],
         "$resultId": {
-          ".write": "auth != null && (((!data.exists()) && newData.exists() && newData.child('uid').val() === auth.uid) || root.child('admins').child(auth.uid).val() === true)",
+          ".write": "auth != null",
           ".validate": "!newData.exists() || (newData.hasChildren(['name', 'score', 'percentage', 'timeMs', 'createdAt', 'uid']) && newData.child('name').isString() && newData.child('name').val().length > 0 && newData.child('name').val().length <= 20 && newData.child('score').isNumber() && newData.child('score').val() >= 0 && newData.child('score').val() <= 20 && newData.child('percentage').isNumber() && newData.child('percentage').val() >= 0 && newData.child('percentage').val() <= 100 && newData.child('timeMs').isNumber() && newData.child('timeMs').val() > 0 && newData.child('uid').isString())"
         }
       },
-
       "opce": {
-        ".read": "auth != null",
-        ".write": "auth != null && root.child('admins').child(auth.uid).val() === true",
+        ".read": true,
         ".indexOn": ["score"],
         "$resultId": {
-          ".write": "auth != null && (((!data.exists()) && newData.exists() && newData.child('uid').val() === auth.uid) || root.child('admins').child(auth.uid).val() === true)",
+          ".write": "auth != null",
           ".validate": "!newData.exists() || (newData.hasChildren(['name', 'score', 'percentage', 'timeMs', 'createdAt', 'uid']) && newData.child('name').isString() && newData.child('name').val().length > 0 && newData.child('name').val().length <= 20 && newData.child('score').isNumber() && newData.child('score').val() >= 0 && newData.child('score').val() <= 20 && newData.child('percentage').isNumber() && newData.child('percentage').val() >= 0 && newData.child('percentage').val() <= 100 && newData.child('timeMs').isNumber() && newData.child('timeMs').val() > 0 && newData.child('uid').isString())"
         }
       }
     },
-
     "$other": {
       ".read": false,
       ".write": false

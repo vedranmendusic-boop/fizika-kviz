@@ -122,8 +122,14 @@ $btnDeleteAll.addEventListener("click",()=>{
 $("btn-confirm-delete").addEventListener("click",async()=>{
   if(!deleteTarget)return;
   try{
-    if(deleteTarget==="all")await remove(ref(db,CATS[activeCategory].path));
-    else await remove(ref(db,`${CATS[activeCategory].path}/${deleteTarget.key}`));
+    if(deleteTarget==="all") {
+      const items = [...data[activeCategory]];
+      for (const item of items) {
+        await remove(ref(db,`${CATS[activeCategory].path}/${item.key}`));
+      }
+    } else {
+      await remove(ref(db,`${CATS[activeCategory].path}/${deleteTarget.key}`));
+    }
   }catch(e){alert("Greška: "+e.message);}
   deleteTarget=null;$modalConfirm.classList.remove("active");
 });

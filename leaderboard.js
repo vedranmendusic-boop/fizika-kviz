@@ -1,26 +1,19 @@
 // ============================================
-// LEADERBOARD — 3 kategorije
+// LEADERBOARD — jednostavna stabilna verzija
+// Čita direktno iz Realtime Database REST API-ja.
+// Ne koristi Auth, ne koristi onValue, ne može prikazati samo prvi child.
 // ============================================
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
-import { getDatabase, ref, onValue }
-  from "https://www.gstatic.com/firebasejs/11.7.1/firebase-database.js";
+const DB_URL = "https://fizika-challenge-757f7-default-rtdb.europe-west1.firebasedatabase.app";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyD7MxLO2H0BLSgu07mxh7cYg3d2XM91WeI",
-  authDomain: "fizika-challenge-757f7.firebaseapp.com",
-  databaseURL: "https://fizika-challenge-757f7-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "fizika-challenge-757f7",
-  storageBucket: "fizika-challenge-757f7.firebasestorage.app",
-  messagingSenderId: "462864759911",
-  appId: "1:462864759911:web:5e47b89c750232f81368c2"
+const CATS = {
+  fizika7: { path: "results/fizika7", el: "lb-fizika7" },
+  fizika8: { path: "results/fizika8", el: "lb-fizika8" },
+  opce:    { path: "results/opce",    el: "lb-opce" }
 };
 
-const app  = initializeApp(firebaseConfig);
-const db   = getDatabase(app);
-
 function formatTime(ms) {
-  const totalSec = Math.floor(ms / 1000);
+  const totalSec = Math.floor((Number(ms) || 0) / 1000);
   return `${Math.floor(totalSec / 60)}:${String(totalSec % 60).padStart(2, "0")}`;
 }
 
@@ -33,42 +26,93 @@ function rankDisplay(pos) {
 
 function escapeHtml(str) {
   const d = document.createElement("div");
-  d.textContent = str;
+  d.textContent = String(str ?? "");
   return d.innerHTML;
 }
 
-function sortResults(r) {
-  return r.sort((a, b) => b.score !== a.score ? b.score - a.score : (a.timeMs||0) - (b.timeMs||0));
+function sortResults(results) {
+  return results.sort((a, b) => {
+    const scoreDiff = (Number(b.score) || 0) - (Number(a.score) || 0);
+    if (scoreDiff !== 0) return scoreDiff;
+    return (Number(a.timeMs) || 0) - (Number(b.timeMs) || 0);
+  });
 }
 
-function renderTable($el, results) {
+function normalizeResults(data) {
+  if (!data || typeof data !== "object") return [];
+
+  return Object.entries(data)
+    .filter(([key, value]) => key.startsWith("-") && value && typeof value === "object")
+    .map(([key, value]) => ({
+      id: key,
+      name: value.name ?? "—",
+      score: Number(value.score) || 0,
+      percentage: Number(value.percentage) || 0,
+      timeMs: Number(value.timeMs) || 0,
+      createdAt: value.createdAt ?? null,
+      uid: value.uid ?? ""
+    }));
+}
+
+function renderTable(el, results) {
+  if (!el) return;
+
   if (!results.length) {
-    $el.innerHTML = `<div class="lb-empty">Još nema rezultata</div>`;
+    el.innerHTML = `<div class="lb-empty">Još nema rezultata</div>`;
     return;
   }
-  const sorted = sortResults(results).slice(0, 10);
-  let html = `<div class="lb-row header"><span>#</span><span>Ime</span><span style="text-align:right">Bodovi</span><span style="text-align:right">Vrijeme</span></div>`;
-  sorted.forEach((e, i) => {
-    html += `<div class="lb-row new-entry"><span class="lb-rank">${rankDisplay(i+1)}</span><span class="lb-name">${escapeHtml(e.name)}</span><span class="lb-score">${e.score}/20</span><span class="lb-time">${formatTime(e.timeMs||0)}</span></div>`;
+
+  const sorted = sortResults([...results]).slice(0, 10);
+
+  let html = `
+    <div class="lb-row header">
+      <span>#</span>
+      <span>Ime</span>
+      <span style="text-align:right">Bodovi</span>
+      <span style="text-align:right">Vrijeme</span>
+    </div>`;
+
+  sorted.forEach((entry, index) => {
+    html += `
+      <div class="lb-row">
+        <span class="lb-rank">${rankDisplay(index + 1)}</span>
+        <span class="lb-name">${escapeHtml(entry.name)}</span>
+        <span class="lb-score">${entry.score}/20</span>
+        <span class="lb-time">${formatTime(entry.timeMs)}</span>
+      </div>`;
   });
-  $el.innerHTML = html;
+
+  el.innerHTML = html;
 }
 
-function listen(path, $el) {
-  onValue(ref(db, path), (snap) => {
-    const r = [];
-    snap.forEach(c => r.push({ id: c.key, ...c.val() }));
-    renderTable($el, r);
-  }, (err) => {
-    console.error("Leaderboard greška:", path, err);
-    $el.innerHTML = `<div class="lb-empty">Greška: ${escapeHtml(err.message || "nema dozvole")}</div>`;
-  });
+async function loadCategory(catKey) {
+  const cat = CATS[catKey];
+  const el = document.getElementById(cat.el);
+
+  try {
+    const url = `${DB_URL}/${cat.path}.json`;
+    const response = await fetch(url, { cache: "no-store" });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const data = await response.json();
+    const results = normalizeResults(data);
+
+    console.log(`[leaderboard] ${catKey}:`, results.length, "rezultat(a)", results);
+    renderTable(el, results);
+  } catch (err) {
+    console.error(`[leaderboard] greška za ${catKey}:`, err);
+    if (el) {
+      el.innerHTML = `<div class="lb-empty">Greška učitavanja: ${escapeHtml(err.message)}</div>`;
+    }
+  }
 }
 
-function init() {
-  listen("results/fizika7", document.getElementById("lb-fizika7"));
-  listen("results/fizika8", document.getElementById("lb-fizika8"));
-  listen("results/opce",    document.getElementById("lb-opce"));
+function loadAll() {
+  Object.keys(CATS).forEach(loadCategory);
 }
 
-init();
+loadAll();
+setInterval(loadAll, 5000);
