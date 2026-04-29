@@ -501,13 +501,31 @@
     function eh(s){const d=document.createElement("div");d.textContent=s;return d.innerHTML;}
     function sr(r){return r.sort((a,b)=>b.score!==a.score?b.score-a.score:(a.timeMs||0)-(b.timeMs||0));}
 
+    // Render bez treperenja:
+    // Ako se top 10 nije promijenio, ne diramo DOM.
+    // Zato projektor ne briše i ne crta ponovno iste redove svake 3 sekunde.
     function renderLB($el,results){
-      if(!results.length){$el.innerHTML=`<div class="lb-empty">Čekam rezultate…</div>`;return;}
       const sorted=sr(results).slice(0,10);
+      const signature = sorted
+        .map(e => `${e.id}|${e.name}|${e.score}|${e.timeMs}`)
+        .join("||");
+
+      if ($el.dataset.renderSig === signature) return;
+      $el.dataset.renderSig = signature;
+
+      if(!sorted.length){
+        if ($el.dataset.empty !== "1") {
+          $el.dataset.empty = "1";
+          $el.innerHTML=`<div class="lb-empty">Čekam rezultate…</div>`;
+        }
+        return;
+      }
+      $el.dataset.empty = "0";
+
       let h=`<div class="lb-row header"><span style="text-align:center">#</span><span>Ime</span><span style="text-align:right">Bod.</span><span style="text-align:right">Vrijeme</span></div>`;
       sorted.forEach((e,i)=>{
         const r=i+1,rc=r<=3?` rank-${r}`:"";
-        h+=`<div class="lb-row new-entry${rc}"><span class="lb-rank">${rd(r)}</span><span class="lb-name">${eh(e.name)}</span><span class="lb-score">${e.score}/20</span><span class="lb-time">${fmtTime(e.timeMs||0)}</span></div>`;
+        h+=`<div class="lb-row${rc}"><span class="lb-rank">${rd(r)}</span><span class="lb-name">${eh(e.name)}</span><span class="lb-score">${e.score}/20</span><span class="lb-time">${fmtTime(e.timeMs||0)}</span></div>`;
       });
       $el.innerHTML=h;
     }
