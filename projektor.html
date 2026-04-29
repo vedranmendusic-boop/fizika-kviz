@@ -80,7 +80,7 @@
     /* Škola + logo */
     .school-name {
       font-family: var(--font-display);
-      font-size: 0.6rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.12em;
@@ -112,22 +112,22 @@
     .rules-section { margin-bottom: 20px; }
 
     .rules-title {
-      font-size: .75rem; color: var(--accent);
+      font-size: .9rem; color: var(--accent);
       margin-bottom: 14px; letter-spacing: .12em;
     }
 
     .rule-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
 
     .rule-number {
-      flex-shrink: 0; width: 28px; height: 28px;
+      flex-shrink: 0; width: 32px; height: 32px;
       display: flex; align-items: center; justify-content: center;
       border-radius: 7px;
-      font-family: var(--font-display); font-size: .65rem; font-weight: 700;
+      font-family: var(--font-display); font-size: .75rem; font-weight: 700;
       background: rgba(0,212,255,.1); color: var(--accent);
       border: 1px solid rgba(0,212,255,.2);
     }
 
-    .rule-text { font-size: 1rem; line-height: 1.45; padding-top: 2px; }
+    .rule-text { font-size: 1.15rem; line-height: 1.45; padding-top: 2px; }
     .rule-text strong { color: var(--accent); }
 
     /* QR */
@@ -178,9 +178,9 @@
       margin-bottom: 12px;
     }
 
-    .lb-heading h2 { font-size: 1.2rem; }
+    .lb-heading h2 { font-size: 1.5rem; }
 
-    .lb-cat-icon { font-size: 1.6rem; }
+    .lb-cat-icon { font-size: 1.8rem; }
 
     .live-badge {
       display: inline-flex; align-items: center; gap: 6px;
@@ -199,16 +199,16 @@
 
     .lb-row {
       display: grid;
-      grid-template-columns: 52px 1fr 80px 110px;
+      grid-template-columns: 52px 1fr 80px 120px;
       align-items: center;
       padding: 0 14px;
-      height: 50px;
+      height: 58px;
       border-bottom: 1px solid var(--border);
     }
 
     .lb-row.header {
-      height: 32px;
-      font-family: var(--font-display); font-size: .55rem;
+      height: 34px;
+      font-family: var(--font-display); font-size: .6rem;
       color: var(--text-muted); text-transform: uppercase;
       letter-spacing: .1em;
       background: rgba(0,0,0,.15);
@@ -225,30 +225,30 @@
     .lb-row.rank-2 { border-left-color: var(--silver); background: linear-gradient(90deg, rgba(192,192,192,.04), var(--bg-card)); }
     .lb-row.rank-3 { border-left-color: var(--bronze); background: linear-gradient(90deg, rgba(205,127,50,.04), var(--bg-card)); }
 
-    .lb-rank { font-family: var(--font-display); font-size: 1.1rem; text-align: center; }
-    .rank-1 .lb-rank { color: var(--gold); font-size: 1.3rem; }
-    .rank-2 .lb-rank { color: var(--silver); font-size: 1.2rem; }
-    .rank-3 .lb-rank { color: var(--bronze); }
+    .lb-rank { font-family: var(--font-display); font-size: 1.3rem; text-align: center; }
+    .rank-1 .lb-rank { color: var(--gold); font-size: 1.6rem; }
+    .rank-2 .lb-rank { color: var(--silver); font-size: 1.5rem; }
+    .rank-3 .lb-rank { color: var(--bronze); font-size: 1.4rem; }
 
     .lb-name {
-      font-size: 1.15rem; font-weight: 800;
+      font-size: 1.4rem; font-weight: 800;
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
       padding-left: 4px;
     }
 
     .lb-score {
-      font-family: var(--font-display); font-size: 1.05rem;
+      font-family: var(--font-display); font-size: 1.25rem;
       color: var(--accent); text-align: right;
     }
 
     .lb-time {
       font-family: var(--font-display);
-      font-size: .95rem;
+      font-size: 1.15rem;
       color: var(--text-secondary);
       text-align: right;
     }
 
-    .lb-time .ms { font-size: .7rem; color: var(--text-muted); }
+    .lb-time .ms { font-size: .85rem; color: var(--text-muted); }
 
     .lb-empty { text-align: center; padding: 40px 10px; color: var(--text-muted); font-size: 1.1rem; }
 
@@ -271,10 +271,10 @@
       background: linear-gradient(180deg, var(--bg-card), rgba(6,10,20,0.95));
       border-top: 1px solid var(--border);
       padding: 0 48px;
-      height: 120px;
+      height: 140px;
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 28px;
       position: relative;
       overflow: hidden;
     }
@@ -282,7 +282,7 @@
     .fact-strip-progress {
       position: absolute;
       top: 0; left: 0; right: 0;
-      height: 4px;
+      height: 5px;
       background: var(--border);
     }
 
@@ -295,7 +295,7 @@
     }
 
     .fact-strip-progress-fill.animate {
-      animation: factTimer 35s linear forwards;
+      animation: factTimer 20s linear forwards;
     }
 
     @keyframes factTimer {
@@ -304,9 +304,9 @@
     }
 
     .fact-icon {
-      font-size: 3.2rem;
+      font-size: 4rem;
       flex-shrink: 0;
-      width: 64px;
+      width: 72px;
       text-align: center;
     }
 
@@ -321,7 +321,7 @@
 
     .fact-label {
       font-family: var(--font-display);
-      font-size: .65rem;
+      font-size: .8rem;
       color: var(--accent);
       text-transform: uppercase;
       letter-spacing: .12em;
@@ -329,14 +329,14 @@
 
     .fact-title {
       font-family: var(--font-display);
-      font-size: .9rem;
+      font-size: 1.1rem;
       color: var(--accent);
       text-transform: uppercase;
     }
 
     .fact-text {
-      font-size: 1.3rem;
-      line-height: 1.45;
+      font-size: 1.55rem;
+      line-height: 1.4;
       color: var(--text-primary);
     }
 
@@ -554,7 +554,7 @@
     }
 
     showNextFact();
-    setInterval(showNextFact, 35000);
+    setInterval(showNextFact, 20000);
 
     // QR
     const $qrContainer = document.getElementById("qr-container");
