@@ -22,7 +22,7 @@ const app  = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db   = getDatabase(app);
 
-const ADMIN_PIN = "1234";
+const ADMIN_PIN = "1991";
 
 const CATS = {
   fizika7: { path: "results/fizika7", label: "⚛️ Fizika 7" },
