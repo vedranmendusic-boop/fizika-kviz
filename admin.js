@@ -1,6 +1,5 @@
 // ============================================
-// FIZIKA CHALLENGE — admin.js
-// Admin panel: brisanje i uređivanje rezultata
+// ADMIN — s kategorijama (fizika / opce)
 // ============================================
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
@@ -23,20 +22,20 @@ const app  = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db   = getDatabase(app);
 
-// --------------------------------------------------
-// ⚠️  PROMIJENI OVAJ PIN! (default: 1234)
-// --------------------------------------------------
-const ADMIN_PIN = "0000";
+// ⚠️ PROMIJENI OVAJ PIN!
+const ADMIN_PIN = "1234";
 
 // --------------------------------------------------
 // Stanje
 // --------------------------------------------------
-let allResults = [];        // Svi rezultati iz baze
-let editingKey = null;      // Ključ zapisa koji se uređuje
-let deleteTarget = null;    // { key, name } ili "all"
+let fizikaResults = [];
+let opceResults = [];
+let activeCategory = "fizika"; // "fizika" ili "opce"
+let editingKey = null;
+let deleteTarget = null;
 
 // --------------------------------------------------
-// DOM elementi
+// DOM
 // --------------------------------------------------
 const $screenLogin   = document.getElementById("screen-login");
 const $screenAdmin   = document.getElementById("screen-admin");
@@ -45,8 +44,9 @@ const $pinError      = document.getElementById("pin-error");
 const $adminContent  = document.getElementById("admin-content");
 const $resultCount   = document.getElementById("result-count");
 const $btnDeleteAll  = document.getElementById("btn-delete-all");
+const $tabFizika     = document.getElementById("tab-fizika");
+const $tabOpce       = document.getElementById("tab-opce");
 
-// Edit modal
 const $modalEdit     = document.getElementById("modal-edit");
 const $editName      = document.getElementById("edit-name");
 const $editScore     = document.getElementById("edit-score");
@@ -54,16 +54,14 @@ const $editTime      = document.getElementById("edit-time");
 const $btnEditCancel = document.getElementById("btn-edit-cancel");
 const $btnEditSave   = document.getElementById("btn-edit-save");
 
-// Confirm modal
 const $modalConfirm     = document.getElementById("modal-confirm");
 const $confirmText      = document.getElementById("confirm-text");
 const $btnConfirmCancel = document.getElementById("btn-confirm-cancel");
 const $btnConfirmDelete = document.getElementById("btn-confirm-delete");
 
 // --------------------------------------------------
-// Pomoćne funkcije
+// Pomoćne
 // --------------------------------------------------
-
 function showScreen(screen) {
   [$screenLogin, $screenAdmin].forEach(s => s.classList.remove("active"));
   screen.classList.add("active");
@@ -89,15 +87,21 @@ function sortResults(results) {
   });
 }
 
+function getActiveResults() {
+  return activeCategory === "fizika" ? fizikaResults : opceResults;
+}
+
+function getDbPath() {
+  return `results/${activeCategory}`;
+}
+
 // --------------------------------------------------
-// PIN prijava
+// PIN
 // --------------------------------------------------
 $pinInput.addEventListener("input", () => {
   $pinError.textContent = "";
-  const pin = $pinInput.value;
-
-  if (pin.length === 4) {
-    if (pin === ADMIN_PIN) {
+  if ($pinInput.value.length === 4) {
+    if ($pinInput.value === ADMIN_PIN) {
       showScreen($screenAdmin);
       initAdmin();
     } else {
@@ -106,51 +110,32 @@ $pinInput.addEventListener("input", () => {
     }
   }
 });
-
-// Fokusiraj PIN input odmah
 $pinInput.focus();
 
 // --------------------------------------------------
-// Admin inicijalizacija
+// Tabovi
 // --------------------------------------------------
-async function initAdmin() {
-  // Anonimna prijava
-  try {
-    await signInAnonymously(auth);
-    console.log("Admin: anonimna prijava uspješna");
-  } catch (err) {
-    console.error("Auth greška:", err);
-    $adminContent.innerHTML = `<div class="lb-empty">Greška pri prijavi.</div>`;
-    return;
-  }
+$tabFizika.addEventListener("click", () => switchTab("fizika"));
+$tabOpce.addEventListener("click", () => switchTab("opce"));
 
-  // Real-time listener na sve rezultate
-  const resultsRef = ref(db, "results");
-  const allQuery = query(resultsRef, orderByChild("score"));
-
-  onValue(allQuery, (snapshot) => {
-    allResults = [];
-    snapshot.forEach((child) => {
-      allResults.push({ key: child.key, ...child.val() });
-    });
-    renderAdmin(allResults);
-  }, (error) => {
-    console.error("Greška čitanja:", error);
-    $adminContent.innerHTML = `<div class="lb-empty">Greška: ${error.message}</div>`;
-  });
+function switchTab(cat) {
+  activeCategory = cat;
+  $tabFizika.classList.toggle("active", cat === "fizika");
+  $tabOpce.classList.toggle("active", cat === "opce");
+  renderAdmin();
 }
 
 // --------------------------------------------------
-// Renderiranje admin tablice
+// Renderiranje
 // --------------------------------------------------
-function renderAdmin(results) {
+function renderAdmin() {
+  const results = getActiveResults();
   const sorted = sortResults([...results]);
-  $resultCount.textContent = `${sorted.length} rezultat(a) ukupno`;
+  const label = activeCategory === "fizika" ? "⚛️ Fizika" : "🧠 Opće znanje";
+  $resultCount.textContent = `${label} — ${sorted.length} rezultat(a)`;
 
   if (sorted.length === 0) {
-    $adminContent.innerHTML = `
-      <div class="lb-empty">Nema rezultata u bazi.</div>
-    `;
+    $adminContent.innerHTML = `<div class="lb-empty">Nema rezultata u ovoj kategoriji.</div>`;
     return;
   }
 
@@ -181,7 +166,43 @@ function renderAdmin(results) {
 }
 
 // --------------------------------------------------
-// Brisanje jednog rezultata
+// Firebase init
+// --------------------------------------------------
+async function initAdmin() {
+  try {
+    await signInAnonymously(auth);
+    console.log("Admin: prijava uspješna");
+  } catch (err) {
+    console.error("Auth greška:", err);
+    $adminContent.innerHTML = `<div class="lb-empty">Greška pri prijavi.</div>`;
+    return;
+  }
+
+  // Listener za fiziku
+  const fizikaRef = ref(db, "results/fizika");
+  const fizikaQuery = query(fizikaRef, orderByChild("score"));
+  onValue(fizikaQuery, (snapshot) => {
+    fizikaResults = [];
+    snapshot.forEach((child) => {
+      fizikaResults.push({ key: child.key, ...child.val() });
+    });
+    if (activeCategory === "fizika") renderAdmin();
+  }, (err) => console.error("Fizika greška:", err));
+
+  // Listener za opće
+  const opceRef = ref(db, "results/opce");
+  const opceQuery = query(opceRef, orderByChild("score"));
+  onValue(opceQuery, (snapshot) => {
+    opceResults = [];
+    snapshot.forEach((child) => {
+      opceResults.push({ key: child.key, ...child.val() });
+    });
+    if (activeCategory === "opce") renderAdmin();
+  }, (err) => console.error("Opće greška:", err));
+}
+
+// --------------------------------------------------
+// Brisanje
 // --------------------------------------------------
 window._delete = function(key, name) {
   deleteTarget = { key, name };
@@ -189,24 +210,27 @@ window._delete = function(key, name) {
   $modalConfirm.classList.add("active");
 };
 
+$btnDeleteAll.addEventListener("click", () => {
+  const results = getActiveResults();
+  if (results.length === 0) return;
+  const label = activeCategory === "fizika" ? "Fizika" : "Opće znanje";
+  deleteTarget = "all";
+  $confirmText.textContent = `Obrisati SVE rezultate iz kategorije ${label} (${results.length})?`;
+  $modalConfirm.classList.add("active");
+});
+
 $btnConfirmDelete.addEventListener("click", async () => {
   if (!deleteTarget) return;
-
   try {
     if (deleteTarget === "all") {
-      // Obriši sve
-      await remove(ref(db, "results"));
-      console.log("Svi rezultati obrisani.");
+      await remove(ref(db, getDbPath()));
     } else {
-      // Obriši jedan
-      await remove(ref(db, `results/${deleteTarget.key}`));
-      console.log(`Obrisan: ${deleteTarget.key}`);
+      await remove(ref(db, `${getDbPath()}/${deleteTarget.key}`));
     }
   } catch (err) {
-    console.error("Greška pri brisanju:", err);
-    alert("Greška pri brisanju: " + err.message);
+    console.error("Greška:", err);
+    alert("Greška: " + err.message);
   }
-
   deleteTarget = null;
   $modalConfirm.classList.remove("active");
 });
@@ -216,7 +240,6 @@ $btnConfirmCancel.addEventListener("click", () => {
   $modalConfirm.classList.remove("active");
 });
 
-// Klik izvan modala zatvara ga
 $modalConfirm.addEventListener("click", (e) => {
   if (e.target === $modalConfirm) {
     deleteTarget = null;
@@ -225,20 +248,11 @@ $modalConfirm.addEventListener("click", (e) => {
 });
 
 // --------------------------------------------------
-// Brisanje svih rezultata
-// --------------------------------------------------
-$btnDeleteAll.addEventListener("click", () => {
-  if (allResults.length === 0) return;
-  deleteTarget = "all";
-  $confirmText.textContent = `Obrisati SVE rezultate (${allResults.length})?`;
-  $modalConfirm.classList.add("active");
-});
-
-// --------------------------------------------------
-// Uređivanje rezultata
+// Uređivanje
 // --------------------------------------------------
 window._edit = function(key) {
-  const entry = allResults.find(r => r.key === key);
+  const results = getActiveResults();
+  const entry = results.find(r => r.key === key);
   if (!entry) return;
 
   editingKey = key;
@@ -256,23 +270,18 @@ $btnEditSave.addEventListener("click", async () => {
   const score = parseInt($editScore.value, 10);
   const timeMs = parseInt($editTime.value, 10);
 
-  // Validacija
   if (!name) { alert("Ime ne može biti prazno!"); return; }
-  if (isNaN(score) || score < 0 || score > 10) { alert("Bodovi moraju biti 0–10!"); return; }
-  if (isNaN(timeMs) || timeMs < 0) { alert("Vrijeme mora biti pozitivan broj!"); return; }
-
-  const pct = Math.round((score / 10) * 100);
+  if (isNaN(score) || score < 0 || score > 10) { alert("Bodovi: 0–10!"); return; }
+  if (isNaN(timeMs) || timeMs < 0) { alert("Vrijeme mora biti pozitivno!"); return; }
 
   try {
-    await update(ref(db, `results/${editingKey}`), {
-      name: name,
-      score: score,
-      percentage: pct,
-      timeMs: timeMs
+    await update(ref(db, `${getDbPath()}/${editingKey}`), {
+      name, score,
+      percentage: Math.round((score / 10) * 100),
+      timeMs
     });
-    console.log(`Ažurirano: ${editingKey}`);
   } catch (err) {
-    console.error("Greška pri spremanju:", err);
+    console.error("Greška:", err);
     alert("Greška: " + err.message);
   }
 
@@ -285,7 +294,6 @@ $btnEditCancel.addEventListener("click", () => {
   $modalEdit.classList.remove("active");
 });
 
-// Klik izvan modala zatvara ga
 $modalEdit.addEventListener("click", (e) => {
   if (e.target === $modalEdit) {
     editingKey = null;
