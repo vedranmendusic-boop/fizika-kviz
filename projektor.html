@@ -413,27 +413,9 @@
 
   <div class="clock" id="clock"></div>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
-    import { getAuth, signInAnonymously }
-      from "https://www.gstatic.com/firebasejs/11.7.1/firebase-auth.js";
-    import { getDatabase, ref, onValue }
-      from "https://www.gstatic.com/firebasejs/11.7.1/firebase-database.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyD7MxLO2H0BLSgu07mxh7cYg3d2XM91WeI",
-      authDomain: "fizika-challenge-757f7.firebaseapp.com",
-      databaseURL: "https://fizika-challenge-757f7-default-rtdb.europe-west1.firebasedatabase.app",
-      projectId: "fizika-challenge-757f7",
-      storageBucket: "fizika-challenge-757f7.firebasestorage.app",
-      messagingSenderId: "462864759911",
-      appId: "1:462864759911:web:5e47b89c750232f81368c2"
-    };
-
-    const app  = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db   = getDatabase(app);
-
+  <script>
+    // Projektor: stabilno REST čitanje kao leaderboard, bez Firebase Auth-a.
+    const DB_URL = "https://fizika-challenge-757f7-default-rtdb.europe-west1.firebasedatabase.app";
     const QUIZ_URL = "https://vedranmendusic-boop.github.io/fizika-kviz/index.html";
 
     // ZANIMLJIVOSTI
@@ -530,19 +512,35 @@
       $el.innerHTML=h;
     }
 
-    function listen(path,$el){
-      const q=query(ref(db,path),orderByChild("score"),limitToLast(50));
-      onValue(q,(snap)=>{const r=[];snap.forEach(c=>r.push({id:c.key,...c.val()}));renderLB($el,r);},
-        ()=>{$el.innerHTML=`<div class="lb-empty">Greška.</div>`;});
+    function normalizeResults(raw){
+      if(!raw || typeof raw !== "object") return [];
+      return Object.entries(raw)
+        .filter(([key,val])=>key.startsWith("-") && val && typeof val === "object")
+        .map(([key,val])=>({id:key,...val,score:Number(val.score)||0,timeMs:Number(val.timeMs)||0}));
     }
 
-    async function init(){
-      try{await signInAnonymously(auth);}catch{return;}
-      listen("results/fizika7",document.getElementById("lb-fizika7"));
-      listen("results/fizika8",document.getElementById("lb-fizika8"));
-      listen("results/opce",document.getElementById("lb-opce"));
+    async function loadLB(path,$el){
+      try{
+        const res = await fetch(`${DB_URL}/${path}.json`, { cache: "no-store" });
+        if(!res.ok) throw new Error(`HTTP ${res.status}`);
+        const raw = await res.json();
+        const results = normalizeResults(raw);
+        console.log(`[projektor] ${path}: ${results.length} rezultat(a)`);
+        renderLB($el,results);
+      }catch(err){
+        console.error("Projektor greška:", path, err);
+        $el.innerHTML=`<div class="lb-empty">Greška učitavanja.</div>`;
+      }
     }
-    init();
+
+    function loadAllLB(){
+      loadLB("results/fizika7",document.getElementById("lb-fizika7"));
+      loadLB("results/fizika8",document.getElementById("lb-fizika8"));
+      loadLB("results/opce",document.getElementById("lb-opce"));
+    }
+
+    loadAllLB();
+    setInterval(loadAllLB,3000);
   </script>
 </body>
 </html>

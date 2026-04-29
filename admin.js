@@ -1,11 +1,13 @@
 // ============================================
-// ADMIN — 3 kategorije (fizika7, fizika8, opce)
+// ADMIN — jednostavna stabilna verzija
+// Čitanje radi preko REST API-ja kao leaderboard.
+// Brisanje/uređivanje koristi Firebase SDK + anonymous auth.
 // ============================================
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
 import { getAuth, signInAnonymously }
   from "https://www.gstatic.com/firebasejs/11.7.1/firebase-auth.js";
-import { getDatabase, ref, query, orderByChild, onValue, remove, update }
+import { getDatabase, ref, remove, update }
   from "https://www.gstatic.com/firebasejs/11.7.1/firebase-database.js";
 
 const firebaseConfig = {
@@ -17,6 +19,8 @@ const firebaseConfig = {
   messagingSenderId: "462864759911",
   appId: "1:462864759911:web:5e47b89c750232f81368c2"
 };
+
+const DB_URL = "https://fizika-challenge-757f7-default-rtdb.europe-west1.firebasedatabase.app";
 
 const app  = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -34,6 +38,8 @@ let data = { fizika7: [], fizika8: [], opce: [] };
 let activeCategory = "fizika7";
 let editingKey = null;
 let deleteTarget = null;
+let pollingStarted = false;
+let authReady = false;
 
 const $ = id => document.getElementById(id);
 
@@ -46,9 +52,59 @@ const $screenLogin=$("screen-login"), $screenAdmin=$("screen-admin"),
   $modalConfirm=$("modal-confirm"), $confirmText=$("confirm-text");
 
 function showScreen(s){[$screenLogin,$screenAdmin].forEach(x=>x.classList.remove("active"));s.classList.add("active");}
-function formatTime(ms){const t=Math.floor(ms/1000);return`${Math.floor(t/60)}:${String(t%60).padStart(2,"0")}`;}
-function escapeHtml(s){const d=document.createElement("div");d.textContent=s;return d.innerHTML;}
-function sortResults(r){return r.sort((a,b)=>b.score!==a.score?b.score-a.score:(a.timeMs||0)-(b.timeMs||0));}
+function formatTime(ms){const t=Math.floor((Number(ms)||0)/1000);return`${Math.floor(t/60)}:${String(t%60).padStart(2,"0")}`;}
+function escapeHtml(s){const d=document.createElement("div");d.textContent=String(s ?? "");return d.innerHTML;}
+function sortResults(r){return r.sort((a,b)=>{const sd=(Number(b.score)||0)-(Number(a.score)||0);return sd!==0?sd:(Number(a.timeMs)||0)-(Number(b.timeMs)||0);});}
+
+function normalizeResults(raw){
+  if(!raw || typeof raw !== "object") return [];
+  return Object.entries(raw)
+    .filter(([key,val])=>key.startsWith("-") && val && typeof val === "object")
+    .map(([key,val])=>({
+      key,
+      name: val.name ?? "—",
+      score: Number(val.score)||0,
+      percentage: Number(val.percentage)||0,
+      timeMs: Number(val.timeMs)||0,
+      createdAt: val.createdAt ?? null,
+      uid: val.uid ?? ""
+    }));
+}
+
+async function loadCategory(catKey){
+  const cat = CATS[catKey];
+  const url = `${DB_URL}/${cat.path}.json`;
+  try{
+    const res = await fetch(url, { cache: "no-store" });
+    if(!res.ok) throw new Error(`HTTP ${res.status}`);
+    const raw = await res.json();
+    data[catKey] = normalizeResults(raw);
+    console.log(`[admin] ${catKey}: ${data[catKey].length} rezultat(a)`);
+    if(activeCategory === catKey) renderAdmin();
+  }catch(err){
+    console.error("Admin read greška:", catKey, err);
+    if(activeCategory === catKey){
+      $adminContent.innerHTML=`<div class="lb-empty">Greška učitavanja: ${escapeHtml(err.message)}</div>`;
+    }
+  }
+}
+
+function loadAll(){ Object.keys(CATS).forEach(loadCategory); }
+
+function renderAdmin(){
+  const results=data[activeCategory] || [];
+  const sorted=sortResults([...results]);
+  const cat=CATS[activeCategory];
+  $resultCount.textContent=`${cat.label} — ${sorted.length} rezultat(a)`;
+
+  if(!sorted.length){$adminContent.innerHTML=`<div class="lb-empty">Nema rezultata.</div>`;return;}
+
+  let html=`<div class="admin-row header"><span>Ime</span><span style="text-align:center">Bod.</span><span style="text-align:center">Vrijeme</span><span style="text-align:right">Akcije</span></div>`;
+  sorted.forEach(e=>{
+    html+=`<div class="admin-row"><span class="admin-name">${escapeHtml(e.name||'—')}</span><span class="admin-score">${e.score}/20</span><span class="admin-time">${formatTime(e.timeMs||0)}</span><div class="admin-actions"><button class="btn-icon edit" onclick="window._edit('${e.key}')">✏️</button><button class="btn-icon" onclick="window._delete('${e.key}','${escapeHtml(e.name||'—')}')">✕</button></div></div>`;
+  });
+  $adminContent.innerHTML=html;
+}
 
 // PIN
 $pinInput.addEventListener("input",()=>{
@@ -67,46 +123,27 @@ document.querySelectorAll(".admin-tab").forEach(tab=>{
     document.querySelectorAll(".admin-tab").forEach(t=>t.classList.remove("active"));
     tab.classList.add("active");
     renderAdmin();
+    loadCategory(activeCategory);
   });
 });
 
-function renderAdmin(){
-  const results=data[activeCategory];
-  const sorted=sortResults([...results]);
-  const cat=CATS[activeCategory];
-  $resultCount.textContent=`${cat.label} — ${sorted.length} rezultat(a)`;
-
-  if(!sorted.length){$adminContent.innerHTML=`<div class="lb-empty">Nema rezultata.</div>`;return;}
-
-  let html=`<div class="admin-row header"><span>Ime</span><span style="text-align:center">Bod.</span><span style="text-align:center">Vrijeme</span><span style="text-align:right">Akcije</span></div>`;
-  sorted.forEach(e=>{
-    html+=`<div class="admin-row"><span class="admin-name">${escapeHtml(e.name||'—')}</span><span class="admin-score">${e.score}/20</span><span class="admin-time">${formatTime(e.timeMs||0)}</span><div class="admin-actions"><button class="btn-icon edit" onclick="window._edit('${e.key}')">✏️</button><button class="btn-icon" onclick="window._delete('${e.key}','${escapeHtml(e.name||'—')}')">✕</button></div></div>`;
-  });
-  $adminContent.innerHTML=html;
-}
-
 async function initAdmin(){
+  if(pollingStarted) return;
+  pollingStarted = true;
+
+  const uidEl = document.getElementById("admin-uid");
   try{
-    const cred = await signInAnonymously(auth);
-    const uidEl = document.getElementById("admin-uid");
-    if (uidEl) uidEl.textContent = `Admin UID: ${cred.user.uid}`;
-    console.log("ADMIN UID:", cred.user.uid);
-  }catch{
-    $adminContent.innerHTML=`<div class="lb-empty">Auth greška.</div>`;
-    return;
+    const cred = auth.currentUser ? { user: auth.currentUser } : await signInAnonymously(auth);
+    authReady = true;
+    if(uidEl) uidEl.textContent = `Auth OK · UID: ${cred.user.uid}`;
+  }catch(err){
+    authReady = false;
+    if(uidEl) uidEl.textContent = `Čitanje radi · brisanje/uređivanje možda neće raditi bez Auth-a`;
+    console.warn("Auth greška u adminu:", err);
   }
 
-  Object.keys(CATS).forEach(key=>{
-    const q=query(ref(db,CATS[key].path),orderByChild("score"));
-    onValue(q,(snap)=>{
-      data[key]=[];
-      snap.forEach(c=>data[key].push({key:c.key,...c.val()}));
-      if(activeCategory===key)renderAdmin();
-    },(err)=>{
-      console.error("Admin read greška:", key, err);
-      if(activeCategory===key)$adminContent.innerHTML=`<div class="lb-empty">Greška: ${escapeHtml(err.message||"nema dozvole")}</div>`;
-    });
-  });
+  loadAll();
+  setInterval(loadAll, 3000);
 }
 
 // Delete
@@ -122,15 +159,20 @@ $btnDeleteAll.addEventListener("click",()=>{
 $("btn-confirm-delete").addEventListener("click",async()=>{
   if(!deleteTarget)return;
   try{
+    if(!authReady && !auth.currentUser){
+      const cred = await signInAnonymously(auth);
+      authReady = true;
+      const uidEl = document.getElementById("admin-uid");
+      if(uidEl) uidEl.textContent = `Auth OK · UID: ${cred.user.uid}`;
+    }
     if(deleteTarget==="all") {
       const items = [...data[activeCategory]];
-      for (const item of items) {
-        await remove(ref(db,`${CATS[activeCategory].path}/${item.key}`));
-      }
+      for (const item of items) await remove(ref(db,`${CATS[activeCategory].path}/${item.key}`));
     } else {
       await remove(ref(db,`${CATS[activeCategory].path}/${deleteTarget.key}`));
     }
-  }catch(e){alert("Greška: "+e.message);}
+    await loadCategory(activeCategory);
+  }catch(e){alert("Greška brisanja: "+e.message);}
   deleteTarget=null;$modalConfirm.classList.remove("active");
 });
 
@@ -150,8 +192,17 @@ $("btn-edit-save").addEventListener("click",async()=>{
   if(!name){alert("Ime!");return;}
   if(isNaN(score)||score<0||score>20){alert("Bodovi: 0–20!");return;}
   if(isNaN(timeMs)||timeMs<=0){alert("Vrijeme mora biti veće od 0!");return;}
-  try{await update(ref(db,`${CATS[activeCategory].path}/${editingKey}`),{name,score,percentage:Math.round((score/20)*100),timeMs});}
-  catch(e){alert("Greška: "+e.message);}
+  try{
+    if(!authReady && !auth.currentUser){
+      const cred = await signInAnonymously(auth);
+      authReady = true;
+      const uidEl = document.getElementById("admin-uid");
+      if(uidEl) uidEl.textContent = `Auth OK · UID: ${cred.user.uid}`;
+    }
+    await update(ref(db,`${CATS[activeCategory].path}/${editingKey}`),{name,score,percentage:Math.round((score/20)*100),timeMs});
+    await loadCategory(activeCategory);
+  }
+  catch(e){alert("Greška uređivanja: "+e.message);}
   editingKey=null;$modalEdit.classList.remove("active");
 });
 
