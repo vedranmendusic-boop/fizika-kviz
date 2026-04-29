@@ -5,7 +5,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
 import { getAuth, signInAnonymously }
   from "https://www.gstatic.com/firebasejs/11.7.1/firebase-auth.js";
-import { getDatabase, ref, query, orderByChild, onValue, remove, update }
+import { getDatabase, ref, query, orderByChild, onValue, remove, update, get }
   from "https://www.gstatic.com/firebasejs/11.7.1/firebase-database.js";
 
 const firebaseConfig = {
@@ -91,6 +91,12 @@ async function initAdmin(){
     const uidEl = document.getElementById("admin-uid");
     if (uidEl) uidEl.textContent = `Admin UID: ${cred.user.uid}`;
     console.log("ADMIN UID:", cred.user.uid);
+    const adminSnap = await get(ref(db, "admins/" + cred.user.uid));
+    const isAdmin = adminSnap.val() === true;
+    if (uidEl) uidEl.textContent = "Admin UID: " + cred.user.uid + " · " + (isAdmin ? "ADMIN OK" : "NIJE UPISAN U /admins");
+    if (!isAdmin) {
+      $adminContent.innerHTML = '<div class="lb-empty">Ovaj UID još nije dodan u Firebase Data pod /admins. Brisanje i uređivanje neće raditi dok ne dodaš ovaj UID kao true.</div>';
+    }
   }catch{
     $adminContent.innerHTML=`<div class="lb-empty">Auth greška.</div>`;
     return;

@@ -531,7 +531,7 @@
     }
 
     function listen(path,$el){
-      const q=query(ref(db,path),orderByChild("score"),limitToLast(50));
+      const q=query(ref(db,path),orderByChild("score"),limitToLast(10));
       onValue(q,(snap)=>{const r=[];snap.forEach(c=>r.push({id:c.key,...c.val()}));renderLB($el,r);},
         ()=>{$el.innerHTML=`<div class="lb-empty">Greška.</div>`;});
     }
