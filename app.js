@@ -255,14 +255,23 @@ async function saveResult() {
   const cat = CATEGORIES[currentCategory];
 
   try {
-    await push(ref(db, cat.dbPath), {
+    if (!auth.currentUser) {
+      const cred = await signInAnonymously(auth);
+      currentUser = cred.user;
+    } else {
+      currentUser = auth.currentUser;
+    }
+
+    const savedRef = await push(ref(db, cat.dbPath), {
       name: name,
       score: score,
       percentage: pct,
       timeMs: elapsedMs,
       createdAt: serverTimestamp(),
-      uid: currentUser ? currentUser.uid : "unknown"
+      uid: currentUser.uid
     });
+
+    console.log("SPREMLJEN REZULTAT:", cat.dbPath, savedRef.key);
 
     resultSaved = true;
     $saveStatus.textContent = "✅ Rezultat spremljen!";

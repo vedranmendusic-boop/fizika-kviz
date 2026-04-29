@@ -86,7 +86,15 @@ function renderAdmin(){
 }
 
 async function initAdmin(){
-  try{await signInAnonymously(auth);}catch{$adminContent.innerHTML=`<div class="lb-empty">Auth greška.</div>`;return;}
+  try{
+    const cred = await signInAnonymously(auth);
+    const uidEl = document.getElementById("admin-uid");
+    if (uidEl) uidEl.textContent = `Admin UID: ${cred.user.uid}`;
+    console.log("ADMIN UID:", cred.user.uid);
+  }catch{
+    $adminContent.innerHTML=`<div class="lb-empty">Auth greška.</div>`;
+    return;
+  }
 
   Object.keys(CATS).forEach(key=>{
     const q=query(ref(db,CATS[key].path),orderByChild("score"));
@@ -94,6 +102,9 @@ async function initAdmin(){
       data[key]=[];
       snap.forEach(c=>data[key].push({key:c.key,...c.val()}));
       if(activeCategory===key)renderAdmin();
+    },(err)=>{
+      console.error("Admin read greška:", key, err);
+      if(activeCategory===key)$adminContent.innerHTML=`<div class="lb-empty">Greška: ${escapeHtml(err.message||"nema dozvole")}</div>`;
     });
   });
 }
@@ -132,7 +143,7 @@ $("btn-edit-save").addEventListener("click",async()=>{
   const name=$editName.value.trim(),score=parseInt($editScore.value,10),timeMs=parseInt($editTime.value,10);
   if(!name){alert("Ime!");return;}
   if(isNaN(score)||score<0||score>20){alert("Bodovi: 0–20!");return;}
-  if(isNaN(timeMs)||timeMs<0){alert("Vrijeme!");return;}
+  if(isNaN(timeMs)||timeMs<=0){alert("Vrijeme mora biti veće od 0!");return;}
   try{await update(ref(db,`${CATS[activeCategory].path}/${editingKey}`),{name,score,percentage:Math.round((score/20)*100),timeMs});}
   catch(e){alert("Greška: "+e.message);}
   editingKey=null;$modalEdit.classList.remove("active");

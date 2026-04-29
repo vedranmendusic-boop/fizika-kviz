@@ -5,7 +5,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
 import { getAuth, signInAnonymously }
   from "https://www.gstatic.com/firebasejs/11.7.1/firebase-auth.js";
-import { getDatabase, ref, query, orderByChild, limitToLast, onValue }
+import { getDatabase, ref, onValue }
   from "https://www.gstatic.com/firebasejs/11.7.1/firebase-database.js";
 
 const firebaseConfig = {
@@ -58,12 +58,14 @@ function renderTable($el, results) {
 }
 
 function listen(path, $el) {
-  const q = query(ref(db, path), orderByChild("score"), limitToLast(50));
-  onValue(q, (snap) => {
+  onValue(ref(db, path), (snap) => {
     const r = [];
     snap.forEach(c => r.push({ id: c.key, ...c.val() }));
     renderTable($el, r);
-  }, () => { $el.innerHTML = `<div class="lb-empty">Greška.</div>`; });
+  }, (err) => {
+    console.error("Leaderboard greška:", path, err);
+    $el.innerHTML = `<div class="lb-empty">Greška: ${escapeHtml(err.message || "nema dozvole")}</div>`;
+  });
 }
 
 async function init() {
